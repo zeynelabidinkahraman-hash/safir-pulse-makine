@@ -256,7 +256,7 @@
   </div>
   <div class="chart-wrap">
     <div class="chart-title">Aylık Trend — Çalışma Saati</div>
-    <div class="chart-desc">Ocak → Şubat → Mart değişimi</div>
+    <div class="chart-desc">Ocak → Şubat → Mart → Nisan değişimi</div>
     <div class="chart-container" style="height:320px"><canvas id="chart-trend"></canvas></div>
   </div>
 </div>
@@ -295,6 +295,7 @@
       <button class="pbtn active" id="tg-btn-oca" onclick="setTeknikPeriod('oca',this)">Ocak</button>
       <button class="pbtn" id="tg-btn-sub" onclick="setTeknikPeriod('sub',this)">Şubat</button>
       <button class="pbtn" id="tg-btn-mar" onclick="setTeknikPeriod('mar',this)">Mart</button>
+      <button class="pbtn" id="tg-btn-nis" onclick="setTeknikPeriod('nis',this)">Nisan</button>
       <button class="pbtn" id="tg-btn-ozet" onclick="setTeknikPeriod('ozet',this)">2026 Özet</button>
       <span id="teknik-period-info" style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);background:var(--surface2);padding:5px 12px;border-radius:4px;border:1px solid var(--border)">Ocak 2026</span>
     </div>
@@ -317,7 +318,7 @@
         <div class="chart-container" style="height:280px"><canvas id="tg-chart-tip"></canvas></div>
       </div>
       <div class="chart-wrap">
-        <div class="chart-title">Ocak / Şubat / Mart — Aylık Trend</div>
+        <div class="chart-title">Ocak / Şubat / Mart / Nisan — Aylık Trend</div>
         <div class="chart-desc">Tip bazlı 3 aylık gider karşılaştırması</div>
         <div class="chart-container" style="height:280px"><canvas id="tg-chart-trend"></canvas></div>
       </div>
@@ -388,7 +389,7 @@
         <div class="two-col" style="margin-top:16px">
           <div class="chart-wrap">
             <div class="chart-title">Aylık Gider Trendi — Makine Tipi</div>
-            <div class="chart-desc">Ocak / Şubat / Mart 2026 · Yığılı bar — hangi tip ne kadar harcadı?</div>
+            <div class="chart-desc">Ocak / Şubat / Mart / Nisan 2026 · Yığılı bar — hangi tip ne kadar harcadı?</div>
             <div class="chart-container" style="height:280px"><canvas id="mk-chart-trend"></canvas></div>
           </div>
           <div class="chart-wrap">
@@ -474,6 +475,7 @@
       <button class="pbtn active" id="tbl-btn-oca" onclick="setTabloPeriod('oca',this)">Ocak</button>
       <button class="pbtn" id="tbl-btn-sub" onclick="setTabloPeriod('sub',this)">Şubat</button>
       <button class="pbtn" id="tbl-btn-mar" onclick="setTabloPeriod('mar',this)">Mart</button>
+      <button class="pbtn" id="tbl-btn-nis" onclick="setTabloPeriod('nis',this)">Nisan</button>
       <button class="pbtn" id="tbl-btn-ozet" onclick="setTabloPeriod('ozet',this)">2026 Özet</button>
       <div style="margin-left:auto;display:flex;gap:6px"><input type="text" class="form-input" id="tablo-filter" placeholder="Filtrele..." style="width:150px" oninput="filterTablo()"></div>
     </div>
@@ -940,7 +942,7 @@ function renderTeknikGider(period){
   var ortMakine=aktif>0?Math.round(toplam/aktif):0;
 
   document.getElementById('tg-kpi-top').textContent='₺'+(toplam/1000000).toFixed(2)+'M';
-  document.getElementById('tg-kpi-top-sub').textContent=period==='ozet'?'Ocak+Şubat+Mart':period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':'Mart 2026';
+  document.getElementById('tg-kpi-top-sub').textContent=period==='ozet'?'Oca+Şub+Mar+Nis':period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':period==='mar'?'Mart 2026':'Nisan 2026';
   document.getElementById('tg-kpi-aktif').textContent=aktif;
   document.getElementById('tg-kpi-aktif-sub').textContent=aktif+' aktif · '+pasif+' sıfır gider';
   document.getElementById('tg-kpi-pahal').textContent=enPahal?(enPahal.kd||enPahal.model.substring(0,8)):'—';
@@ -950,7 +952,7 @@ function renderTeknikGider(period){
   document.getElementById('tg-kpi-ort').textContent=formatTLK(ortMakine);
 
   var kasko=data.filter(function(m){return m.not&&m.not.toLowerCase().includes('kasko');});
-  var insightText='<strong>'+(period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':period==='mar'?'Mart 2026':'2026 Özet (Oca+Şub+Mar)')+'</strong> · Toplam: <strong>'+formatTL(toplam)+'</strong> · '+aktif+' makine gider oluşturdu · Ekskavatörler toplamın <strong>%'+ekskPay+'</strong>ini oluşturuyor · Makine başına ort: <strong>'+formatTL(ortMakine)+'</strong>';
+  var insightText='<strong>'+(period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':period==='mar'?'Mart 2026':period==='nis'?'Nisan 2026':'2026 Özet (Oca–Nis)')+'</strong> · Toplam: <strong>'+formatTL(toplam)+'</strong> · '+aktif+' makine gider oluşturdu · Ekskavatörler toplamın <strong>%'+ekskPay+'</strong>\'ini oluşturuyor · Makine başına ort: <strong>'+formatTL(ortMakine)+'</strong>';
   if(kasko.length>0){insightText+=' · ⚠️ <strong>'+kasko.length+' kasko hasarı:</strong> '+kasko.map(function(m){return m.kd+' '+m.model.substring(0,12)+' ('+formatTL(getTGValue(m,period))+')';}).join(' · ');}
   if(period==='mar'){insightText+=' · <span style="color:#86efac">✎ Mart verileri Veri Girişi sekmesinden güncellenebilir</span>';}
   document.getElementById('tg-insight').innerHTML=insightText;
@@ -962,7 +964,7 @@ function renderTeknikGider(period){
 
   var tipTum=Object.keys(TIP_RENK).filter(function(t){return data.some(function(m){return m.tip===t&&getTGValue(m,period)>0;});});
   if(tgCharts.trend){tgCharts.trend.destroy();}
-  tgCharts.trend=new Chart(document.getElementById('tg-chart-trend'),{type:'bar',data:{labels:tipTum,datasets:[{label:'Ocak',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'oca');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'55';})},{label:'Şubat',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'sub');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'99';})},{label:'Mart',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'mar');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'ee';})}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#6b7280',font:{size:10},boxWidth:10,padding:8}}},scales:{x:{stacked:true,ticks:{color:'#6b7280',font:{size:9}},grid:{color:'rgba(42,48,64,.5)'}},y:{stacked:true,ticks:{color:'#6b7280',font:{size:9},callback:function(v){return'₺'+v+'k';}},grid:{color:'rgba(42,48,64,.5)'}}}}});
+  tgCharts.trend=new Chart(document.getElementById('tg-chart-trend'),{type:'bar',data:{labels:tipTum,datasets:[{label:'Ocak',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'oca');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'55';})},{label:'Şubat',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'sub');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'99';})},{label:'Mart',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'mar');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'ee';})},{label:'Nisan',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'nis');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'ff';})}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#6b7280',font:{size:10},boxWidth:10,padding:8}}},scales:{x:{stacked:true,ticks:{color:'#6b7280',font:{size:9}},grid:{color:'rgba(42,48,64,.5)'}},y:{stacked:true,ticks:{color:'#6b7280',font:{size:9},callback:function(v){return'₺'+v+'k';}},grid:{color:'rgba(42,48,64,.5)'}}}}});
 
   var top20=sorted.filter(function(m){return getTGValue(m,period)>0;}).slice(0,20);
   if(tgCharts.makine){tgCharts.makine.destroy();}
@@ -1157,7 +1159,7 @@ function filterTablo(){tabloFilter=document.getElementById('tablo-filter').value
 function setTeknikPeriod(period,btn){
   document.querySelectorAll('#tg-genel .pbtn').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
-  var etiket={oca:'Ocak 2026',sub:'Şubat 2026',mar:'Mart 2026',ozet:'2026 Özet (Oca+Şub+Mar)'};
+  var etiket={oca:'Ocak 2026',sub:'Şubat 2026',mar:'Mart 2026',nis:'Nisan 2026',ozet:'2026 Özet (Oca–Nis)'};
   document.getElementById('teknik-period-info').textContent=etiket[period]||period;
   renderTeknikGider(period);
 }
