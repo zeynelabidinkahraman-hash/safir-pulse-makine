@@ -322,6 +322,7 @@
       <button class="pbtn" id="tg-btn-sub" onclick="setTeknikPeriod('sub',this)">Şubat</button>
       <button class="pbtn" id="tg-btn-mar" onclick="setTeknikPeriod('mar',this)">Mart</button>
       <button class="pbtn" id="tg-btn-nis" onclick="setTeknikPeriod('nis',this)">Nisan</button>
+      <button class="pbtn" id="tg-btn-may" onclick="setTeknikPeriod('may',this)">Mayıs</button>
       <button class="pbtn" id="tg-btn-ozet" onclick="setTeknikPeriod('ozet',this)">2026 Özet</button>
       <span id="teknik-period-info" style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);background:var(--surface2);padding:5px 12px;border-radius:4px;border:1px solid var(--border)">Ocak 2026</span>
     </div>
@@ -535,6 +536,7 @@
       <button class="pbtn" id="tbl-btn-sub" onclick="setTabloPeriod('sub',this)">Şubat</button>
       <button class="pbtn" id="tbl-btn-mar" onclick="setTabloPeriod('mar',this)">Mart</button>
       <button class="pbtn" id="tbl-btn-nis" onclick="setTabloPeriod('nis',this)">Nisan</button>
+      <button class="pbtn" id="tbl-btn-may" onclick="setTabloPeriod('may',this)">Mayıs</button>
       <button class="pbtn" id="tbl-btn-ozet" onclick="setTabloPeriod('ozet',this)">2026 Özet</button>
       <div style="margin-left:auto;display:flex;gap:6px">
         <input type="text" class="form-input" id="tablo-filter" placeholder="Filtrele..." style="width:150px" oninput="filterTablo()">
@@ -1331,7 +1333,7 @@ function filterTablo(){tabloFilter=document.getElementById('tablo-filter').value
 function setTeknikPeriod(period,btn){
   document.querySelectorAll('#tg-genel .pbtn').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
-  var etiket={oca:'Ocak 2026',sub:'Şubat 2026',mar:'Mart 2026',nis:'Nisan 2026',ozet:'2026 Özet (Oca–Nis)'};
+  var etiket={oca:'Ocak 2026',sub:'Şubat 2026',mar:'Mart 2026',nis:'Nisan 2026',may:'Mayıs 2026',ozet:'2026 Özet (Oca–May)'};
   document.getElementById('teknik-period-info').textContent=etiket[period]||period;
   renderTeknikGider(period);
 }
