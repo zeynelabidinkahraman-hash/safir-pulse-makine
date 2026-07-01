@@ -170,12 +170,12 @@
 <header>
   <div>
     <div class="logo">SAFIR PULSE — MAKİNE ANALİZ SİSTEMİ</div>
-    <h1>SAFIR PULSE <span id="period-badge" class="week-badge">2026 ÖZET</span></h1>
-    <div class="subtitle">CAT VisionLink + Hitachi ConSite · VisionLink Mayıs 2026 (1–31 May · Tam Ay)</div>
+    <h1>SAFIR PULSE <span id="period-badge" class="week-badge">HAZİRAN 2026</span></h1>
+    <div class="subtitle">CAT VisionLink + Hitachi e-Service · VisionLink Haziran 2026 (1–30 Haz · Tam Ay)</div>
   </div>
   <div style="text-align:right">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">SON GÜNCELLEME</div>
-    <div style="font-size:13px;margin-top:3px">06.05.2026</div>
+    <div style="font-size:13px;margin-top:3px">01.07.2026</div>
     <div style="font-size:11px;color:var(--muted);margin-top:1px">VisionLink CM</div>
   </div>
 </header>
@@ -183,24 +183,25 @@
 <div class="period-bar">
   <span class="period-label">Aylık:</span>
   <div class="period-group">
-    <button class="pbtn active" onclick="setPeriod('2026','2026 Yıl Özeti (Oca–May)')">2026 Özet</button>
+    <button class="pbtn" onclick="setPeriod('2026','2026 Yıl Özeti (Oca–Haz)')">2026 Özet</button>
     <button class="pbtn" onclick="setPeriod('oca','Ocak 2026')">Ocak</button>
     <button class="pbtn" onclick="setPeriod('sub','Şubat 2026')">Şubat</button>
     <button class="pbtn" onclick="setPeriod('mar','Mart 2026 (01–29 Mar · VisionLink)')">Mart</button>
     <button class="pbtn" onclick="setPeriod('nis','Nisan 2026 (01–30 Nis · VisionLink)')">Nisan</button>
     <button class="pbtn" onclick="setPeriod('may','Mayıs 2026 (01–31 May · VisionLink)')">Mayıs</button>
+    <button class="pbtn active" onclick="setPeriod('haz','Haziran 2026 (01–30 Haz · VisionLink)')">Haziran</button>
   </div>
 
-  <div class="period-info" id="period-info">Dönem: 01 Nis – 07 Nis 2026</div>
+  <div class="period-info" id="period-info">Dönem: 01 – 30 Haziran 2026</div>
 </div>
 
 <div class="kpi-row">
-  <div class="kpi"><div class="kpi-label">Toplam Çalışma</div><div class="kpi-val blue" id="kpi-cal">18.355 sa</div><div class="kpi-delta" id="kpi-cal-d"></div></div>
-  <div class="kpi"><div class="kpi-label">Rölanti Ort.</div><div class="kpi-val orange" id="kpi-rol">%35</div><div class="kpi-delta" id="kpi-rol-d"></div></div>
-  <div class="kpi"><div class="kpi-label">Toplam Yakıt</div><div class="kpi-val" id="kpi-fuel">355.140 L</div><div class="kpi-delta" id="kpi-fuel-d"></div></div>
-  <div class="kpi"><div class="kpi-label">Ort. L/Saat</div><div class="kpi-val" id="kpi-lhr">—</div><div class="kpi-delta" id="kpi-lhr-d"></div></div>
+  <div class="kpi"><div class="kpi-label">Toplam Çalışma</div><div class="kpi-val blue" id="kpi-cal">11.960 sa</div><div class="kpi-delta" id="kpi-cal-d"></div></div>
+  <div class="kpi"><div class="kpi-label">Rölanti Ort.</div><div class="kpi-val green" id="kpi-rol">%32</div><div class="kpi-delta" id="kpi-rol-d"></div></div>
+  <div class="kpi"><div class="kpi-label">Toplam Yakıt</div><div class="kpi-val" id="kpi-fuel">225.593 L</div><div class="kpi-delta" id="kpi-fuel-d"></div></div>
+  <div class="kpi"><div class="kpi-label">Ort. L/Saat</div><div class="kpi-val" id="kpi-lhr">18.9 L/h</div><div class="kpi-delta" id="kpi-lhr-d"></div></div>
   <div class="kpi"><div class="kpi-label">Kritik Makine</div><div class="kpi-val red" id="kpi-alarm">12</div><div class="kpi-sub">alarm/dikkat</div></div>
-  <div class="kpi"><div class="kpi-label">En Verimli</div><div class="kpi-val green" id="kpi-best">C45</div><div class="kpi-sub" id="kpi-best-sub">%19 · 16.2 L/h</div></div>
+  <div class="kpi"><div class="kpi-label">En Verimli</div><div class="kpi-val green" id="kpi-best">C45</div><div class="kpi-sub" id="kpi-best-sub">%19 · 16.5 L/h</div></div>
 </div>
 
 <div class="tabs">
@@ -271,7 +272,7 @@
 
   <div class="chart-wrap">
     <div class="chart-title">Aylık Trend — Çalışma Saati</div>
-    <div class="chart-desc">Ocak → Şubat → Mart → Nisan → Mayıs değişimi</div>
+    <div class="chart-desc">Ocak → Şubat → Mart → Nisan → Mayıs → Haziran değişimi</div>
     <div class="chart-container" style="height:320px"><canvas id="chart-trend"></canvas></div>
   </div>
 
@@ -346,7 +347,7 @@
         <div class="chart-container" style="height:280px"><canvas id="tg-chart-tip"></canvas></div>
       </div>
       <div class="chart-wrap">
-        <div class="chart-title">Ocak / Şubat / Mart / Nisan / Mayıs — Aylık Trend</div>
+        <div class="chart-title">Ocak / Şubat / Mart / Nisan / Mayıs / Haziran — Aylık Trend</div>
         <div class="chart-desc">Tip bazlı 3 aylık gider karşılaştırması</div>
         <div class="chart-container" style="height:280px"><canvas id="tg-chart-trend"></canvas></div>
       </div>
@@ -380,6 +381,8 @@
             <option value="oca">Ocak 2026</option>
             <option value="sub">Şubat 2026</option>
             <option value="mar">Mart 2026</option>
+            <option value="nis">Nisan 2026</option>
+            <option value="may">Mayıs 2026</option>
             <option value="ozet" selected>2026 Özet</option>
           </select>
         </div>
@@ -568,58 +571,58 @@
 <script>
 // ─── ANA MAKİNE VERİSİ ───────────────────────────────────────────────────
 const RAW = [
-['C47','950-14','Çekmeköy/İst.','istanbul',406.6,271,135.6,33,5900,14.5,355.9,244.9,111.0,31,4960,13.9,279.9,192.2,87.7,31,3936.8,14.1,5253.0,1,'En çok çalışan',75.7,29.8,null,null,null,null,null,null,325.7,225.4,100.3,30.79,4313.0,13.2408,302,221.6,80.4,27,4313,14.3],
-['C40','352-08','Çekmeköy/İst.','istanbul',442.1,267.3,174.8,39,12640,28.6,231.7,138.6,93.1,40,6541,28.2,282.5,173.4,109.2,39,8485.9,30.0,10098.1,2,'9.545 sa — kova sensörü',84.8,35.3,null,null,null,null,null,null,488.9,330.4,158.5,32.42,14299.9,29.2498,157.1,94.9,62.2,40,4267,27.2],
-['C9','330GC','Şile/İst.','istanbul',355.1,196.6,158.5,44,5135,14.5,296.4,163.6,132.8,44,4345,14.7,170.8,103.0,67.8,40,2804.5,16.4,9211.4,1,'8.951 sa — revizyon takibi',48.5,63.0,null,null,null,null,null,null,203.6,99.8,103.8,51.0,2746.3,13.4875,195.9,129.6,66.4,34,3042,15.5],
-['C45','950-14','İskenderun','iskenderun',318.2,272.5,45.7,14,5216,16.4,91.6,76.3,15.3,17,1524,16.6,370.0,308.6,61.4,17,6035.8,16.3,4420.2,1,'En verimli — %19 ort.',65.1,16.3,null,null,null,null,null,null,347.6,263.0,84.7,24.36,5391.4,15.5084,201.4,154.6,46.8,23,3666,18.2],
-['C52','330GC','İskenderun','iskenderun',270.7,173.3,97.4,36,5143,19.0,252.5,163.0,89.5,35,4783,18.9,210.7,131.9,78.8,37,3999.3,19.0,3866.8,2,'Yakıt %10 + seyahat alarm',46.4,36.1,null,null,null,null,null,null,120.0,86.3,33.8,28.12,2247.6,18.7255,171.5,114.8,56.8,33,3367,19.6],
-['C53','330GC','İskenderun','iskenderun',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1833.1,0,'Pasif · TML30140',null,null,null,null,null,null,null,null,224.0,null,null,null,null,null,43.9,32.7,11.2,26,891,20.3],
-['C43','350-06','İskenderun','iskenderun',301.2,220.5,80.7,27,6282,20.9,251.8,186.3,65.5,26,5236,20.8,214.2,163.5,50.7,24,4493.8,21.0,5172.1,0,'Verimli 350',40.3,24.3,null,null,null,null,null,null,181.9,140.1,41.8,22.96,3819.9,21.0047,114.6,80.7,33.9,30,2569,22.4],
-['C30','336-08','Şile/İst.','istanbul',323.8,159.0,164.8,51,5898,18.2,234.6,115.0,119.6,51,4263,18.2,149.0,76.1,72.9,49,2843.8,19.1,5846.3,3,'PM2 bakım 618 GÜN gecikmiş!',36.8,16.9,null,null,null,null,null,null,107.0,85.2,21.8,20.37,3109.7,29.0587,221.2,132.3,88.9,40,4482,20.3],
-['C33','330GC','Çekmeköy/İst.','istanbul',207.6,148.8,58.8,28,3377,16.3,216.0,155.5,60.5,28,3509,16.2,258.3,174.4,83.9,32,4228.3,16.4,5891.8,3,'Motor soğutma yüksek ısı 50+ olay',66.2,31.8,null,null,null,null,null,null,242.6,159.4,83.2,34.3,4007.8,16.5231,195.6,134.5,61.2,31,3285,16.8],
-['C28','340-08','İskenderun','iskenderun',255.4,159.8,95.6,37,5870,23.0,230.7,145.8,84.9,37,5296,22.9,198.3,137.1,61.1,31,4988.7,25.2,6446.8,0,'',50.8,33.3,null,null,null,null,null,null,224.4,149.3,75.1,33.47,5557.5,24.77,101.3,76.6,24.4,24,2732,26.9],
-['C36','340-08','Sancaktepe/İst.','istanbul',218.8,136.5,82.3,38,5009,22.9,206.1,128.5,77.6,38,4725,22.9,188.6,117.8,70.8,38,4250.5,22.5,5468.0,2,'Yakıt pompası kuru çalışma',39.4,38.1,null,null,null,null,null,null,147.8,98.3,49.5,33.5,3495.4,23.6487,null,null,null,null,null,null],
-['C37','340-08','Sultanbeyli/İst.','istanbul',196.8,123.0,73.8,37,4524,23.0,182.5,114.5,68.0,37,4197,23.0,126.5,83.5,43.0,34,3261.6,25.8,4383.8,2,'Yakıt KRİTİK %10',34.1,23.8,null,null,null,null,null,null,189.0,150.5,38.5,20.37,5445.8,28.8117,143.7,106.1,29.6,21,3708,24.8],
-['C21','336-08','Kahramanmaraş','maras',172.5,114.7,57.8,33,3832,22.2,163.0,108.5,54.5,33,3623,22.2,189.7,109.7,80.0,42,4000.7,21.1,6010.7,3,'SCR arızası + %94 rölanti bu hafta',36.1,37.4,null,null,null,null,null,null,41.9,24.3,17.6,41.98,876.8,20.9134,188.8,146.8,42,22,5517,29.2],
-['C20','336-08','Kahramanmaraş','maras',173.8,126.5,47.3,27,4679,26.9,160.5,116.8,43.7,27,4320,26.9,199.4,159.9,39.5,20,6015.5,30.2,6253.9,1,'%88 rölanti bu hafta',62.0,24.5,null,null,null,null,null,null,226.8,170.1,56.7,25.0,6362.3,28.057,212.7,145.3,67.4,32,5410,25.4],
-['C35','336-08','İskenderun','iskenderun',153.3,105.9,47.4,31,3651,23.8,147.1,101.5,45.6,31,3503,23.8,203.9,106.5,97.4,48,3613.2,17.7,5381.9,2,'Emme manifold basıncı arızası',94.5,33.5,null,null,null,null,null,null,342.6,218.9,123.8,36.12,7350.8,21.4545,149.2,110.9,38.3,26,3517,23.6],
-['C32','330GC','Çayırova/Kocaeli','istanbul',165.4,90.5,74.9,45,2627,15.9,154.4,84.5,69.9,45,2453,15.9,102.1,60.5,38.2,37,1667.5,16.3,5419.3,2,'DPF is yükü yüksek',14.1,20.9,null,null,null,null,null,null,28.2,18.4,9.9,34.92,432.5,15.2967,122.2,83.3,36.3,30,2151,17.6],
-['C16','336GC','Kahramanmaraş','maras',148.4,107.1,41.3,28,3043,20.5,141.0,101.8,39.2,28,2891,20.5,121.7,87.1,34.0,28,2660.7,21.9,8209.9,3,'Bakım 269 gün gecikmiş + soğutma alarm',35.2,35.5,null,null,null,null,null,null,268.8,209.3,59.5,22.14,6575.3,24.4621,251.5,207.1,44.4,18,6246,24.8],
-['C14','336GC','Kahramanmaraş','maras',109.6,74.4,35.2,32,1786,16.3,102.1,69.4,32.7,32,1664,16.3,110.2,71.0,39.0,35,1642.9,14.9,7266.8,2,'%94 rölanti bu hafta',61.8,36.7,null,null,null,null,null,null,272.1,195.0,77.1,28.32,4385.9,16.1203,186.7,132.8,53.9,29,2803,15],
-['C41','350-06','Kahramanmaraş','maras',166.7,122.4,44.3,27,5048,30.3,163.6,120.2,43.4,27,4956,30.3,187.7,136.7,51.0,27,5716.0,30.5,5545.1,2,'30.3 L/sa — yüksek tüketim',66.3,19.5,null,null,null,null,null,null,242.6,180.6,62.0,25.57,7702.4,31.7431,149,117.5,31.5,21,3753,25.2],
-['C42','350-06','Sultanbeyli/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,4317.2,0,'Nisan 2026 VisionLink',null,null,null,null,null,null,null,null,245.7,171.9,73.8,30.05,6434.7,26.1873,161.5,114.7,46.8,29,3658,22.6],
-['C38','350-06','Kahramanmaraş','maras',170.5,107.6,62.9,37,4196,24.6,162.1,102.3,59.8,37,3988,24.6,123.8,90.2,33.6,27,3526.6,28.5,6288.6,2,'Yakıt %10 + SOS AR',20.3,31.7,null,null,null,null,null,null,195.1,138.7,56.4,28.9,5322.8,27.2783,94.2,71.4,22.8,24,2838,30.1],
-['C8','320GC','İyidere/Rize','rize',122.4,47.7,74.7,61,878,7.2,116.8,45.5,71.3,61,838,7.2,108.6,45.8,62.8,58,824.3,7.6,7245.5,3,'KRİTİK %58 rölanti',8.8,35.1,null,null,null,null,null,null,79.9,49.7,30.1,37.74,754.7,9.4479,60.7,36.4,24.3,40,576,9.5],
-['C55','313GC','Sancaktepe/İst.','istanbul',219.5,101.4,118.1,54,1088,5.0,241.4,113.4,128.0,53,1196,5.0,365.5,152.2,213.2,58,1766.4,4.8,1530.8,2,'%58 rölanti — artan trend',103.0,53.5,null,null,null,null,null,null,397.7,205.4,192.3,48.35,2104.2,5.291,180.1,122,58.1,32,1223,6.8],
-['C56','313GC','Ümraniye/İst.','istanbul',77.9,30.0,47.9,62,375,4.8,73.8,28.4,45.4,61,355,4.8,33.6,16.3,17.3,51,197.3,5.9,450.2,2,'%62 rölanti',0.7,29.9,null,null,null,null,null,null,174.0,50.2,123.8,71.17,648.3,3.7156,151.8,55.2,96.6,64,646,4.3],
-['C46','M318','Nilüfer/Bursa','bursa',159.9,77.2,82.7,52,952,6.0,152.2,73.5,78.7,52,907,6.0,134.1,71.1,63.0,47,839.4,6.3,2846.3,1,'%52 rölanti',37.9,39.7,null,null,null,null,null,null,174.2,107.7,66.5,38.18,1281.4,7.3577,119.7,76.5,43.2,36,843,7],
-['C11','336-07','Maltepe/İst.','istanbul',162.6,115.4,47.2,29,3834,23.6,155.2,110.2,45.0,29,3659,23.6,220.4,158.0,62.4,28,5133.5,23.3,8057.2,0,'',52.6,22.8,null,null,null,null,null,null,220.7,162.2,58.5,26.5,5358.7,24.2781,170.3,111.7,58.6,34,3800,22.3],
-['C6','336-07','Kahramanmaraş','maras',175.3,132.5,42.8,24,4694,26.8,163.0,123.3,39.7,24,4363,26.8,158.1,119.8,38.3,24,4209.8,26.6,10203.4,0,'9.893 sa — revizyon eşiği yaklaşıyor',50.5,21.3,null,null,null,null,null,null,237.1,181.8,55.3,23.34,6533.1,27.5518,255.4,192.4,63,25,6907,27],
-['C13','950GC','Kahramanmaraş','maras',195.3,140.0,55.3,28,3257,16.7,180.6,129.6,51.0,28,3014,16.7,182.8,122.9,60.0,33,2655.9,14.5,8598.9,0,'8.263 sa',60.6,27.6,null,null,null,null,null,null,277.9,189.1,88.9,31.97,4030.0,14.5006,74.3,46.1,28.2,38,1020,13.7],
-['H9','HMK410','Kahramanmaraş','maras',150,null,null,null,null,null,124,null,null,null,null,null,210,null,null,null,null,null,0,0,'Mayıs: 238sa · 7549L · 31.72L/sa',null,null,null,null,null,null,null,null,258.0,null,null,null,5406.0,20.9535,238,null,null,null,7549,31.7227],
-['H11','HMK500LC','Kahramanmaraş','maras',150,null,null,null,null,null,152,null,null,null,null,null,null,null,null,null,null,null,0,0,'Nisan arızalı · Pasif',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
-['ZX4','ZX490LCH','Entegre/İst.','istanbul',187.9,115.5,72.4,38,5307,28.2,314.2,190.2,124.0,39,10200,32.4,160.2,107.4,52.8,33,4540,28.4,5512.35,2,'Nisan: 426.9sa · %27.4 rölanti · 13914.0L · 32.5931L/sa',null,null,null,null,null,null,null,null,426.9,309.8,117.0,27.4,13914.0,32.5931,306.7,222.4,84.3,27,7701,25.1],
-['ZX5','ZX490LCH','Entegre/İst.','istanbul',431.9,270.0,161.9,37,13289,30.8,315.2,208.0,107.2,34,9242,29.4,344.8,198.2,146.6,43,10717,31.1,5709.15,3,'Nisan: 231.8sa · %33.0 rölanti · 7524.0L · 32.459L/sa',null,null,null,null,null,null,null,null,231.8,155.3,76.5,33.0,7524.0,32.459,340.2,257.4,82.8,24,8413,24.7],
-['C10','330GC','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,1059.4,714.0,345.4,33,17058.5,16.1,9248.7,2,'Mart aktif · Hidrolik ısı + voltaj alarmı',52.5,31.6,null,null,null,null,null,null,262.5,197.0,65.5,24.95,4722.8,17.9828,177.4,120.3,57.2,32,2642,14.9],
-['C15','336GC','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,102.7,76.6,22.2,22,2431.2,23.7,6149.6,0,'Mart 2026 VisionLink · %22 verimli',46.8,24.4,null,null,null,null,null,null,160.5,120.7,39.8,24.82,4089.7,25.475,140.3,78.7,52,37,2711,19.3],
-['C17','340-08','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,144.2,108.7,35.5,25,3357.7,23.3,5865.4,0,'Mart 2026 VisionLink',56.1,27.1,null,null,null,null,null,null,231.2,163.5,67.6,29.26,4110.0,17.7762,158.5,110.5,38.9,25,2667,16.8],
-['C19','352-08','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,4.2,2.4,1.4,33,113.1,25.9,2210.5,0,'Mart 2026 VisionLink',1.0,15.3,null,null,null,null,null,null,144.3,89.2,55.1,38.16,4310.2,29.8738,159.2,104.7,54.6,34,5344,33.6],
-['C24','336GC','İskenderun','iskenderun',null,null,null,null,null,null,null,null,null,null,null,null,52.1,33.7,18.4,35,949.2,18.2,11198.3,2,'11.007 sa — revizyon eşiği AŞILDI · Hidrolik revizyon geçirdi',11.5,34.5,null,null,null,null,null,null,178.6,111.3,67.3,37.66,3045.4,17.0525,122.8,78.4,44.4,36,2167,17.6],
-['C25','340-08','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,118.6,76.4,42.2,36,2673.9,22.6,5717.4,0,'Mart 2026 VisionLink',1.8,59.4,null,null,null,null,null,null,130.0,93.1,36.9,28.39,3117.3,23.9819,215.8,139.1,76.7,36,4237,19.6],
-['C26','950GC','Kahramanmaraş','maras',null,null,null,null,null,null,null,null,null,null,null,null,543.8,438.9,104.8,19,10472.3,19.3,7422.5,1,'Kahramanmaraş sahası — Mart aktif',69.2,21.9,null,null,null,null,null,null,257.1,190.3,66.8,26.0,4593.6,17.867,336.6,242.8,93.8,28,5767,17.1],
-['C29','336-08','Ümraniye/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,94.3,61.0,29.9,32,2141.1,22.7,4502.7,1,'Mart 2026 VisionLink',18.1,21.3,null,null,null,null,null,null,267.3,190.1,77.2,28.89,6555.9,24.5217,317.7,229.2,88.5,28,7878,24.8],
-['C31','315GC','Üsküdar/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,89.4,59.5,29.9,33,693.2,7.8,3688.7,1,'Mart 2026 VisionLink',26.1,41.7,null,null,null,null,null,null,110.5,67.5,43.0,38.92,810.1,7.3315,100.1,63.1,37,37,727,7.3],
-['C34','330GC','Çekmeköy/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,116.5,63.8,52.7,45,1786.2,15.3,5994.6,2,'Mart 2026 VisionLink',40.5,34.9,null,null,null,null,null,null,167.2,114.5,52.8,31.55,3236.1,19.3524,117.2,79.2,38.1,32,2276,19.4],
-['C39','140GC','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,15.3,11.3,4.0,26,229.5,15.0,4923.5,0,'İstanbul — %26 rölanti',3.3,22.8,null,null,null,null,null,null,13.5,11.7,1.8,13.34,225.2,16.6863,31,25.3,5.7,18,458,14.7],
-['C49','330GC','Ataşehir/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,149.3,91.9,57.4,38,2539.5,17.0,2559.8,0,'Mart 2026 VisionLink',46.6,34.5,null,null,null,null,null,null,170.9,115.5,55.4,32.4,3101.7,18.1432,214.1,171,43.1,20,4792,22.4],
-['C50','330GC','Ataşehir/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,125.8,81.9,43.9,35,2273.1,18.1,2898.5,0,'Mart 2026 VisionLink',81.0,21.9,null,null,null,null,null,null,304.0,228.8,75.2,24.75,6363.3,20.9307,123.6,92.7,30.9,25,2491,20.2],
-['C54','966-14','Şile/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,96.2,44.6,41.8,43,1343.3,14.0,6309.3,1,'Entegre/İst. — %43 rölanti',null,null,null,null,null,null,null,null,361.7,172.0,189.7,52.45,5241.4,14.4924,212,144.2,67.8,32,3972,18.7],
-['C7','320GC','Üsküdar/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,121.5,83.9,37.6,31,1404.4,11.6,7463.8,0,'İskenderun — %31 rölanti',10.6,39.2,null,null,null,null,null,null,110.0,61.9,48.1,43.73,971.9,8.8362,105.9,56.1,48.7,46,765,7.2],
+['C47','950-14','Çekmeköy/İst.','istanbul',406.6,271,135.6,33,5900,14.5,355.9,244.9,111.0,31,4960,13.9,279.9,192.2,87.7,31,3936.8,14.1,5253.0,1,'En çok çalışan',75.7,29.8,null,null,null,null,null,null,325.7,225.4,100.3,30.79,4313.0,13.2408,302,221.6,80.4,27,4313,14.3,321.5,222.6,98.9,31,4207,13.1],
+['C40','352-08','Çekmeköy/İst.','istanbul',442.1,267.3,174.8,39,12640,28.6,231.7,138.6,93.1,40,6541,28.2,282.5,173.4,109.2,39,8485.9,30.0,10098.1,2,'9.545 sa — kova sensörü',84.8,35.3,null,null,null,null,null,null,488.9,330.4,158.5,32.42,14299.9,29.2498,157.1,94.9,62.2,40,4267,27.2,428,234.7,159.1,37,11253,26.3],
+['C9','330GC','Şile/İst.','istanbul',355.1,196.6,158.5,44,5135,14.5,296.4,163.6,132.8,44,4345,14.7,170.8,103.0,67.8,40,2804.5,16.4,9211.4,1,'8.951 sa — revizyon takibi',48.5,63.0,null,null,null,null,null,null,203.6,99.8,103.8,51.0,2746.3,13.4875,195.9,129.6,66.4,34,3042,15.5,219.7,135.6,84.1,38,3215,14.6],
+['C45','950-14','İskenderun','iskenderun',318.2,272.5,45.7,14,5216,16.4,91.6,76.3,15.3,17,1524,16.6,370.0,308.6,61.4,17,6035.8,16.3,4420.2,1,'En verimli — %19 ort.',65.1,16.3,null,null,null,null,null,null,347.6,263.0,84.7,24.36,5391.4,15.5084,201.4,154.6,46.8,23,3666,18.2,233.5,189.6,44,19,3842,16.5],
+['C52','330GC','İskenderun','iskenderun',270.7,173.3,97.4,36,5143,19.0,252.5,163.0,89.5,35,4783,18.9,210.7,131.9,78.8,37,3999.3,19.0,3866.8,2,'Yakıt %10 + seyahat alarm',46.4,36.1,null,null,null,null,null,null,120.0,86.3,33.8,28.12,2247.6,18.7255,171.5,114.8,56.8,33,3367,19.6,236,128.5,107.5,46,3812,16.2],
+['C53','330GC','İskenderun','iskenderun',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1833.1,0,'Pasif · TML30140',null,null,null,null,null,null,null,null,224.0,null,null,null,null,null,43.9,32.7,11.2,26,891,20.3,219.1,139.4,79.8,36,3943,18],
+['C43','350-06','İskenderun','iskenderun',301.2,220.5,80.7,27,6282,20.9,251.8,186.3,65.5,26,5236,20.8,214.2,163.5,50.7,24,4493.8,21.0,5172.1,0,'Verimli 350',40.3,24.3,null,null,null,null,null,null,181.9,140.1,41.8,22.96,3819.9,21.0047,114.6,80.7,33.9,30,2569,22.4,215.8,172.8,43.1,20,4798,22.2],
+['C30','336-08','Şile/İst.','istanbul',323.8,159.0,164.8,51,5898,18.2,234.6,115.0,119.6,51,4263,18.2,149.0,76.1,72.9,49,2843.8,19.1,5846.3,3,'PM2 bakım 618 GÜN gecikmiş!',36.8,16.9,null,null,null,null,null,null,107.0,85.2,21.8,20.37,3109.7,29.0587,221.2,132.3,88.9,40,4482,20.3,146.7,94.8,51.9,35,3400,23.2],
+['C33','330GC','Çekmeköy/İst.','istanbul',207.6,148.8,58.8,28,3377,16.3,216.0,155.5,60.5,28,3509,16.2,258.3,174.4,83.9,32,4228.3,16.4,5891.8,3,'Motor soğutma yüksek ısı 50+ olay',66.2,31.8,null,null,null,null,null,null,242.6,159.4,83.2,34.3,4007.8,16.5231,195.6,134.5,61.2,31,3285,16.8,193.1,124.7,68.5,35,2855,14.8],
+['C28','340-08','İskenderun','iskenderun',255.4,159.8,95.6,37,5870,23.0,230.7,145.8,84.9,37,5296,22.9,198.3,137.1,61.1,31,4988.7,25.2,6446.8,0,'',50.8,33.3,null,null,null,null,null,null,224.4,149.3,75.1,33.47,5557.5,24.77,101.3,76.6,24.4,24,2732,26.9,179.3,136.1,43.2,24,4872,27.2],
+['C36','340-08','Sancaktepe/İst.','istanbul',218.8,136.5,82.3,38,5009,22.9,206.1,128.5,77.6,38,4725,22.9,188.6,117.8,70.8,38,4250.5,22.5,5468.0,2,'Yakıt pompası kuru çalışma',39.4,38.1,null,null,null,null,null,null,147.8,98.3,49.5,33.5,3495.4,23.6487,null,null,null,null,null,null,203.1,139.9,63.3,31,4769,23.5],
+['C37','340-08','Sultanbeyli/İst.','istanbul',196.8,123.0,73.8,37,4524,23.0,182.5,114.5,68.0,37,4197,23.0,126.5,83.5,43.0,34,3261.6,25.8,4383.8,2,'Yakıt KRİTİK %10',34.1,23.8,null,null,null,null,null,null,189.0,150.5,38.5,20.37,5445.8,28.8117,143.7,106.1,29.6,21,3708,24.8,221.6,161.3,60.3,27,6370,28.7],
+['C21','336-08','Kahramanmaraş','maras',172.5,114.7,57.8,33,3832,22.2,163.0,108.5,54.5,33,3623,22.2,189.7,109.7,80.0,42,4000.7,21.1,6010.7,3,'SCR arızası + %94 rölanti bu hafta',36.1,37.4,null,null,null,null,null,null,41.9,24.3,17.6,41.98,876.8,20.9134,188.8,146.8,42,22,5517,29.2,417,306.2,110.8,27,11696,28],
+['C20','336-08','Kahramanmaraş','maras',173.8,126.5,47.3,27,4679,26.9,160.5,116.8,43.7,27,4320,26.9,199.4,159.9,39.5,20,6015.5,30.2,6253.9,1,'%88 rölanti bu hafta',62.0,24.5,null,null,null,null,null,null,226.8,170.1,56.7,25.0,6362.3,28.057,212.7,145.3,67.4,32,5410,25.4,374,299.5,74.5,20,11259,30.1],
+['C35','336-08','İskenderun','iskenderun',153.3,105.9,47.4,31,3651,23.8,147.1,101.5,45.6,31,3503,23.8,203.9,106.5,97.4,48,3613.2,17.7,5381.9,2,'Emme manifold basıncı arızası',94.5,33.5,null,null,null,null,null,null,342.6,218.9,123.8,36.12,7350.8,21.4545,149.2,110.9,38.3,26,3517,23.6,226.3,146.5,79.9,35,4980,22],
+['C32','330GC','Çayırova/Kocaeli','istanbul',165.4,90.5,74.9,45,2627,15.9,154.4,84.5,69.9,45,2453,15.9,102.1,60.5,38.2,37,1667.5,16.3,5419.3,2,'DPF is yükü yüksek',14.1,20.9,null,null,null,null,null,null,28.2,18.4,9.9,34.92,432.5,15.2967,122.2,83.3,36.3,30,2151,17.6,76.2,38.6,27.1,36,1061,13.9],
+['C16','336GC','Kahramanmaraş','maras',148.4,107.1,41.3,28,3043,20.5,141.0,101.8,39.2,28,2891,20.5,121.7,87.1,34.0,28,2660.7,21.9,8209.9,3,'Bakım 269 gün gecikmiş + soğutma alarm',35.2,35.5,null,null,null,null,null,null,268.8,209.3,59.5,22.14,6575.3,24.4621,251.5,207.1,44.4,18,6246,24.8,319.4,262,57.4,18,8262,25.9],
+['C14','336GC','Kahramanmaraş','maras',109.6,74.4,35.2,32,1786,16.3,102.1,69.4,32.7,32,1664,16.3,110.2,71.0,39.0,35,1642.9,14.9,7266.8,2,'%94 rölanti bu hafta',61.8,36.7,null,null,null,null,null,null,272.1,195.0,77.1,28.32,4385.9,16.1203,186.7,132.8,53.9,29,2803,15,305.1,220.9,84.3,28,4447,14.6],
+['C41','350-06','Kahramanmaraş','maras',166.7,122.4,44.3,27,5048,30.3,163.6,120.2,43.4,27,4956,30.3,187.7,136.7,51.0,27,5716.0,30.5,5545.1,2,'30.3 L/sa — yüksek tüketim',66.3,19.5,null,null,null,null,null,null,242.6,180.6,62.0,25.57,7702.4,31.7431,149,117.5,31.5,21,3753,25.2,284.5,224.9,59.6,21,7072,24.9],
+['C42','350-06','Sultanbeyli/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,4317.2,0,'Nisan 2026 VisionLink',null,null,null,null,null,null,null,null,245.7,171.9,73.8,30.05,6434.7,26.1873,161.5,114.7,46.8,29,3658,22.6,189.1,105.3,83.8,44,3576,18.9],
+['C38','350-06','Kahramanmaraş','maras',170.5,107.6,62.9,37,4196,24.6,162.1,102.3,59.8,37,3988,24.6,123.8,90.2,33.6,27,3526.6,28.5,6288.6,2,'Yakıt %10 + SOS AR',20.3,31.7,null,null,null,null,null,null,195.1,138.7,56.4,28.9,5322.8,27.2783,94.2,71.4,22.8,24,2838,30.1,344.8,217.5,127.3,37,8029,23.3],
+['C8','320GC','İyidere/Rize','rize',122.4,47.7,74.7,61,878,7.2,116.8,45.5,71.3,61,838,7.2,108.6,45.8,62.8,58,824.3,7.6,7245.5,3,'KRİTİK %58 rölanti',8.8,35.1,null,null,null,null,null,null,79.9,49.7,30.1,37.74,754.7,9.4479,60.7,36.4,24.3,40,576,9.5,96.5,53.9,42.7,44,886,9.2],
+['C55','313GC','Sancaktepe/İst.','istanbul',219.5,101.4,118.1,54,1088,5.0,241.4,113.4,128.0,53,1196,5.0,365.5,152.2,213.2,58,1766.4,4.8,1530.8,2,'%58 rölanti — artan trend',103.0,53.5,null,null,null,null,null,null,397.7,205.4,192.3,48.35,2104.2,5.291,180.1,122,58.1,32,1223,6.8,132.4,82.3,45.8,35,808,6.1],
+['C56','313GC','Ümraniye/İst.','istanbul',77.9,30.0,47.9,62,375,4.8,73.8,28.4,45.4,61,355,4.8,33.6,16.3,17.3,51,197.3,5.9,450.2,2,'%62 rölanti',0.7,29.9,null,null,null,null,null,null,174.0,50.2,123.8,71.17,648.3,3.7156,151.8,55.2,96.6,64,646,4.3,378.2,143.7,234.5,62,1644,4.3],
+['C46','M318','Nilüfer/Bursa','bursa',159.9,77.2,82.7,52,952,6.0,152.2,73.5,78.7,52,907,6.0,134.1,71.1,63.0,47,839.4,6.3,2846.3,1,'%52 rölanti',37.9,39.7,null,null,null,null,null,null,174.2,107.7,66.5,38.18,1281.4,7.3577,119.7,76.5,43.2,36,843,7,147.7,95.3,52.4,35,1031,7],
+['C11','336-07','Maltepe/İst.','istanbul',162.6,115.4,47.2,29,3834,23.6,155.2,110.2,45.0,29,3659,23.6,220.4,158.0,62.4,28,5133.5,23.3,8057.2,0,'',52.6,22.8,null,null,null,null,null,null,220.7,162.2,58.5,26.5,5358.7,24.2781,170.3,111.7,58.6,34,3800,22.3,258.2,169.8,88.4,34,5999,23.2],
+['C6','336-07','Kahramanmaraş','maras',175.3,132.5,42.8,24,4694,26.8,163.0,123.3,39.7,24,4363,26.8,158.1,119.8,38.3,24,4209.8,26.6,10203.4,0,'9.893 sa — revizyon eşiği yaklaşıyor',50.5,21.3,null,null,null,null,null,null,237.1,181.8,55.3,23.34,6533.1,27.5518,255.4,192.4,63,25,6907,27,268.3,202.2,66.1,25,7410,27.6],
+['C13','950GC','Kahramanmaraş','maras',195.3,140.0,55.3,28,3257,16.7,180.6,129.6,51.0,28,3014,16.7,182.8,122.9,60.0,33,2655.9,14.5,8598.9,0,'8.263 sa',60.6,27.6,null,null,null,null,null,null,277.9,189.1,88.9,31.97,4030.0,14.5006,74.3,46.1,28.2,38,1020,13.7,202,140.7,61.3,30,2789,13.8],
+['H9','HMK410','Kahramanmaraş','maras',150,null,null,null,null,null,124,null,null,null,null,null,210,null,null,null,null,null,0,0,'Haziran: 336sa · 8386L · 24.96L/sa',null,null,null,null,null,null,null,null,258.0,null,null,null,5406.0,20.9535,238,null,null,null,7549,31.7227,336,null,null,null,8386,24.9583],
+['H11','HMK500LC','Kahramanmaraş','maras',150,null,null,null,null,null,152,null,null,null,null,null,null,null,null,null,null,null,0,0,'Nisan arızalı · Pasif',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+['ZX4','ZX490LCH','Entegre/İst.','istanbul',187.9,115.5,72.4,38,5307,28.2,314.2,190.2,124.0,39,10200,32.4,160.2,107.4,52.8,33,4540,28.4,5512.35,2,'Nisan: 426.9sa · %27.4 rölanti · 13914.0L · 32.5931L/sa',null,null,null,null,null,null,null,null,426.9,309.8,117.0,27.4,13914.0,32.5931,306.7,222.4,84.3,27,7701,25.1,243.77,165.8,78.0,32,null,null],
+['ZX5','ZX490LCH','Entegre/İst.','istanbul',431.9,270.0,161.9,37,13289,30.8,315.2,208.0,107.2,34,9242,29.4,344.8,198.2,146.6,43,10717,31.1,5709.15,3,'Nisan: 231.8sa · %33.0 rölanti · 7524.0L · 32.459L/sa',null,null,null,null,null,null,null,null,231.8,155.3,76.5,33.0,7524.0,32.459,340.2,257.4,82.8,24,8413,24.7,450.83,311.0,139.8,31,null,null],
+['C10','330GC','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,1059.4,714.0,345.4,33,17058.5,16.1,9248.7,2,'Mart aktif · Hidrolik ısı + voltaj alarmı',52.5,31.6,null,null,null,null,null,null,262.5,197.0,65.5,24.95,4722.8,17.9828,177.4,120.3,57.2,32,2642,14.9,134.7,69.2,65.5,49,1761,13.1],
+['C15','336GC','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,102.7,76.6,22.2,22,2431.2,23.7,6149.6,0,'Mart 2026 VisionLink · %22 verimli',46.8,24.4,null,null,null,null,null,null,160.5,120.7,39.8,24.82,4089.7,25.475,140.3,78.7,52,37,2711,19.3,215.4,140.2,75.2,35,4935,22.9],
+['C17','340-08','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,144.2,108.7,35.5,25,3357.7,23.3,5865.4,0,'Mart 2026 VisionLink',56.1,27.1,null,null,null,null,null,null,231.2,163.5,67.6,29.26,4110.0,17.7762,158.5,110.5,38.9,25,2667,16.8,159.1,127.2,31.9,20,3215,20.2],
+['C19','352-08','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,4.2,2.4,1.4,33,113.1,25.9,2210.5,0,'Mart 2026 VisionLink',1.0,15.3,null,null,null,null,null,null,144.3,89.2,55.1,38.16,4310.2,29.8738,159.2,104.7,54.6,34,5344,33.6,138.7,92.8,45.1,32,4219,30.3],
+['C24','336GC','İskenderun','iskenderun',null,null,null,null,null,null,null,null,null,null,null,null,52.1,33.7,18.4,35,949.2,18.2,11198.3,2,'11.007 sa — revizyon eşiği AŞILDI · Hidrolik revizyon geçirdi',11.5,34.5,null,null,null,null,null,null,178.6,111.3,67.3,37.66,3045.4,17.0525,122.8,78.4,44.4,36,2167,17.6,211.9,156.7,54.8,26,3670,17.3],
+['C25','340-08','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,118.6,76.4,42.2,36,2673.9,22.6,5717.4,0,'Mart 2026 VisionLink',1.8,59.4,null,null,null,null,null,null,130.0,93.1,36.9,28.39,3117.3,23.9819,215.8,139.1,76.7,36,4237,19.6,280.8,173.2,97.3,35,5079,18.1],
+['C26','950GC','Kahramanmaraş','maras',null,null,null,null,null,null,null,null,null,null,null,null,543.8,438.9,104.8,19,10472.3,19.3,7422.5,1,'Kahramanmaraş sahası — Mart aktif',69.2,21.9,null,null,null,null,null,null,257.1,190.3,66.8,26.0,4593.6,17.867,336.6,242.8,93.8,28,5767,17.1,305.6,225.4,80.2,26,4866,15.9],
+['C29','336-08','Ümraniye/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,94.3,61.0,29.9,32,2141.1,22.7,4502.7,1,'Mart 2026 VisionLink',18.1,21.3,null,null,null,null,null,null,267.3,190.1,77.2,28.89,6555.9,24.5217,317.7,229.2,88.5,28,7878,24.8,473.7,331.3,142.4,30,12104,25.6],
+['C31','315GC','Üsküdar/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,89.4,59.5,29.9,33,693.2,7.8,3688.7,1,'Mart 2026 VisionLink',26.1,41.7,null,null,null,null,null,null,110.5,67.5,43.0,38.92,810.1,7.3315,100.1,63.1,37,37,727,7.3,127.4,52.7,74.7,59,597,4.7],
+['C34','330GC','Çekmeköy/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,116.5,63.8,52.7,45,1786.2,15.3,5994.6,2,'Mart 2026 VisionLink',40.5,34.9,null,null,null,null,null,null,167.2,114.5,52.8,31.55,3236.1,19.3524,117.2,79.2,38.1,32,2276,19.4,170.1,99.2,70.9,42,2836,16.7],
+['C39','140GC','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,15.3,11.3,4.0,26,229.5,15.0,4923.5,0,'İstanbul — %26 rölanti',3.3,22.8,null,null,null,null,null,null,13.5,11.7,1.8,13.34,225.2,16.6863,31,25.3,5.7,18,458,14.7,52.7,47.2,5.5,10,944,17.9],
+['C49','330GC','Ataşehir/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,149.3,91.9,57.4,38,2539.5,17.0,2559.8,0,'Mart 2026 VisionLink',46.6,34.5,null,null,null,null,null,null,170.9,115.5,55.4,32.4,3101.7,18.1432,214.1,171,43.1,20,4792,22.4,179,135.9,36.4,20,3821,21.3],
+['C50','330GC','Ataşehir/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,125.8,81.9,43.9,35,2273.1,18.1,2898.5,0,'Mart 2026 VisionLink',81.0,21.9,null,null,null,null,null,null,304.0,228.8,75.2,24.75,6363.3,20.9307,123.6,92.7,30.9,25,2491,20.2,195.7,118.2,77.5,40,3162,16.2],
+['C54','966-14','Şile/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,96.2,44.6,41.8,43,1343.3,14.0,6309.3,1,'Entegre/İst. — %43 rölanti',null,null,null,null,null,null,null,null,361.7,172.0,189.7,52.45,5241.4,14.4924,212,144.2,67.8,32,3972,18.7,249.3,181.8,67.5,27,4760,19.1],
+['C7','320GC','Üsküdar/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,121.5,83.9,37.6,31,1404.4,11.6,7463.8,0,'İskenderun — %31 rölanti',10.6,39.2,null,null,null,null,null,null,110.0,61.9,48.1,43.73,971.9,8.8362,105.9,56.1,48.7,46,765,7.2,134.2,91.7,42.5,32,1311,9.8],
 
-['C48','966-14','Çekmeköy/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6629.5,0,'Nisan H1 aktif · SMU: 6164.0 sa',null,null,null,null,null,null,null,null,502.0,338.6,163.4,32.54,8204.2,16.3431,359.3,251.9,107.4,30,5920,16.5],
-['C12','336GC','Kahramanmaraş','maras',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6716.9,0,'Nisan H1 aktif · SMU: 6476.6 sa',44.3,36.9,null,null,null,null,null,null,239.3,157.7,81.6,34.1,3904.2,16.317,232.7,158.9,73.8,32,3844,16.5],
-['C18','340-08','Kahramanmaraş','maras',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6228.2,0,'Nisan H1 aktif · SMU: 5978.4 sa',46.0,21.2,null,null,null,null,null,null,265.2,204.2,61.0,23.0,7722.2,29.1146,260.7,201.2,59.5,23,7571,29],
-['C27','330GC','Giresun','giresun',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6118.5,0,'Giresun sahası · Mayıs transferi · SMU: 6179 sa',20.4,30.6,null,null,null,null,null,null,136.1,87.0,49.2,36.11,2225.3,16.3494,91.4,60.8,30.6,33,1585,17.3],
+['C48','966-14','Çekmeköy/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6629.5,0,'Nisan H1 aktif · SMU: 6164.0 sa',null,null,null,null,null,null,null,null,502.0,338.6,163.4,32.54,8204.2,16.3431,359.3,251.9,107.4,30,5920,16.5,415.1,297.3,117.9,28,6931,16.7],
+['C12','336GC','Kahramanmaraş','maras',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6716.9,0,'Nisan H1 aktif · SMU: 6476.6 sa',44.3,36.9,null,null,null,null,null,null,239.3,157.7,81.6,34.1,3904.2,16.317,232.7,158.9,73.8,32,3844,16.5,307.9,211.4,96.5,31,5193,16.9],
+['C18','340-08','Kahramanmaraş','maras',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6228.2,0,'Nisan H1 aktif · SMU: 5978.4 sa',46.0,21.2,null,null,null,null,null,null,265.2,204.2,61.0,23.0,7722.2,29.1146,260.7,201.2,59.5,23,7571,29,326.3,248.5,77.8,24,9289,28.5],
+['C27','330GC','Giresun','giresun',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6118.5,0,'Giresun sahası · Mayıs transferi · SMU: 6179 sa',20.4,30.6,null,null,null,null,null,null,136.1,87.0,49.2,36.11,2225.3,16.3494,91.4,60.8,30.6,33,1585,17.3,14.9,9,5.9,40,229,15.4],
 ];
 
 const seenKd=new Set();
@@ -652,12 +655,13 @@ const SIGNAL_ISSUES=[
 
 function getPeriodData(m,period){
   function nn(v){return (v==null||v===undefined||isNaN(Number(v)))?0:Number(v);}
-  if(period==='2026'){var mo=nn(m[4])+nn(m[10])+nn(m[16])+nn(m[33])+nn(m[39]);var ak=nn(m[5])+nn(m[11])+nn(m[17])+nn(m[34])+nn(m[40]);var ro=nn(m[6])+nn(m[12])+nn(m[18])+nn(m[35])+nn(m[41]);var fu=nn(m[8])+nn(m[14])+nn(m[20])+nn(m[37])+nn(m[43]);var rp=mo>0?Math.round((ro/mo)*100):0;var lh=mo>0?parseFloat((fu/mo).toFixed(1)):0;return{motor:parseFloat(mo.toFixed(1)),aktif:parseFloat(ak.toFixed(1)),rol:parseFloat(ro.toFixed(1)),rolPct:rp,fuel:fu>0?fu:null,lhr:lh>0?lh:null};}
+  if(period==='2026'){var mo=nn(m[4])+nn(m[10])+nn(m[16])+nn(m[33])+nn(m[39])+nn(m[45]);var ak=nn(m[5])+nn(m[11])+nn(m[17])+nn(m[34])+nn(m[40])+nn(m[46]);var ro=nn(m[6])+nn(m[12])+nn(m[18])+nn(m[35])+nn(m[41])+nn(m[47]);var fu=nn(m[8])+nn(m[14])+nn(m[20])+nn(m[37])+nn(m[43])+nn(m[49]);var rp=mo>0?Math.round((ro/mo)*100):0;var lh=mo>0?parseFloat((fu/mo).toFixed(1)):0;return{motor:parseFloat(mo.toFixed(1)),aktif:parseFloat(ak.toFixed(1)),rol:parseFloat(ro.toFixed(1)),rolPct:rp,fuel:fu>0?fu:null,lhr:lh>0?lh:null};}
   if(period==='oca'){if(!m[4])return null;return{motor:m[4],aktif:m[5],rol:m[6],rolPct:m[7],fuel:m[8],lhr:m[9]};}
   if(period==='sub'){if(!m[10])return null;return{motor:m[10],aktif:m[11],rol:m[12],rolPct:m[13],fuel:m[14],lhr:m[15]};}
   if(period==='mar'){if(!m[16])return null;return{motor:m[16],aktif:m[17],rol:m[18],rolPct:m[19],fuel:m[20],lhr:m[21]};}
   if(period==='nis'){if(!m[33])return null;return{motor:m[33],aktif:m[34],rol:m[35],rolPct:m[36],fuel:m[37],lhr:m[38]};}
   if(period==='may'){if(!m[39])return null;return{motor:m[39],aktif:m[40],rol:m[41],rolPct:m[42],fuel:m[43],lhr:m[44]};}
+  if(period==='haz'){if(!m[45])return null;return{motor:m[45],aktif:m[46],rol:m[47],rolPct:m[48],fuel:m[49],lhr:m[50]};}
   return null;
 }
 
@@ -666,25 +670,26 @@ function saatColor(s){if(s>9000)return'#ef4444';if(s>6000)return'#f59e0b';if(s>4
 function cardClass(r){if(r==null||r===undefined)return'sinyal';if(r<26)return'verimli';if(r<35)return'normal';if(r<45)return'dikkat';return'kritik'}
 
 const INSIGHTS={
-  '2026':{cls:'red',title:'⚠ 2026 Yıllık Özet (Oca–May)',text:'C30 PM2 bakımı gecikmiş. C16 bakımı gecikmiş + motor soğutma alarmı. C8 %60 rölanti (Rize). ZX5 Şubat 2x Emergency alarm + Swing/Pilot filtre aşıldı. C9 ve C54 Nisan\'da %51–52 rölanti kritik. C56 %71 rölanti. C55 %48 rölanti — düşük verim. C27 Mayıs\'ta Giresun sahasına taşındı.'},
+  '2026':{cls:'red',title:'⚠ 2026 Yıllık Özet (Oca–Haz)',text:'C30 PM2 bakımı gecikmiş. C16 bakımı gecikmiş + motor soğutma alarmı. C8 %60 rölanti (Rize). ZX5 Şubat 2x Emergency alarm + Swing/Pilot filtre aşıldı. C9 ve C54 Nisan\'da %51–52 rölanti kritik. C56 %71 rölanti. C55 %48 rölanti — düşük verim. C27 Mayıs\'ta Giresun sahasına taşındı.'},
   'oca':{cls:'blue',title:'📊 Ocak 2026',text:'C40 CAT352 bu ayın en çok çalışan makinesi (442 sa). ZX5 431.9 sa ile Ocak\'ın 2. en aktif makinesi (Beykoz/Hüseyinli). ZX4 187.9 sa ile düşük kaldı, %38 rölanti dikkat çekici.'},
   'sub':{cls:'orange',title:'📊 Şubat 2026',text:'ZX5 Şubat\'ta 2x Emergency alarm (Auto Shut-Down) + Swing/Pilot filtre aşıldı — ivedi bakım. ZX4 ve ZX5 her ikisi ~315 sa ile dengeli çalıştı. CAT filosu: C47 filonun en çok çalışanı (355.9 sa). C32 DPF tıkanma.'},
   'mar':{cls:'orange',title:'📊 Mart 2026 (1–29)',text:'C10 CAT330 Mart\'ta lider. ZX5 344.8 sa aktif — %43 rölanti dikkat. ZX4 160.2 sa — 15 Mar sonrası saha tatili (H3+H4 çalışma yok). ZX5\'te Swing + Pilot filtre aşıldı, 5500 sa bakım kritik. C45 en verimli: %17 rölanti.'},
   'nis':{cls:'blue',title:'📊 Nisan 2026 (1–30)',text:'C40 CAT352 filonun en çok çalışanı (488.9 sa). C45 en verimli: %24 rölanti. C54 ve C9 rölanti kritik (%52 ve %51). C56 %71 rölanti — en yüksek rölanti. C55 %48 rölanti. C21 yalnızca 41.9 sa çalıştı — düşük aktivite. C24 11.198 sa SMU — revizyon eşiği aşıldı. H11 Hidromek 500 Nisan\'da arızalı — pasif.'},
-  'may':{cls:'blue',title:'📊 Mayıs 2026 (1–31)',text:'C48 966GC filonun en çok çalışanı (359.3 sa). C16 en verimli: %18 rölanti. C56 313GC %64 rölanti — en yüksek; C7 %46 rölanti dikkat. C27 330GC Kahramanmaraş\'tan Giresun sahasına taşındı (91.4 sa, %33). Hitachi idle e-Service grafiğinden tahmin edildi (ZX5 ~%27, ZX4 ~%24); Mayıs yakıt verisi ConSite\'ta ~1 ay gecikmeli — beklemede. C36 (FKN10256) pasif, son rapor 22 Nis.'},
+  'haz':{cls:'blue',title:'📊 Haziran 2026 (1–30)',text:'CAT filosu 10.980 sa / 217.424 L. C29 336-08 filonun en çok çalışanı (473.7 sa); C40 (428 sa) ve C21 (417 sa) takip ediyor. En verimli rölanti: C39 140GC %10, C16 ve C51 %18. En yüksek rölanti: C56 313GC %62, C31 315GC %59, C10 330GC %49. Delici Rok R1 174 sa/3.752 L, R2 35 sa/480 L. H9 336 sa/8.386 L. Hitachi ZX5 450.8 sa · ZX4 243.8 sa — idle e-Service grafiğinden tahmin edildi (ZX5 ~%31, ZX4 ~%32, yaklaşık); yakıt ConSite ~1 ay gecikmeli, Haziran raporu ~8 Temmuz\'da düşecek (beklemede). H1/H11/SY1 çalışmadı. H8 verisi beklemede. K/E/B (konkasör/elek/konveyör) takibi Temmuz\'da başlıyor. Not: C51 (432-07) Haziran VisionLink verisi mevcut (50.2 sa/217 L) ama RAW\'a eklenmedi.'},
+  'may':{cls:'blue',title:'📊 Mayıs 2026 (1–31)',text:'C48 966GC filonun en çok çalışanı (359.3 sa). C16 en verimli: %18 rölanti. C56 313GC %64 rölanti — en yüksek; C7 %46 rölanti dikkat. C27 330GC Kahramanmaraş\'tan Giresun sahasına taşındı (91.4 sa, %33). Hitachi idle e-Service grafiğinden tahmin edildi (ZX5 ~%27, ZX4 ~%24); Mayıs yakıt verisi ConSite Mayıs raporundan alındı (8 Haz\'da düştü). C36 (FKN10256) pasif, son rapor 22 Nis.'},
 };
 
 // ─── TEKNİK GİDER VERİSİ ─────────────────────────────────────────────────
 // Mart verisi: şimdilik elle girilmiş (user tarafından güncellenecek)
 const TG_MAKINELER = [
-  {tip:"JCB", model:"HİDROMEK 102 B", kd:"H8", oca_b:74155.67, oca_a:0, sub_b:40946.25, sub_a:0, mar_b:12650.25, mar_a:0, may_b:41519, may_a:0, not:"22050 TL lastik işleri"},
+  {tip:"JCB", model:"HİDROMEK 102 B", kd:"H8", oca_b:74155.67, oca_a:0, sub_b:40946.25, sub_a:0, mar_b:12650.25, mar_a:0, may_b:41519.0, may_a:0, not:"22050 TL lastik işleri"},
   {tip:"JCB", model:"CATM318", kd:"C46", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:0, may_a:0, not:""},
   {tip:"DELİCİ ROK", model:"SANDVİC DX780", kd:"R1", oca_b:87598.07, oca_a:29280, sub_b:2673.75, sub_a:0, mar_b:32544.3, mar_a:0, may_b:355263.39, may_a:0, not:"13598 TL per bakım yapılmadı"},
   {tip:"DELİCİ ROK", model:"T35-11", kd:"R2", oca_b:177251.3, oca_a:83857, sub_b:31759.4, sub_a:151576, mar_b:33373.69, mar_a:97522, may_b:59524.56, may_a:0, not:""},
   {tip:"DOZER", model:"CAT 955", kd:"C1", oca_b:5583.42, oca_a:0, sub_b:0, sub_a:0, mar_b:42093.75, mar_a:0, may_b:214998.25, may_a:0, not:""},
   {tip:"DOZER", model:"CAT 963", kd:"C3", oca_b:13630.77, oca_a:0, sub_b:60017.5, sub_a:0, mar_b:7837.63, mar_a:0, may_b:0, may_a:0, not:""},
   {tip:"DOZER", model:"CAT 963", kd:"C22", oca_b:822954.7, oca_a:0, sub_b:9753.25, sub_a:0, mar_b:28840.52, mar_a:0, may_b:89806.09, may_a:0, not:""},
-  {tip:"DOZER", model:"CAT 963", kd:"C2", oca_b:230000, oca_a:0, sub_b:90234.75, sub_a:0, mar_b:0, mar_a:0, may_b:24035, may_a:21390, not:""},
+  {tip:"DOZER", model:"CAT 963", kd:"C2", oca_b:230000, oca_a:0, sub_b:90234.75, sub_a:0, mar_b:0, mar_a:0, may_b:24035.0, may_a:21390, not:""},
   {tip:"EKSKAVATÖR", model:"SANY60C", kd:"SY1", oca_b:7000.5, oca_a:0, sub_b:0, sub_a:0, mar_b:17375, mar_a:0, nis_b:4727.88, nis_a:0.0, may_b:51912.98, may_a:0, not:""},
   {tip:"EKSKAVATÖR", model:"CAT313GC", kd:"C56", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:0, may_a:0, not:""},
   {tip:"EKSKAVATÖR", model:"CAT313GC", kd:"C55", oca_b:1431.75, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:2078.08, nis_a:0.0, may_b:477.25, may_a:0, not:""},
@@ -711,13 +716,13 @@ const TG_MAKINELER = [
   {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C14", oca_b:52704.63, oca_a:126942, sub_b:15164.3, sub_a:0, mar_b:102791.44, mar_a:34582, nis_b:157799.27, nis_a:0.0, may_b:73944.53, may_a:0, not:"60.000 TL hi pompası ve enjektörler revizyonu"},
   {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C16", oca_b:54117.65, oca_a:0, sub_b:42964, sub_a:0, mar_b:12650, mar_a:0, nis_b:72524.77, nis_a:28462.0, may_b:0, may_a:0, not:"Hidrolik tank temizliği"},
   {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C24", oca_b:76681.08, oca_a:0, sub_b:1829946.91, sub_a:0, mar_b:0, mar_a:42268.94, nis_b:114883.54, nis_a:0.0, may_b:886.25, may_a:137154, not:"Tırnaklar değişti"},
-  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C12", oca_b:32658.75, oca_a:0, sub_b:0, sub_a:0, mar_b:21507.72, mar_a:78918, nis_b:59862.0, nis_a:28462.0, may_b:16100, may_a:0, not:"Kırıcı tamiri"},
+  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C12", oca_b:32658.75, oca_a:0, sub_b:0, sub_a:0, mar_b:21507.72, mar_a:78918, nis_b:59862.0, nis_a:28462.0, may_b:16100.0, may_a:0, not:"Kırıcı tamiri"},
   {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C15", oca_b:32908.8, oca_a:0, sub_b:0, sub_a:0, mar_b:2462.15, mar_a:0, nis_b:8076.08, nis_a:71254.0, may_b:124339.6, may_a:93214, not:""},
   {tip:"EKSKAVATÖR", model:"CAT340", kd:"C17", oca_b:1431.75, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:39596.8, nis_a:0.0, may_b:2254.28, may_a:44973, not:""},
   {tip:"EKSKAVATÖR", model:"CAT340", kd:"C18", oca_b:49130.11, oca_a:20165, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:7168.53, nis_a:20700.0, may_b:0, may_a:0, not:""},
   {tip:"EKSKAVATÖR", model:"CAT340", kd:"C25", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:37706.37, mar_a:3000, nis_b:0.0, nis_a:0.0, may_b:2254.22, may_a:60315, not:"Per bakım yapıldı"},
   {tip:"EKSKAVATÖR", model:"CAT340", kd:"C28", oca_b:33666.82, oca_a:8909, sub_b:74744.37, sub_a:0, mar_b:15419.2, mar_a:0, nis_b:51750.18, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C36", oca_b:2513.9, oca_a:0, sub_b:64322.1, sub_a:0, mar_b:5127.39, mar_a:0, nis_b:7479.6, nis_a:0.0, may_b:2185, may_a:0, not:"Periyodik bakım ve DEF arızası"},
+  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C36", oca_b:2513.9, oca_a:0, sub_b:64322.1, sub_a:0, mar_b:5127.39, mar_a:0, nis_b:7479.6, nis_a:0.0, may_b:2185.0, may_a:0, not:"Periyodik bakım ve DEF arızası"},
   {tip:"EKSKAVATÖR", model:"CAT340", kd:"C37", oca_b:1656, oca_a:0, sub_b:122336.69, sub_a:0, mar_b:13362.24, mar_a:54045, nis_b:741.75, nis_a:0.0, may_b:5060.54, may_a:67984, not:"DPF arızası"},
   {tip:"EKSKAVATÖR", model:"CAT350", kd:"C41", oca_b:8034.77, oca_a:80661, sub_b:0, sub_a:0, mar_b:0, mar_a:197589.54, nis_b:170848.46, nis_a:77000.0, may_b:7620.05, may_a:0, not:"Kırıcı tamiri"},
   {tip:"EKSKAVATÖR", model:"CAT350", kd:"C42", oca_b:30082.85, oca_a:0, sub_b:0, sub_a:33470.43, mar_b:10181.91, mar_a:29216, nis_b:150495.43, nis_a:12271.0, may_b:0, may_a:0, not:"Adaptör takıldı"},
@@ -729,7 +734,7 @@ const TG_MAKINELER = [
   {tip:"EKSKAVATÖR", model:"HİDROMEK 220", kd:"H1", oca_b:522678.03, oca_a:0, sub_b:361002.51, sub_a:0, mar_b:76550.94, mar_a:0, nis_b:15612.14, nis_a:0.0, may_b:34950.95, may_a:0, not:""},
   {tip:"EKSKAVATÖR", model:"HİDROMEK 410", kd:"H9", oca_b:1000, oca_a:0, sub_b:41453.8, sub_a:0, mar_b:9200, mar_a:0, nis_b:14934.55, nis_a:28462.0, may_b:15571.5, may_a:597917, not:""},
   {tip:"EKSKAVATÖR", model:"HİDROMEK 500 LC-3", kd:"H11", oca_b:0, oca_a:0, sub_b:25068.65, sub_a:0, mar_b:15299.5, mar_a:0, nis_b:421676.25, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"GREYDER", model:"CAT140GC", kd:"C39", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:65883.68, nis_a:0.0, may_b:6000, may_a:0, not:""},
+  {tip:"GREYDER", model:"CAT140GC", kd:"C39", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:65883.68, nis_a:0.0, may_b:6000.0, may_a:0, not:""},
   {tip:"LODER", model:"CAT950GC", kd:"C13", oca_b:0, oca_a:0, sub_b:16675, sub_a:0, mar_b:427792.51, mar_a:0, nis_b:38293.28, nis_a:0.0, may_b:0, may_a:25012.5, not:"410.000 TL enjektör ve pompa değişti"},
   {tip:"LODER", model:"CAT950GC", kd:"C26", oca_b:479.17, oca_a:0, sub_b:169625.24, sub_a:72818, mar_b:240867.76, mar_a:0, nis_b:75759.0, nis_a:0.0, may_b:0, may_a:0, not:"239.000 TL DPF temizliği"},
   {tip:"LODER", model:"CAT966GC", kd:"C48", oca_b:165590.7, oca_a:0, sub_b:1961.9, sub_a:0, mar_b:124651.99, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:172819.99, may_a:0, not:"Per bakım"},
@@ -748,7 +753,7 @@ const TG_MAKINELER = [
   {tip:"KONKASÖR", model:"METSO KONKASÖR LT1213", kd:"K1", oca_b:20742.3, oca_a:0, sub_b:5284.05, sub_a:0, mar_b:636693.02, mar_a:0, may_b:965.25, may_a:0, not:"603.750 TL genel şase ve titreşim motor revizyonu"},
   {tip:"KONKASÖR", model:"METSO KONKASÖR LT1213", kd:"K2", oca_b:173858.02, oca_a:74750, sub_b:15317.14, sub_a:0, mar_b:0, mar_a:113850, may_b:869.8, may_a:0, not:"Konveyor bant takıldı"},
   {tip:"KONKASÖR", model:"METSO KONKASÖR LT1213S", kd:"K3", oca_b:94601.29, oca_a:0, sub_b:15436.66, sub_a:0, mar_b:14602.71, mar_a:15410, may_b:2996.06, may_a:0, not:"Elek ve nakliye bedeli"},
-  {tip:"KONKASÖR", model:"METSO KONKASÖR ÇENELİ", kd:"K4", oca_b:38008, oca_a:0, sub_b:274500.9, sub_a:0, mar_b:2070, mar_a:0, may_b:20532, may_a:0, not:""},
+  {tip:"KONKASÖR", model:"METSO KONKASÖR ÇENELİ", kd:"K4", oca_b:38008, oca_a:0, sub_b:274500.9, sub_a:0, mar_b:2070, mar_a:0, may_b:20532.0, may_a:0, not:""},
   {tip:"KONKASÖR", model:"KLEMAN KONKASÖR MR130İ PRO", kd:"K5", oca_b:8767.2, oca_a:91870, sub_b:27577, sub_a:0, mar_b:0, mar_a:0, may_b:18864.06, may_a:597150, not:""},
   {tip:"KONKASÖR", model:"MSS802İ EVO KLEMAN SKAYPER", kd:"K6", oca_b:1897.5, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, may_b:4312.5, may_a:0, not:""},
   {tip:"KONKASÖR", model:"KLEMEN KONKRASÖR MR130İ EVO2", kd:"K7", oca_b:0, oca_a:0, sub_b:40825, sub_a:0, mar_b:140050.88, mar_a:0, may_b:260541.1, may_a:0, not:""},
@@ -809,7 +814,7 @@ const MANUEL_SAAT = {
   'C42': {oca:100, sub:70, mar:175, ozet:345},
   'C53': {oca:241, sub:269, mar:205, ozet:715},
   'H1': {oca:null, sub:100, mar:127.9, ozet:227.9},
-  'H9': {oca:150, sub:124, mar:210, nis:258, may:238, ozet:980},
+  'H9': {oca:150, sub:124, mar:210, nis:258, may:238, haz:336, ozet:1316},
   'H11': {oca:150, sub:152, mar:null, nis:null, ozet:302},
   'SY1': {oca:50, sub:50, mar:69, ozet:169},
   'C13': {oca:190, sub:180, mar:201, ozet:571},
@@ -829,16 +834,16 @@ const MANUEL_SAAT = {
   'E4': {oca:129, sub:68, mar:18, ozet:215},
   'E5': {oca:44, sub:null, mar:45, ozet:89},
   'B1': {oca:132, sub:175, mar:98, ozet:405},
-  'R1': {oca:99, sub:125, mar:125, may:68, ozet:417},
-  'R2': {oca:103, sub:103, mar:95, may:40, ozet:341},
+  'R1': {oca:99, sub:125, mar:125, may:68, haz:174, ozet:591},
+  'R2': {oca:103, sub:103, mar:95, may:40, haz:35, ozet:376},
   'HM1': {oca:null, sub:null, mar:24, ozet:24}
 };
 
 // ─── TELEMETRİSİZ MAKİNE YAKIT (delici rok vb. — kart + maliyet için) ─────
 // Dönem bazlı yakıt (L). Saat MANUEL_SAAT'tan gelir.
 const MANUEL_YAKIT = {
-  'R1': {may:946},
-  'R2': {may:937}
+  'R1': {may:946, haz:3752},
+  'R2': {may:937, haz:480}
 };
 // Makine kartlarında gösterilecek telemetrisiz makineler
 const MANUEL_KART = [
@@ -878,12 +883,12 @@ function formatTL(n){if(!n||n===0)return'—';return'₺'+Math.round(n).toLocale
 function formatTLK(n){if(!n||n===0)return'—';if(n>=1000000)return'₺'+(n/1000000).toFixed(2)+'M';if(n>=1000)return'₺'+(n/1000).toFixed(0)+'K';return'₺'+Math.round(n);}
 
 // ─── ANA RENDER FONKSİYONLARI ────────────────────────────────────────────
-let currentPeriod='2026';
+let currentPeriod='haz';
 let chartRolanti=null,chartYakit=null,chartTrend=null,chartWeekly=null;
 
 function buildHBars(period){
   var data=MACHINES.map(function(m){return{kd:m[0],mdl:m[1],saha:m[2],pd:getPeriodData(m,period),saat:m[22],alarm:m[23],yorum:m[24]};}).filter(function(x){return x.pd&&x.pd.motor>0;});
-  var sortedRol=[].concat(data).sort(function(a,b){return a.pd.rolPct-b.pd.rolPct;});
+  var sortedRol=[].concat(data).filter(function(x){return x.pd.rolPct!=null;}).sort(function(a,b){return a.pd.rolPct-b.pd.rolPct;});
   var maxRol=70;
   document.getElementById('hbar-rolanti').innerHTML=sortedRol.map(function(x){
     var pct=(x.pd.rolPct/maxRol)*100;var col=rolColor(x.pd.rolPct);
@@ -909,7 +914,7 @@ var _yakitSehir='tumu';
 
 function buildCharts(period){
   _yakitPeriod=period;
-  var data=MACHINES.map(function(m){return{kd:m[0],mdl:m[1],loc:m[2],grp:m[3],pd:getPeriodData(m,period)};}).filter(function(x){return x.pd&&x.pd.motor>0;}).sort(function(a,b){return a.pd.rolPct-b.pd.rolPct;});
+  var data=MACHINES.map(function(m){return{kd:m[0],mdl:m[1],loc:m[2],grp:m[3],pd:getPeriodData(m,period)};}).filter(function(x){return x.pd&&x.pd.motor>0&&x.pd.rolPct!=null;}).sort(function(a,b){return a.pd.rolPct-b.pd.rolPct;});
   if(chartRolanti){chartRolanti.destroy();chartRolanti=null;}
   chartRolanti=new Chart(document.getElementById('chart-rolanti'),{type:'bar',data:{labels:data.map(function(x){return x.kd+'/'+x.mdl;}),datasets:[{data:data.map(function(x){return x.pd.rolPct;}),backgroundColor:data.map(function(x){return rolColor(x.pd.rolPct)+'CC';}),borderColor:data.map(function(x){return rolColor(x.pd.rolPct);}),borderWidth:1,borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#1e2330',borderColor:'rgba(59,130,246,.3)',borderWidth:1,titleColor:'#e8eaf0',bodyColor:'#9ca3af',padding:10,callbacks:{title:function(items){var i=items[0].dataIndex;return data[i].kd+' — '+data[i].mdl;},label:function(item){var i=item.dataIndex;return['📍 '+data[i].loc,'🕐 Rölanti: %'+data[i].pd.rolPct,'⏱ Motor: '+data[i].pd.motor.toFixed(0)+' sa',(data[i].pd.lhr?'⛽ '+data[i].pd.lhr.toFixed(1)+' L/h':'')];}}}},scales:{x:{ticks:{color:'#6b7280',font:{size:9},maxRotation:40},grid:{color:'rgba(255,255,255,.04)'}},y:{min:0,max:70,ticks:{color:'#6b7280',font:{size:11},callback:function(v){return v+'%';}},grid:{color:'rgba(255,255,255,.07)'}}}}});
   buildYakitChart(_yakitSehir);
@@ -930,7 +935,7 @@ function buildYakitChart(sehir){
   // KPI bilgisi
   var infoEl=document.getElementById('yakit-sehir-info');
   if(infoEl){
-    if(fd.length===0){infoEl.textContent=sehirLabel[sehir]+': Yakıt verisi yok';} 
+    if(fd.length===0){infoEl.textContent=sehirLabel[sehir]+': Yakıt verisi yok';}
     else{
       var ort=(fd.reduce(function(s,x){return s+x.pd.lhr;},0)/fd.length).toFixed(1);
       var enaz=fd[0];
@@ -958,10 +963,12 @@ function buildTrendChart(){
     var d3=nisd?nisd.motor:null;
     var mayd=getPeriodData(m,'may');
     var d4=mayd?mayd.motor:null;
-    if(!d0&&!d1&&!d2&&!d3&&!d4)return;
+    var hazd=getPeriodData(m,'haz');
+    var d5=hazd?hazd.motor:null;
+    if(!d0&&!d1&&!d2&&!d3&&!d4&&!d5)return;
     datasets.push({
       label:m[0]+' '+m[1],
-      data:[d0,d1,d2,d3,d4],
+      data:[d0,d1,d2,d3,d4,d5],
       borderColor:palette[i%palette.length],
       backgroundColor:'transparent',
       tension:.3,
@@ -971,14 +978,13 @@ function buildTrendChart(){
       spanGaps:true
     });
   });
-  // Motor saati toplamına göre sırala, en aktif 5 kalın çizgi
   datasets.sort(function(a,b){
-    var sa=(a.data[0]||0)+(a.data[1]||0)+(a.data[2]||0)+(a.data[3]||0)+(a.data[4]||0);
-    var sb=(b.data[0]||0)+(b.data[1]||0)+(b.data[2]||0)+(b.data[3]||0)+(b.data[4]||0);
+    var sa=(a.data[0]||0)+(a.data[1]||0)+(a.data[2]||0)+(a.data[3]||0)+(a.data[4]||0)+(a.data[5]||0);
+    var sb=(b.data[0]||0)+(b.data[1]||0)+(b.data[2]||0)+(b.data[3]||0)+(b.data[4]||0)+(b.data[5]||0);
     return sb-sa;
   });
   datasets.forEach(function(d,i){d.borderWidth=i<5?2.5:1.5;d.pointRadius=i<5?5:3;});
-  chartTrend=new Chart(document.getElementById('chart-trend'),{type:'line',data:{labels:['Ocak','Şubat','Mart','Nisan','Mayıs'],datasets:datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,position:'bottom',labels:{color:'#6b7280',font:{size:9},boxWidth:8,padding:6,usePointStyle:true}},tooltip:{backgroundColor:'#1e2330',borderColor:'rgba(59,130,246,.3)',borderWidth:1,titleColor:'#e8eaf0',bodyColor:'#9ca3af',padding:10,filter:function(item){return item.raw!=null;}}},scales:{x:{ticks:{color:'#6b7280',font:{size:11}},grid:{color:'rgba(255,255,255,.04)'}},y:{ticks:{color:'#6b7280',font:{size:11},callback:function(v){return v+'sa';}},grid:{color:'rgba(255,255,255,.07)'}}}}});
+  chartTrend=new Chart(document.getElementById('chart-trend'),{type:'line',data:{labels:['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran'],datasets:datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,position:'bottom',labels:{color:'#6b7280',font:{size:9},boxWidth:8,padding:6,usePointStyle:true}},tooltip:{backgroundColor:'#1e2330',borderColor:'rgba(59,130,246,.3)',borderWidth:1,titleColor:'#e8eaf0',bodyColor:'#9ca3af',padding:10,filter:function(item){return item.raw!=null;}}},scales:{x:{ticks:{color:'#6b7280',font:{size:11}},grid:{color:'rgba(255,255,255,.04)'}},y:{ticks:{color:'#6b7280',font:{size:11},callback:function(v){return v+'sa';}},grid:{color:'rgba(255,255,255,.07)'}}}}});
 }
 
 
@@ -990,13 +996,12 @@ function buildCards(period){
     return'<div class="mak-card '+cls+'"><div class="card-header"><div><div class="card-kd">'+x.kd+'</div><div class="card-model">'+x.mdl+' · '+x.saha+'</div></div>'+ab+'</div><div class="card-metrics"><div class="metric"><div class="metric-label">Rölanti</div><div class="metric-val" style="color:'+rolColor(x.pd.rolPct)+'">'+(x.pd.rolPct!=null?'%'+x.pd.rolPct:'—')+'</div></div><div class="metric"><div class="metric-label">L/Saat</div><div class="metric-val">'+(x.pd.lhr!=null?x.pd.lhr.toFixed(1):'—')+'</div></div><div class="metric"><div class="metric-label">Motor Sa</div><div class="metric-val">'+x.pd.motor.toFixed(0)+'</div></div><div class="metric"><div class="metric-label">Sayaç</div><div class="metric-val" style="color:'+saatColor(x.saat)+'">'+x.saat.toLocaleString()+'</div></div></div><div class="gauge-row"><div class="gauge-label">Rölanti</div><div class="gauge-track"><div class="gauge-fill" style="width:'+Math.min(x.pd.rolPct||0,100)+'%;background:'+rolColor(x.pd.rolPct)+'"></div></div></div>'+(x.yorum?'<div style="font-size:10px;color:var(--muted);margin-top:6px;font-style:italic">'+x.yorum+'</div>':'')+'</div>';
   }).join('');
   html+=SIGNAL_ISSUES.map(function(s){return'<div class="mak-card sinyal"><div class="card-header"><div><div class="card-kd">'+s.kd+'</div><div class="card-model">'+s.model+' · '+s.loc+'</div></div><span class="tag-red">Sinyal Yok</span></div><div style="display:flex;align-items:center;justify-content:center;height:44px;background:rgba(107,114,128,.1);border-radius:4px;font-size:11px;color:var(--muted);font-style:italic">Son: '+s.sinyal+'</div><div style="font-size:10px;color:var(--red);margin-top:6px">'+s.sorun+'</div></div>';}).join('');
-  // ── Telemetrisiz makineler (delici rok): yakıt + dönem çalışma saati ──
   html+=MANUEL_KART.map(function(mk){
     var mp=(period==='2026')?'ozet':period;
     var ms=MANUEL_SAAT[mk.kd]||{};var saat=ms[mp];
     if(!(saat>0))return'';
     var fuel=getManuelYakit(mk.kd,period);var lhr=(fuel&&saat)?fuel/saat:null;
-    return'<div class="mak-card normal"><div class="card-header"><div><div class="card-kd">'+mk.kd+'</div><div class="card-model">'+mk.model+' · '+mk.saha+'</div></div><span class="tag-blue">Delici Rok</span></div><div class="card-metrics"><div class="metric"><div class="metric-label">Rölanti</div><div class="metric-val">—</div></div><div class="metric"><div class="metric-label">L/Saat</div><div class="metric-val">'+(lhr!=null?lhr.toFixed(1):'—')+'</div></div><div class="metric"><div class="metric-label">Motor Sa</div><div class="metric-val">'+saat.toFixed(0)+'</div></div><div class="metric"><div class="metric-label">Yakıt L</div><div class="metric-val">'+(fuel!=null?fuel.toLocaleString():'—')+'</div></div></div>'+(fuel!=null?'<div style="font-size:10px;color:var(--muted);margin-top:6px;font-style:italic">Mayıs: '+saat.toFixed(0)+' sa · '+fuel.toLocaleString()+' L'+(lhr!=null?' · '+lhr.toFixed(1)+' L/h':'')+'</div>':'')+'</div>';
+    return'<div class="mak-card normal"><div class="card-header"><div><div class="card-kd">'+mk.kd+'</div><div class="card-model">'+mk.model+' · '+mk.saha+'</div></div><span class="tag-blue">Delici Rok</span></div><div class="card-metrics"><div class="metric"><div class="metric-label">Rölanti</div><div class="metric-val">—</div></div><div class="metric"><div class="metric-label">L/Saat</div><div class="metric-val">'+(lhr!=null?lhr.toFixed(1):'—')+'</div></div><div class="metric"><div class="metric-label">Motor Sa</div><div class="metric-val">'+saat.toFixed(0)+'</div></div><div class="metric"><div class="metric-label">Yakıt L</div><div class="metric-val">'+(fuel!=null?fuel.toLocaleString():'—')+'</div></div></div>'+(fuel!=null?'<div style="font-size:10px;color:var(--muted);margin-top:6px;font-style:italic">'+({oca:'Ocak',sub:'Şubat',mar:'Mart',nis:'Nisan',may:'Mayıs',haz:'Haziran','2026':'2026 Özet'}[period]||period)+': '+saat.toFixed(0)+' sa · '+fuel.toLocaleString()+' L'+(lhr!=null?' · '+lhr.toFixed(1)+' L/h':'')+'</div>':'')+'</div>';
   }).join('');
   document.getElementById('card-grid').innerHTML=html;
 }
@@ -1023,8 +1028,8 @@ function updateKPIs(period){
   document.getElementById('kpi-lhr').textContent=avgLhr>0?avgLhr.toFixed(1)+' L/h':'—';
 }
 
-const PERIOD_LABELS={'2026':'2026 OCA–MAY ÖZETİ','oca':'OCAK 2026','sub':'ŞUBAT 2026','mar':'MART 2026','nis':'NİSAN 2026','may':'MAYIS 2026'};
-const PERIOD_INFO={'2026':'01 Oca – 31 May 2026','oca':'01 – 31 Ocak 2026','sub':'01 – 28 Şubat 2026','mar':'01 – 29 Mart 2026','nis':'01 – 30 Nisan 2026','may':'01 – 31 Mayıs 2026'};
+const PERIOD_LABELS={'2026':'2026 OCA–HAZ ÖZETİ','oca':'OCAK 2026','sub':'ŞUBAT 2026','mar':'MART 2026','nis':'NİSAN 2026','may':'MAYIS 2026','haz':'HAZİRAN 2026'};
+const PERIOD_INFO={'2026':'01 Oca – 30 Haz 2026','oca':'01 – 31 Ocak 2026','sub':'01 – 28 Şubat 2026','mar':'01 – 29 Mart 2026','nis':'01 – 30 Nisan 2026','may':'01 – 31 Mayıs 2026','haz':'01 – 30 Haziran 2026'};
 
 function setPeriod(period,infoText){
   currentPeriod=period;
@@ -1067,7 +1072,7 @@ function renderTeknikGider(period){
   var ortMakine=aktif>0?Math.round(toplam/aktif):0;
 
   document.getElementById('tg-kpi-top').textContent='₺'+(toplam/1000000).toFixed(2)+'M';
-  document.getElementById('tg-kpi-top-sub').textContent=period==='ozet'?'Oca+Şub+Mar+Nis':period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':period==='mar'?'Mart 2026':'Nisan 2026';
+  document.getElementById('tg-kpi-top-sub').textContent=period==='ozet'?'Oca+Şub+Mar+Nis+May':period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':period==='mar'?'Mart 2026':period==='nis'?'Nisan 2026':'Mayıs 2026';
   document.getElementById('tg-kpi-aktif').textContent=aktif;
   document.getElementById('tg-kpi-aktif-sub').textContent=aktif+' aktif · '+pasif+' sıfır gider';
   document.getElementById('tg-kpi-pahal').textContent=enPahal?(enPahal.kd||enPahal.model.substring(0,8)):'—';
@@ -1082,18 +1087,15 @@ function renderTeknikGider(period){
   if(period==='mar'){insightText+=' · <span style="color:#86efac">✎ Mart verileri Veri Girişi sekmesinden güncellenebilir</span>';}
   document.getElementById('tg-insight').innerHTML=insightText;
 
-  // Grafik 1: Tip donut
   var tipler={};data.forEach(function(m){var v=getTGValue(m,period);if(!tipler[m.tip])tipler[m.tip]=0;tipler[m.tip]+=v;});
   var tipIsimler=Object.keys(tipler).filter(function(t){return tipler[t]>0;}).sort(function(a,b){return tipler[b]-tipler[a];});
   if(tgCharts.tip){tgCharts.tip.destroy();}
   tgCharts.tip=new Chart(document.getElementById('tg-chart-tip'),{type:'doughnut',data:{labels:tipIsimler,datasets:[{data:tipIsimler.map(function(t){return Math.round(tipler[t]/1000);}),backgroundColor:tipIsimler.map(function(t){return(TIP_RENK[t]||'#6b7280')+'cc';}),borderColor:'#181c24',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:true,position:'right',labels:{color:'#6b7280',font:{size:10},boxWidth:10,padding:6}},tooltip:{callbacks:{label:function(c){return c.label+': ₺'+c.raw.toLocaleString()+'k';}}}}}});
 
-  // Grafik 2: Aylık trend — tip bazlı stacked
   var tipTum=Object.keys(TIP_RENK).filter(function(t){return data.some(function(m){return m.tip===t&&getTGValue(m,period)>0;});});
   if(tgCharts.trend){tgCharts.trend.destroy();}
   tgCharts.trend=new Chart(document.getElementById('tg-chart-trend'),{type:'bar',data:{labels:tipTum,datasets:[{label:'Ocak',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'oca');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'55';})},{label:'Şubat',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'sub');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'99';})},{label:'Mart',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'mar');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'ee';})},{label:'Nisan',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'nis');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'ff';})}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#6b7280',font:{size:10},boxWidth:10,padding:8}}},scales:{x:{stacked:true,ticks:{color:'#6b7280',font:{size:9}},grid:{color:'rgba(42,48,64,.5)'}},y:{stacked:true,ticks:{color:'#6b7280',font:{size:9},callback:function(v){return'₺'+v+'k';}},grid:{color:'rgba(42,48,64,.5)'}}}}});
 
-  // Grafik 3: Makine top20 — Arıza&Bakım + Ataçman yığılı
   var top20=sorted.filter(function(m){return getTGValue(m,period)>0;}).slice(0,20);
   if(tgCharts.makine){tgCharts.makine.destroy();}
   tgCharts.makine=new Chart(document.getElementById('tg-chart-makine'),{type:'bar',data:{
@@ -1125,69 +1127,35 @@ function getMachineLocation(kd) {
 
 function getModelSeri(m) {
   var kd = m.kd || '';
-
-  // ── JCB ──
   if(kd==='H8')   return {seri:'HİDROMEK 102B',    tip:'JCB'};
   if(kd==='C46')  return {seri:'CAT M318',           tip:'JCB'};
-
-  // ── DELİCİ ROK — R1 + R2 aynı grup ──
   if(kd==='R1'||kd==='R2') return {seri:'DELİCİ ROK', tip:'DELİCİ ROK'};
-
-  // ── DOZER — C1 + C2 + C3 + C22 tek grup ──
   if(kd==='C1'||kd==='C2'||kd==='C3'||kd==='C22') return {seri:'DOZER', tip:'DOZER'};
-
-  // ── LODER — tek grup ──
   if(['C13','C26','C48','C45','C47','C54','C51'].includes(kd))
                            return {seri:'LODER',                     tip:'LODER'};
-
-  // ── EKSKAVATÖR ──
   if(kd==='SY1')           return {seri:'SANY 60C',                  tip:'EKSKAVATÖR'};
   if(kd==='C56'||kd==='C55') return {seri:'CAT 313GC',               tip:'EKSKAVATÖR'};
   if(kd==='C31')           return {seri:'CAT 315GC',                  tip:'EKSKAVATÖR'};
-
-  // 20 TON
   if(kd==='C7'||kd==='C8') return {seri:'20 TON EKSKAVATÖR',         tip:'EKSKAVATÖR'};
-
-  // 30 TON
   if(['C9','C10','C27','C32','C33','C34','C52','C53','C49','C50'].includes(kd))
                            return {seri:'30 TON EKSKAVATÖR',          tip:'EKSKAVATÖR'};
-
-  // 336 (CAT336 + CAT336GC birleşik)
   if(['C6','C11','C29','C30','C20','C21','C35','C14','C16','C24','C12','C15'].includes(kd))
                            return {seri:'CAT 336 EKSKAVATÖR',         tip:'EKSKAVATÖR'};
-
-  // 40 TON
   if(['C17','C18','C25','C28','C36','C37'].includes(kd))
                            return {seri:'40 TON EKSKAVATÖR',          tip:'EKSKAVATÖR'};
-
-  // 50 TON — CAT350 + CAT352 + HİTACHİ ZX490
   if(['C41','C42','C43','C38','C40','ZX4','ZX5'].includes(kd))
                            return {seri:'50 TON EKSKAVATÖR',          tip:'EKSKAVATÖR'};
-
-  // HİDROMEK — H1 + H9 + H11 tek grup
   if(kd==='H1'||kd==='H9'||kd==='H11')
                            return {seri:'HİDROMEK',                   tip:'EKSKAVATÖR'};
-
-  // ── GREYDER ──
   if(kd==='C39')           return {seri:'CAT 140GC',                  tip:'GREYDER'};
-
-  // ── MAKAS ──
   if(kd==='C19')           return {seri:'CAT 352 Makas',              tip:'MAKAS'};
   if(kd==='D1')            return {seri:'DOOSAN 5100',                tip:'MAKAS'};
-
-  // ── ELEK + KONVEYOR — hepsi aynı grup ──
   if(['E1','E2','E3','E4','E5','B1'].includes(kd))
                            return {seri:'ELEK & KONVEYOR',            tip:'ELEK'};
-
-  // ── KONKASÖR — hepsi aynı grup ──
   if(['K1','K2','K3','K4','K5','K6','K7','K8','K9'].includes(kd))
                            return {seri:'KONKASÖR',                   tip:'KONKASÖR'};
-
-  // ── SİLİNDİR — HM1 + HM2 + HM3 tek grup ──
   if(kd==='HM1'||kd==='HM2'||kd==='HM3')
                            return {seri:'SİLİNDİR',                   tip:'SİLİNDİR'};
-
-  // Fallback
   return {seri: m.model.substring(0,16), tip: m.tip};
 }
 
@@ -1349,10 +1317,8 @@ var mkCharts={};
 
 function renderMaliyetAnaliz(){
   var period=document.getElementById('maliyet-period').value;
-  
-  // Saatlik maliyet verisini hesapla
   var results=[];
-  var noSaatResults=[];  // gider var ama saat telemetrisi yok
+  var noSaatResults=[];
 
   TG_MAKINELER.forEach(function(m){
     if(!m.kd) return;
@@ -1384,7 +1350,6 @@ function renderMaliyetAnaliz(){
         +'</div></div>';
     }
     document.getElementById('slhr-bar-container').innerHTML='<div style="text-align:center;padding:20px;color:var(--muted);font-size:12px;font-style:italic">VisionLink saat eşleşmesi olan makine bulunamadı.</div>'+noSaatHtml;
-    // Still update KPIs as empty
     document.getElementById('mk-ort').textContent='—';
     document.getElementById('mk-max').textContent='—';
     document.getElementById('mk-max-sub').textContent='—';
@@ -1397,7 +1362,6 @@ function renderMaliyetAnaliz(){
   results.sort(function(a,b){return b.slhr-a.slhr;});
   var maxSlhr=results[0].slhr;
 
-  // KPI
   var avg=results.reduce(function(s,x){return s+x.slhr;},0)/results.length;
   document.getElementById('mk-ort').textContent='₺'+Math.round(avg)+'/sa';
   document.getElementById('mk-max').textContent='₺'+Math.round(results[0].slhr)+'/sa';
@@ -1407,7 +1371,6 @@ function renderMaliyetAnaliz(){
   document.getElementById('mk-min-sub').textContent=minR.kd+' '+minR.mdl.substring(0,12);
   document.getElementById('mk-count').textContent=results.length;
 
-  // Insight
   var insight='<strong>'+results.length+'</strong> makine için saatlik maliyet hesaplandı. ';
   var pahali=results.filter(function(x){return x.slhr>500;});
   var normal=results.filter(function(x){return x.slhr<=200;});
@@ -1416,7 +1379,6 @@ function renderMaliyetAnaliz(){
   insight+='Düşük ₺/sa için hem gideri azaltmak hem makinenin daha çok çalışması gerekir.';
   document.getElementById('maliyet-insight').innerHTML=insight;
 
-  // Bar
   var barHtml=results.map(function(x){
     var pct=(x.slhr/maxSlhr)*100;
     var col=x.slhr>500?'#ef4444':x.slhr>200?'#f59e0b':'#22c55e';
@@ -1429,7 +1391,6 @@ function renderMaliyetAnaliz(){
     '</div>';
   }).join('');
 
-  // Telemetri verisi olmayan ama gideri olan makineler
   if(noSaatResults.length>0){
     barHtml+='<div style="margin-top:16px;padding:12px 14px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:6px;">'
       +'<div style="font-size:10px;font-weight:700;color:#f59e0b;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em">⚠ Saat Telemetrisi Olmayan Makineler ('+noSaatResults.length+') — ₺/sa Hesaplanamıyor</div>'
@@ -1446,7 +1407,6 @@ function renderMaliyetAnaliz(){
 
   document.getElementById('slhr-bar-container').innerHTML=barHtml;
 
-  // ── Tip bazlı ₺/Saat bar ──
   var tipAgg={};
   results.forEach(function(x){if(!tipAgg[x.tip]){tipAgg[x.tip]={sum:0,count:0};}tipAgg[x.tip].sum+=x.slhr;tipAgg[x.tip].count++;});
   var tipIsimler=Object.keys(tipAgg).sort(function(a,b){return (tipAgg[b].sum/tipAgg[b].count)-(tipAgg[a].sum/tipAgg[a].count);});
@@ -1454,11 +1414,9 @@ function renderMaliyetAnaliz(){
   if(mkCharts.tip){mkCharts.tip.destroy();}
   mkCharts.tip=new Chart(document.getElementById('mk-chart-tip'),{type:'bar',data:{labels:tipIsimler,datasets:[{label:'Ort. ₺/Saat',data:tipAvg,backgroundColor:tipIsimler.map(function(t){return(TIP_RENK[t]||'#6b7280')+'bb';}),borderColor:tipIsimler.map(function(t){return TIP_RENK[t]||'#6b7280';}),borderWidth:1,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#1e2330',borderColor:'rgba(59,130,246,.3)',borderWidth:1,callbacks:{label:function(item){return '₺'+item.parsed.y+'/sa — '+tipAgg[tipIsimler[item.dataIndex]].count+' makine';}}}},scales:{x:{ticks:{color:'#6b7280',font:{size:10}},grid:{color:'rgba(42,48,64,.5)'}},y:{ticks:{color:'#6b7280',font:{size:10},callback:function(v){return'₺'+v;}},grid:{color:'rgba(42,48,64,.5)'},title:{display:true,text:'₺/Saat',color:'#6b7280',font:{size:10}}}}}});
 
-  // ── Scatter ──
   if(mkCharts.scatter){mkCharts.scatter.destroy();}
   mkCharts.scatter=new Chart(document.getElementById('mk-chart-scatter'),{type:'scatter',data:{datasets:[{label:'Makineler',data:results.map(function(x){return{x:Math.round(x.saat),y:Math.round(x.slhr),label:x.kd};}),backgroundColor:results.map(function(x){return x.slhr>500?'#ef4444CC':x.slhr>200?'#f59e0bCC':'#22c55eCC';}),borderColor:results.map(function(x){return x.slhr>500?'#ef4444':x.slhr>200?'#f59e0b':'#22c55e';}),pointRadius:7,pointHoverRadius:10,borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#1e2330',borderColor:'rgba(59,130,246,.3)',borderWidth:1,titleColor:'#e8eaf0',bodyColor:'#9ca3af',callbacks:{title:function(items){var i=items[0].dataIndex;return results[i].kd+' — '+results[i].mdl.substring(0,16);},label:function(item){var i=item.dataIndex;return['⏱ Çalışma: '+item.parsed.x+'sa','💸 ₺/sa: ₺'+item.parsed.y,'📋 Toplam: '+formatTL(results[i].gider)];}}}},scales:{x:{ticks:{color:'#6b7280',font:{size:10},callback:function(v){return v+'sa';}},grid:{color:'rgba(42,48,64,.5)'},title:{display:true,text:'Çalışma Saati',color:'#6b7280',font:{size:10}}},y:{ticks:{color:'#6b7280',font:{size:10},callback:function(v){return'₺'+v;}},grid:{color:'rgba(42,48,64,.5)'},title:{display:true,text:'₺/Saat',color:'#6b7280',font:{size:10}}}}}});
 
-  // ── Aylık trend (Oca/Şub/Mar yığılı bar - tip bazlı) ──
   var tiplerAll=Object.keys(TIP_RENK);
   var trendLabels=['Ocak','Şubat','Mart'];
   var trendDatasets=tiplerAll.map(function(tip){
@@ -1473,7 +1431,6 @@ function renderMaliyetAnaliz(){
   if(mkCharts.trend){mkCharts.trend.destroy();}
   mkCharts.trend=new Chart(document.getElementById('mk-chart-trend'),{type:'bar',data:{labels:trendLabels,datasets:trendDatasets},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#9ca3af',font:{size:10},boxWidth:12,padding:8}},tooltip:{backgroundColor:'#1e2330',borderColor:'rgba(59,130,246,.3)',borderWidth:1,callbacks:{label:function(item){return item.dataset.label+': '+formatTLK(item.parsed.y);}}}},scales:{x:{stacked:true,ticks:{color:'#6b7280'},grid:{color:'rgba(42,48,64,.5)'}},y:{stacked:true,ticks:{color:'#6b7280',font:{size:10},callback:function(v){return'₺'+Math.round(v/1000)+'K';}},grid:{color:'rgba(42,48,64,.5)'}}}}});
 
-  // ── Pasta: toplam gider payı tip bazlı ──
   var pastaAgg={};
   TG_MAKINELER.forEach(function(m){
     var g=getTGValue(m,period);
@@ -1485,7 +1442,6 @@ function renderMaliyetAnaliz(){
   if(mkCharts.pasta){mkCharts.pasta.destroy();}
   mkCharts.pasta=new Chart(document.getElementById('mk-chart-pasta'),{type:'doughnut',data:{labels:pTipler,datasets:[{data:pTipler.map(function(t){return Math.round(pastaAgg[t]);}),backgroundColor:pTipler.map(function(t){return(TIP_RENK[t]||'#6b7280')+'cc';}),borderColor:pTipler.map(function(t){return TIP_RENK[t]||'#6b7280';}),borderWidth:2,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'55%',plugins:{legend:{position:'right',labels:{color:'#9ca3af',font:{size:10},boxWidth:12,padding:6,generateLabels:function(chart){var ds=chart.data;return ds.labels.map(function(lbl,i){return{text:lbl+' — '+formatTLK(ds.datasets[0].data[i]),fillStyle:ds.datasets[0].backgroundColor[i],strokeStyle:ds.datasets[0].borderColor[i],lineWidth:1};});}}},tooltip:{backgroundColor:'#1e2330',borderColor:'rgba(59,130,246,.3)',borderWidth:1,callbacks:{label:function(item){var total=item.dataset.data.reduce(function(s,v){return s+v;},0);return item.label+': '+formatTLK(item.parsed)+' (%'+Math.round(item.parsed/total*100)+')';}}}}}});
 
-  // ── Top 15 makine ──
   var allForTop=TG_MAKINELER.map(function(m){return{kd:m.kd,mdl:m.model,tip:m.tip,gider:getTGValue(m,period)};}).filter(function(x){return x.gider>0;}).sort(function(a,b){return b.gider-a.gider;}).slice(0,15);
   if(mkCharts.top15){mkCharts.top15.destroy();}
   mkCharts.top15=new Chart(document.getElementById('mk-chart-top15'),{type:'bar',data:{labels:allForTop.map(function(x){return x.kd;}),datasets:[{data:allForTop.map(function(x){return Math.round(x.gider);}),backgroundColor:allForTop.map(function(x){return(TIP_RENK[x.tip]||'#6b7280')+'bb';}),borderColor:allForTop.map(function(x){return TIP_RENK[x.tip]||'#6b7280';}),borderWidth:1,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false},tooltip:{backgroundColor:'#1e2330',borderColor:'rgba(59,130,246,.3)',borderWidth:1,callbacks:{title:function(items){var i=items[0].dataIndex;return allForTop[i].kd+' — '+allForTop[i].mdl.substring(0,20);},label:function(item){var i=item.dataIndex;return[formatTL(allForTop[i].gider),' Tip: '+allForTop[i].tip];}}}},scales:{x:{ticks:{color:'#6b7280',font:{size:10},callback:function(v){return'₺'+Math.round(v/1000)+'K';}},grid:{color:'rgba(42,48,64,.5)'}},y:{ticks:{color:'#9ca3af',font:{size:11,family:"'IBM Plex Mono',monospace"},},grid:{display:false}}}}});
@@ -1517,7 +1473,6 @@ function addManuelGider(){
     MART_EKLER[kd].iscil+=iscil;
     MART_EKLER[kd].diger+=diger;
     if(not) MART_EKLER[kd].not=not;
-    // TG_MAKINELER içinde de güncelle
     var found=TG_MAKINELER.find(function(m){return m.kd===kd;});
     if(found) found.mar=(found.mar||0)+toplam;
   }
@@ -1561,7 +1516,6 @@ function silKayit(kd){
   updateManuelList();
 }
 
-// CSV
 var csvParsed=[];
 function handleFileUpload(input){
   var file=input.files[0];if(!file)return;
@@ -1625,8 +1579,6 @@ function downloadTemplate(){
 
 // ─── TAB YÖNETİMİ ────────────────────────────────────────────────────────
 var tgBuilt=false;
-var tirPanelBuilt=false;
-var ciftcekePanel=false;
 
 function switchTab(name){
   var ns=['yataybar','chartjs','kartlar','stacked','teknikgider'];
@@ -1645,83 +1597,14 @@ function switchInnerTab(name){
   if(name==='tg-tablo'){renderTabloBody(tgPeriod);}
 }
 
-// ─── TIR & ÇİFTÇEKER ─────────────────────────────────────────────────────
-const TIRLAR=[
-  [1,'34 LUF 69','MERCEDES','34HD4969','MEİLLER','damper'],
-  [2,'34LUD69','MERCEDES','34HD6869','MEİLLER','damper'],
-  [3,'34LEK69','MERCEDES','34HD5169','MEİLLER','damper'],
-  [4,'34LUZ69','MERCEDES','34HD8169','MEİLLER','damper'],
-  [5,'34JIE69','MERCEDES','34HD5069','MEİLLER','damper'],
-  [6,'34TG3769','SCANİA','34HD7069','MEİLLER','damper'],
-  [7,'34TG3869','SCANİA','34HD2269','MEİLLER','damper'],
-  [8,'34VBF69','SCANİA','34HD8669','MEİLLER','damper'],
-  [9,'34VBL69','SCANİA','34HD0669','MEİLLER','damper'],
-  [10,'34BDM178','SCANİA','34HD8369','MEİLLER','damper'],
-  [11,'34BDF517','SCANİA','34HD1669','MEİLLER','damper'],
-  [12,'34KV0169','SCANİA','34HD1969','MEİLLER','damper'],
-  [13,'34KV0469','SCANİA','34HD9269','MEİLLER','damper'],
-  [14,'34KV9169','SCANİA','34HD8769','MEİLLER','damper'],
-  [15,'34KV0569','SCANİA','34HD1869','MEİLLER','damper'],
-  [16,'34KV0869','SCANİA','34HD0769','MEİLLER','damper'],
-  [17,'34KV0069','SCANİA','34HD9769','MEİLLER','damper'],
-  [18,'34KV0369','SCANİA','34HD5869','MEİLLER','damper'],
-  [19,'34KV4969','SCANİA','34HD8969','MEİLLER','damper'],
-  [20,'34KV9269','SCANİA','34HD7369','MEİLLER','damper'],
-  [21,'34KV6369','SCANİA','34HD0469','MEİLLER','damper'],
-  [22,'34HD8469','SCANİA','34HD5469','MEİLLER','damper'],
-  [23,'34BDM249','SCANİA','34HD9569','MEİLLER','damper'],
-  [24,'34HDC243','SCANİA','34HD4469','MEİLLER','damper'],
-  [25,'34HBM483','SCANİA','34HD4569','MEİLLER','damper'],
-  [26,'34HDC303','SCANİA','34HD5269','MEİLLER','damper'],
-  [27,'34HDC358','SCANİA','34HD5769','MEİLLER','damper'],
-  [28,'34HDC400','SCANİA','34HD5369','MEİLLER','damper'],
-];
-const LOWBETLER=[[1,'34JIF69','MERCEDES','34HZT069','LOWBET','lowbet'],[2,'34JH1469','SCANİA','34GKF335','LOWBET','lowbet']];
-
-function setTirPeriod(period,btn){
-  document.querySelectorAll('#panel-tirlar .pbtn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');
-  var labels={'2026':'2026 Özet',oca:'Ocak 2026',sub:'Şubat 2026',mar:'Mart 2026 (1–23)'};
-  document.getElementById('tir-period-info').textContent='Dönem: '+(labels[period]||period);
-}
-
-function buildTirPanel(){
-  document.getElementById('tir-grid').innerHTML=TIRLAR.map(function(t){var mrkCol=t[2]==='MERCEDES'?'#3b82f6':'#f59e0b';return'<div style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:10px 12px;border-left:3px solid '+mrkCol+';display:flex;align-items:center;gap:12px"><div style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;color:var(--muted);min-width:20px">'+t[0]+'</div><div style="flex:1"><div style="font-family:\'IBM Plex Mono\',monospace;font-size:12px;font-weight:700;color:'+mrkCol+'">'+t[1]+'</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;color:var(--muted);margin-top:2px">'+t[3]+' · Meiller</div></div><span style="font-size:10px;background:rgba(59,130,246,0.1);color:#93c5fd;padding:1px 6px;border-radius:3px;border:1px solid rgba(59,130,246,0.2)">'+t[2]+'</span></div>';}).join('');
-  document.getElementById('lowbet-grid').innerHTML=LOWBETLER.map(function(t){var mrkCol=t[2]==='MERCEDES'?'#3b82f6':'#f59e0b';return'<div style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:10px 12px;border-left:3px solid #a855f7;display:flex;align-items:center;gap:12px"><div style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;color:var(--muted);min-width:20px">'+t[0]+'</div><div style="flex:1"><div style="font-family:\'IBM Plex Mono\',monospace;font-size:12px;font-weight:700;color:'+mrkCol+'">'+t[1]+'</div><div style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;color:var(--muted);margin-top:2px">'+t[3]+' · Lowbet</div></div><span style="font-size:10px;background:rgba(59,130,246,0.1);color:#93c5fd;padding:1px 6px;border-radius:3px;border:1px solid rgba(59,130,246,0.2)">'+t[2]+'</span></div>';}).join('');
-  new Chart(document.getElementById('tir-marka-chart'),{type:'doughnut',data:{labels:['Scania (23)','Mercedes (5)'],datasets:[{data:[23,5],backgroundColor:['#f59e0b','#3b82f6'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'bottom',labels:{color:'#6b7280',font:{size:12},padding:12,boxWidth:12}}}}});
-  new Chart(document.getElementById('tir-tip-chart'),{type:'doughnut',data:{labels:['Damperli TIR (28)','Lowbet (2)'],datasets:[{data:[28,2],backgroundColor:['#22c55e','#a855f7'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'bottom',labels:{color:'#6b7280',font:{size:12},padding:12,boxWidth:12}}}}});
-}
-
-const CIFTCEKER=[
-  {no:1,plaka:'34 KGR 249',marka:'SCANİA'},{no:2,plaka:'34 KGH 607',marka:'SCANİA'},
-  {no:3,plaka:'34 KGH 623',marka:'SCANİA'},{no:4,plaka:'34 KGH 216',marka:'SCANİA'},
-  {no:5,plaka:'34 KOA 457',marka:'SCANİA'},{no:6,plaka:'34 KOA 236',marka:'SCANİA'},
-  {no:7,plaka:'34 KOA 421',marka:'SCANİA'},{no:8,plaka:'34 MAN 020',marka:'SCANİA'},
-  {no:9,plaka:'34 NIR 113',marka:'SCANİA'},{no:10,plaka:'34 NIR 127',marka:'SCANİA'},
-  {no:11,plaka:'34 KSN 642',marka:'SCANİA'},{no:12,plaka:'34 KSN 710',marka:'SCANİA'},
-  {no:13,plaka:'34 KSN 825',marka:'SCANİA'},{no:14,plaka:'34 MAM 959',marka:'SCANİA'},
-  {no:15,plaka:'34 KZN 393',marka:'SCANİA'},{no:16,plaka:'34 KZN 427',marka:'SCANİA'},
-  {no:17,plaka:'34 KZN 266',marka:'SCANİA'},{no:18,plaka:'34 NEU 388',marka:'SCANİA'},
-  {no:19,plaka:'34 NEU 278',marka:'SCANİA'},{no:20,plaka:'34 NEU 346',marka:'SCANİA'},
-];
-
-function setCCPeriod(period,btn){
-  document.querySelectorAll('#panel-ciftceker .pbtn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');
-  var labels={'2026':'2026 Özet',oca:'Ocak 2026',sub:'Şubat 2026',mar:'Mart 2026 (1–23)'};
-  document.getElementById('cc-period-info').textContent='Dönem: '+(labels[period]||period);
-}
-
-function buildCiftceker(){
-  document.getElementById('cc-arac-list').innerHTML=CIFTCEKER.map(function(c){return'<div style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:10px 12px;border-left:3px solid #f59e0b;display:flex;align-items:center;gap:10px"><div style="font-family:\'IBM Plex Mono\',monospace;font-size:11px;color:var(--muted);width:22px;flex-shrink:0">'+c.no+'</div><div style="flex:1"><div style="font-family:\'IBM Plex Mono\',monospace;font-size:13px;font-weight:700;color:#f59e0b">'+c.plaka+'</div><div style="font-size:10px;color:var(--muted);margin-top:2px">'+c.marka+' · Çiftçeker</div></div><div style="font-size:10px;background:rgba(245,158,11,0.1);color:#fcd34d;padding:2px 7px;border-radius:3px;border:1px solid rgba(245,158,11,0.2)">Veri bekleniyor</div></div>';}).join('');
-}
-
 // ─── BAŞLANGIÇ ────────────────────────────────────────────────────────────
-buildHBars('2026');
-buildCharts('2026');
+buildHBars('haz');
+buildCharts('haz');
 buildTrendChart();
 
-buildCards('2026');
-buildStacked('2026');
-updateKPIs('2026');
+buildCards('haz');
+buildStacked('haz');
+updateKPIs('haz');
 </script>
 </body>
 </html>
