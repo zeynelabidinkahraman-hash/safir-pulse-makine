@@ -324,6 +324,7 @@
       <button class="pbtn" id="tg-btn-mar" onclick="setTeknikPeriod('mar',this)">Mart</button>
       <button class="pbtn" id="tg-btn-nis" onclick="setTeknikPeriod('nis',this)">Nisan</button>
       <button class="pbtn" id="tg-btn-may" onclick="setTeknikPeriod('may',this)">Mayıs</button>
+      <button class="pbtn" id="tg-btn-haz" onclick="setTeknikPeriod('haz',this)">Haziran</button>
       <button class="pbtn" id="tg-btn-ozet" onclick="setTeknikPeriod('ozet',this)">2026 Özet</button>
       <span id="teknik-period-info" style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);background:var(--surface2);padding:5px 12px;border-radius:4px;border:1px solid var(--border)">Ocak 2026</span>
     </div>
@@ -383,6 +384,7 @@
             <option value="mar">Mart 2026</option>
             <option value="nis">Nisan 2026</option>
             <option value="may">Mayıs 2026</option>
+            <option value="haz">Haziran 2026</option>
             <option value="ozet" selected>2026 Özet</option>
           </select>
         </div>
@@ -540,6 +542,7 @@
       <button class="pbtn" id="tbl-btn-mar" onclick="setTabloPeriod('mar',this)">Mart</button>
       <button class="pbtn" id="tbl-btn-nis" onclick="setTabloPeriod('nis',this)">Nisan</button>
       <button class="pbtn" id="tbl-btn-may" onclick="setTabloPeriod('may',this)">Mayıs</button>
+      <button class="pbtn" id="tbl-btn-haz" onclick="setTabloPeriod('haz',this)">Haziran</button>
       <button class="pbtn" id="tbl-btn-ozet" onclick="setTabloPeriod('ozet',this)">2026 Özet</button>
       <div style="margin-left:auto;display:flex;gap:6px">
         <input type="text" class="form-input" id="tablo-filter" placeholder="Filtrele..." style="width:150px" oninput="filterTablo()">
@@ -682,86 +685,86 @@ const INSIGHTS={
 // ─── TEKNİK GİDER VERİSİ ─────────────────────────────────────────────────
 // Mart verisi: şimdilik elle girilmiş (user tarafından güncellenecek)
 const TG_MAKINELER = [
-  {tip:"JCB", model:"HİDROMEK 102 B", kd:"H8", oca_b:74155.67, oca_a:0, sub_b:40946.25, sub_a:0, mar_b:12650.25, mar_a:0, may_b:41519.0, may_a:0, not:"22050 TL lastik işleri"},
-  {tip:"JCB", model:"CATM318", kd:"C46", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"DELİCİ ROK", model:"SANDVİC DX780", kd:"R1", oca_b:87598.07, oca_a:29280, sub_b:2673.75, sub_a:0, mar_b:32544.3, mar_a:0, may_b:355263.39, may_a:0, not:"13598 TL per bakım yapılmadı"},
-  {tip:"DELİCİ ROK", model:"T35-11", kd:"R2", oca_b:177251.3, oca_a:83857, sub_b:31759.4, sub_a:151576, mar_b:33373.69, mar_a:97522, may_b:59524.56, may_a:0, not:""},
-  {tip:"DOZER", model:"CAT 955", kd:"C1", oca_b:5583.42, oca_a:0, sub_b:0, sub_a:0, mar_b:42093.75, mar_a:0, may_b:214998.25, may_a:0, not:""},
-  {tip:"DOZER", model:"CAT 963", kd:"C3", oca_b:13630.77, oca_a:0, sub_b:60017.5, sub_a:0, mar_b:7837.63, mar_a:0, may_b:0, may_a:0, not:""},
-  {tip:"DOZER", model:"CAT 963", kd:"C22", oca_b:822954.7, oca_a:0, sub_b:9753.25, sub_a:0, mar_b:28840.52, mar_a:0, may_b:89806.09, may_a:0, not:""},
-  {tip:"DOZER", model:"CAT 963", kd:"C2", oca_b:230000, oca_a:0, sub_b:90234.75, sub_a:0, mar_b:0, mar_a:0, may_b:24035.0, may_a:21390, not:""},
-  {tip:"EKSKAVATÖR", model:"SANY60C", kd:"SY1", oca_b:7000.5, oca_a:0, sub_b:0, sub_a:0, mar_b:17375, mar_a:0, nis_b:4727.88, nis_a:0.0, may_b:51912.98, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT313GC", kd:"C56", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT313GC", kd:"C55", oca_b:1431.75, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:2078.08, nis_a:0.0, may_b:477.25, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT315GC", kd:"C31", oca_b:86123.91, oca_a:0, sub_b:1692.8, sub_a:0, mar_b:0, mar_a:0, nis_b:23281.75, nis_a:0.0, may_b:1795.8, may_a:45000, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT 320 GC", kd:"C7", oca_b:184, oca_a:0, sub_b:9219.16, sub_a:0, mar_b:5000, mar_a:0, nis_b:44184.71, nis_a:17983.0, may_b:0, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT 320GC", kd:"C8", oca_b:0, oca_a:85123, sub_b:266916.31, sub_a:80772, mar_b:67452.09, mar_a:11844, nis_b:66247.18, nis_a:0.0, may_b:0, may_a:0, not:"65737 TL 1000 saatlik bakım"},
-  {tip:"EKSKAVATÖR", model:"CAT 330 GC", kd:"C9", oca_b:0, oca_a:0, sub_b:38060.4, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:78247.15, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT 330GC", kd:"C10", oca_b:21657.5, oca_a:0, sub_b:71026.3, sub_a:0, mar_b:271308.77, mar_a:0, nis_b:75666.55, nis_a:0.0, may_b:2587.5, may_a:0, not:"175.000 TL kova piston revizyonu"},
-  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C27", oca_b:0, oca_a:118176, sub_b:11897.72, sub_a:0, mar_b:21763.44, mar_a:92000, nis_b:32420.33, nis_a:103327.0, may_b:0, may_a:0, not:"Kova revizyonu"},
-  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C32", oca_b:0, oca_a:0, sub_b:57263.3, sub_a:0, mar_b:253714.27, mar_a:0, nis_b:12468.13, nis_a:0.0, may_b:3916.9, may_a:0, not:"DPF revizyonu yapıldı"},
-  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C33", oca_b:73244.67, oca_a:52907, sub_b:4370, sub_a:0, mar_b:33564.57, mar_a:25133, nis_b:95813.17, nis_a:0.0, may_b:25332.49, may_a:192455, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C34", oca_b:75418.27, oca_a:0, sub_b:2149841.37, sub_a:0, mar_b:9311.32, mar_a:95450, nis_b:79020.32, nis_a:0.0, may_b:0, may_a:0, not:"Kova revizyonu"},
-  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C52", oca_b:37739.58, oca_a:0, sub_b:68937.44, sub_a:0, mar_b:21057.82, mar_a:0, nis_b:33273.49, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C53", oca_b:35822.92, oca_a:0, sub_b:68937.44, sub_a:0, mar_b:12957.51, mar_a:0, nis_b:40686.73, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C49", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C50", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:35543.2, mar_a:0, nis_b:528.05, nis_a:179700.0, may_b:37298.96, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT 336", kd:"C6", oca_b:0, oca_a:0, sub_b:170097.04, sub_a:0, mar_b:13402.5, mar_a:0, nis_b:152136.96, nis_a:49687.0, may_b:0, may_a:0, not:"Hidrolik tank temizliği ve periyodik bakım"},
-  {tip:"EKSKAVATÖR", model:"CAT 336", kd:"C11", oca_b:39010.6, oca_a:0, sub_b:46969.45, sub_a:0, mar_b:6243.75, mar_a:0, nis_b:59602.8, nis_a:0.0, may_b:128535.5, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT336", kd:"C29", oca_b:358361.49, oca_a:0, sub_b:10233.06, sub_a:43600, mar_b:21507.72, mar_a:78918, nis_b:76257.65, nis_a:0.0, may_b:397.9, may_a:0, not:"Kırıcı tamiri"},
-  {tip:"EKSKAVATÖR", model:"CAT336", kd:"C30", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:3967.5, mar_a:0, nis_b:28890.3, nis_a:0.0, may_b:16440.26, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT336", kd:"C20", oca_b:41188.43, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:11229.17, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT336", kd:"C21", oca_b:35630.08, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:10000.0, nis_a:0.0, may_b:19257.82, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT336", kd:"C35", oca_b:43789.92, oca_a:0, sub_b:4239.59, sub_a:0, mar_b:7292.38, mar_a:0, nis_b:32905.68, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C14", oca_b:52704.63, oca_a:126942, sub_b:15164.3, sub_a:0, mar_b:102791.44, mar_a:34582, nis_b:157799.27, nis_a:0.0, may_b:73944.53, may_a:0, not:"60.000 TL hi pompası ve enjektörler revizyonu"},
-  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C16", oca_b:54117.65, oca_a:0, sub_b:42964, sub_a:0, mar_b:12650, mar_a:0, nis_b:72524.77, nis_a:28462.0, may_b:0, may_a:0, not:"Hidrolik tank temizliği"},
-  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C24", oca_b:76681.08, oca_a:0, sub_b:1829946.91, sub_a:0, mar_b:0, mar_a:42268.94, nis_b:114883.54, nis_a:0.0, may_b:886.25, may_a:137154, not:"Tırnaklar değişti"},
-  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C12", oca_b:32658.75, oca_a:0, sub_b:0, sub_a:0, mar_b:21507.72, mar_a:78918, nis_b:59862.0, nis_a:28462.0, may_b:16100.0, may_a:0, not:"Kırıcı tamiri"},
-  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C15", oca_b:32908.8, oca_a:0, sub_b:0, sub_a:0, mar_b:2462.15, mar_a:0, nis_b:8076.08, nis_a:71254.0, may_b:124339.6, may_a:93214, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C17", oca_b:1431.75, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:39596.8, nis_a:0.0, may_b:2254.28, may_a:44973, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C18", oca_b:49130.11, oca_a:20165, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:7168.53, nis_a:20700.0, may_b:0, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C25", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:37706.37, mar_a:3000, nis_b:0.0, nis_a:0.0, may_b:2254.22, may_a:60315, not:"Per bakım yapıldı"},
-  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C28", oca_b:33666.82, oca_a:8909, sub_b:74744.37, sub_a:0, mar_b:15419.2, mar_a:0, nis_b:51750.18, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C36", oca_b:2513.9, oca_a:0, sub_b:64322.1, sub_a:0, mar_b:5127.39, mar_a:0, nis_b:7479.6, nis_a:0.0, may_b:2185.0, may_a:0, not:"Periyodik bakım ve DEF arızası"},
-  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C37", oca_b:1656, oca_a:0, sub_b:122336.69, sub_a:0, mar_b:13362.24, mar_a:54045, nis_b:741.75, nis_a:0.0, may_b:5060.54, may_a:67984, not:"DPF arızası"},
-  {tip:"EKSKAVATÖR", model:"CAT350", kd:"C41", oca_b:8034.77, oca_a:80661, sub_b:0, sub_a:0, mar_b:0, mar_a:197589.54, nis_b:170848.46, nis_a:77000.0, may_b:7620.05, may_a:0, not:"Kırıcı tamiri"},
-  {tip:"EKSKAVATÖR", model:"CAT350", kd:"C42", oca_b:30082.85, oca_a:0, sub_b:0, sub_a:33470.43, mar_b:10181.91, mar_a:29216, nis_b:150495.43, nis_a:12271.0, may_b:0, may_a:0, not:"Adaptör takıldı"},
-  {tip:"EKSKAVATÖR", model:"CAT350", kd:"C43", oca_b:195450.77, oca_a:656230, sub_b:4130.42, sub_a:57761, mar_b:8335.76, mar_a:52300, nis_b:91998.36, nis_a:48782.0, may_b:472.26, may_a:29612, not:""},
-  {tip:"EKSKAVATÖR", model:"CAT350", kd:"C38", oca_b:102956.9, oca_a:219062, sub_b:5400.42, sub_a:55230, mar_b:52012.79, mar_a:0, nis_b:171068.25, nis_a:0.0, may_b:0, may_a:0, not:"Hidrolik tank ve filtre temizlendi"},
-  {tip:"EKSKAVATÖR", model:"CAT352", kd:"C40", oca_b:0, oca_a:0, sub_b:185286.29, sub_a:585493, mar_b:2070, mar_a:0, nis_b:173861.78, nis_a:0.0, may_b:6181.25, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"HİTACHİ ZX490", kd:"ZX4", oca_b:85129.86, oca_a:19492, sub_b:31672.5, sub_a:28427, mar_b:69764.27, mar_a:64000, nis_b:21000.9, nis_a:102539.0, may_b:24298.59, may_a:107983, not:"66.000 TL per bakım, tırnaklar değişti"},
-  {tip:"EKSKAVATÖR", model:"HİTACHİ ZX490", kd:"ZX5", oca_b:0, oca_a:0, sub_b:0.5, sub_a:19492, mar_b:75025.08, mar_a:0, nis_b:66166.24, nis_a:248000.0, may_b:93611.62, may_a:10465, not:"65.525 TL per bakım"},
-  {tip:"EKSKAVATÖR", model:"HİDROMEK 220", kd:"H1", oca_b:522678.03, oca_a:0, sub_b:361002.51, sub_a:0, mar_b:76550.94, mar_a:0, nis_b:15612.14, nis_a:0.0, may_b:34950.95, may_a:0, not:""},
-  {tip:"EKSKAVATÖR", model:"HİDROMEK 410", kd:"H9", oca_b:1000, oca_a:0, sub_b:41453.8, sub_a:0, mar_b:9200, mar_a:0, nis_b:14934.55, nis_a:28462.0, may_b:15571.5, may_a:597917, not:""},
-  {tip:"EKSKAVATÖR", model:"HİDROMEK 500 LC-3", kd:"H11", oca_b:0, oca_a:0, sub_b:25068.65, sub_a:0, mar_b:15299.5, mar_a:0, nis_b:421676.25, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"GREYDER", model:"CAT140GC", kd:"C39", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:65883.68, nis_a:0.0, may_b:6000.0, may_a:0, not:""},
-  {tip:"LODER", model:"CAT950GC", kd:"C13", oca_b:0, oca_a:0, sub_b:16675, sub_a:0, mar_b:427792.51, mar_a:0, nis_b:38293.28, nis_a:0.0, may_b:0, may_a:25012.5, not:"410.000 TL enjektör ve pompa değişti"},
-  {tip:"LODER", model:"CAT950GC", kd:"C26", oca_b:479.17, oca_a:0, sub_b:169625.24, sub_a:72818, mar_b:240867.76, mar_a:0, nis_b:75759.0, nis_a:0.0, may_b:0, may_a:0, not:"239.000 TL DPF temizliği"},
-  {tip:"LODER", model:"CAT966GC", kd:"C48", oca_b:165590.7, oca_a:0, sub_b:1961.9, sub_a:0, mar_b:124651.99, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:172819.99, may_a:0, not:"Per bakım"},
-  {tip:"LODER", model:"CAT950", kd:"C45", oca_b:1197.92, oca_a:0, sub_b:57.5, sub_a:0, mar_b:15078.57, mar_a:0, nis_b:144173.47, nis_a:0.0, may_b:89666.55, may_a:0, not:""},
-  {tip:"LODER", model:"CAT950", kd:"C47", oca_b:169122.45, oca_a:0, sub_b:0, sub_a:0, mar_b:9500, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:97119.8, may_a:192800, not:""},
-  {tip:"LODER", model:"CAT966", kd:"C54", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"LODER", model:"CAT432", kd:"C51", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:3651.25, may_a:0, not:""},
-  {tip:"MAKAS", model:"CAT352", kd:"C19", oca_b:0, oca_a:7245, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:4000.0, nis_a:0.0, may_b:0, may_a:0, not:""},
-  {tip:"MAKAS", model:"DOOSAN5100", kd:"D1", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, may_b:0, may_a:0, not:""},
-  {tip:"KONVEYOR", model:"KLEMAN KONVEYOR", kd:"B1", oca_b:5031.24, oca_a:0, sub_b:64557.48, sub_a:0, mar_b:12142.93, mar_a:0, may_b:0, may_a:0, not:""},
-  {tip:"ELEK", model:"METSO ST4.89 ELEK", kd:"E1", oca_b:9085.5, oca_a:51750, sub_b:328.04, sub_a:0, mar_b:24150.59, mar_a:0, may_b:2061.33, may_a:0, not:""},
-  {tip:"ELEK", model:"EVO KLEMAN ELEK MSC953", kd:"E2", oca_b:56762.25, oca_a:0, sub_b:0, sub_a:0, mar_b:1046.5, mar_a:0, may_b:64061.67, may_a:74407, not:""},
-  {tip:"ELEK", model:"MC CLOSKY ELEK", kd:"E3", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:11787.5, mar_a:0, may_b:0, may_a:53245, not:""},
-  {tip:"ELEK", model:"KLEMAN ELEK MSC953", kd:"E4", oca_b:59133.77, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:55717.5, may_b:0.15, may_a:90069, not:"Elek değişti"},
-  {tip:"ELEK", model:"MSC953İ EVO KLEMAN ELEK", kd:"E5", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, may_b:0, may_a:0, not:""},
-  {tip:"KONKASÖR", model:"METSO KONKASÖR LT1213", kd:"K1", oca_b:20742.3, oca_a:0, sub_b:5284.05, sub_a:0, mar_b:636693.02, mar_a:0, may_b:965.25, may_a:0, not:"603.750 TL genel şase ve titreşim motor revizyonu"},
-  {tip:"KONKASÖR", model:"METSO KONKASÖR LT1213", kd:"K2", oca_b:173858.02, oca_a:74750, sub_b:15317.14, sub_a:0, mar_b:0, mar_a:113850, may_b:869.8, may_a:0, not:"Konveyor bant takıldı"},
-  {tip:"KONKASÖR", model:"METSO KONKASÖR LT1213S", kd:"K3", oca_b:94601.29, oca_a:0, sub_b:15436.66, sub_a:0, mar_b:14602.71, mar_a:15410, may_b:2996.06, may_a:0, not:"Elek ve nakliye bedeli"},
-  {tip:"KONKASÖR", model:"METSO KONKASÖR ÇENELİ", kd:"K4", oca_b:38008, oca_a:0, sub_b:274500.9, sub_a:0, mar_b:2070, mar_a:0, may_b:20532.0, may_a:0, not:""},
-  {tip:"KONKASÖR", model:"KLEMAN KONKASÖR MR130İ PRO", kd:"K5", oca_b:8767.2, oca_a:91870, sub_b:27577, sub_a:0, mar_b:0, mar_a:0, may_b:18864.06, may_a:597150, not:""},
-  {tip:"KONKASÖR", model:"MSS802İ EVO KLEMAN SKAYPER", kd:"K6", oca_b:1897.5, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, may_b:4312.5, may_a:0, not:""},
-  {tip:"KONKASÖR", model:"KLEMEN KONKRASÖR MR130İ EVO2", kd:"K7", oca_b:0, oca_a:0, sub_b:40825, sub_a:0, mar_b:140050.88, mar_a:0, may_b:260541.1, may_a:0, not:""},
-  {tip:"KONKASÖR", model:"KLEEMAN MC110İ EVO2 ÇENELİ", kd:"K8", oca_b:106907.92, oca_a:0, sub_b:46548.45, sub_a:0, mar_b:16525, mar_a:0, may_b:16293.05, may_a:0, not:""},
-  {tip:"KONKASÖR", model:"KLEMEN KONKRASÖR MR130İ EVO2", kd:"K9", oca_b:51250, oca_a:0, sub_b:0, sub_a:348148.18, mar_b:0, mar_a:0, may_b:197.83, may_a:0, not:""},
-  {tip:"SİLİNDİR", model:"HAMM 3411", kd:"HM1", oca_b:4145, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, may_b:0, may_a:0, not:""},
-  {tip:"SİLİNDİR", model:"HAMMHC110İ", kd:"HM2", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, may_b:0, may_a:0, not:""},
-  {tip:"SİLİNDİR", model:"HAMMHC110İ", kd:"HM3", oca_b:20612.84, oca_a:0, sub_b:12027.6, sub_a:0, mar_b:0, mar_a:0, may_b:0, may_a:0, not:""},
+  {tip:"JCB", model:"HİDROMEK 102 B", kd:"H8", oca_b:74155.67, oca_a:0, sub_b:40946.25, sub_a:0, mar_b:12650.25, mar_a:0, may_b:41519.0, may_a:0, haz_b:58300.84, haz_a:0, not:"22050 TL lastik işleri"},
+  {tip:"JCB", model:"CATM318", kd:"C46", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:0, may_a:0, haz_b:575, haz_a:0, not:""},
+  {tip:"DELİCİ ROK", model:"SANDVİC DX780", kd:"R1", oca_b:87598.07, oca_a:29280, sub_b:2673.75, sub_a:0, mar_b:32544.3, mar_a:0, may_b:355263.39, may_a:0, haz_b:144097.35, haz_a:0, not:"13598 TL per bakım yapılmadı"},
+  {tip:"DELİCİ ROK", model:"T35-11", kd:"R2", oca_b:177251.3, oca_a:83857, sub_b:31759.4, sub_a:151576, mar_b:33373.69, mar_a:97522, may_b:59524.56, may_a:0, haz_b:58738.5, haz_a:0, not:""},
+  {tip:"DOZER", model:"CAT 955", kd:"C1", oca_b:5583.42, oca_a:0, sub_b:0, sub_a:0, mar_b:42093.75, mar_a:0, may_b:214998.25, may_a:0, haz_b:29592, haz_a:0, not:""},
+  {tip:"DOZER", model:"CAT 963", kd:"C3", oca_b:13630.77, oca_a:0, sub_b:60017.5, sub_a:0, mar_b:7837.63, mar_a:0, may_b:0, may_a:0, haz_b:5366.67, haz_a:0, not:""},
+  {tip:"DOZER", model:"CAT 963", kd:"C22", oca_b:822954.7, oca_a:0, sub_b:9753.25, sub_a:0, mar_b:28840.52, mar_a:0, may_b:89806.09, may_a:0, haz_b:176649.05, haz_a:0, not:""},
+  {tip:"DOZER", model:"CAT 963", kd:"C2", oca_b:230000, oca_a:0, sub_b:90234.75, sub_a:0, mar_b:0, mar_a:0, may_b:24035.0, may_a:21390, haz_b:3277.5, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"SANY60C", kd:"SY1", oca_b:7000.5, oca_a:0, sub_b:0, sub_a:0, mar_b:17375, mar_a:0, nis_b:4727.88, nis_a:0.0, may_b:51912.98, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT313GC", kd:"C56", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT313GC", kd:"C55", oca_b:1431.75, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:2078.08, nis_a:0.0, may_b:477.25, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT315GC", kd:"C31", oca_b:86123.91, oca_a:0, sub_b:1692.8, sub_a:0, mar_b:0, mar_a:0, nis_b:23281.75, nis_a:0.0, may_b:1795.8, may_a:45000, haz_b:0, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT 320 GC", kd:"C7", oca_b:184, oca_a:0, sub_b:9219.16, sub_a:0, mar_b:5000, mar_a:0, nis_b:44184.71, nis_a:17983.0, may_b:0, may_a:0, haz_b:69306.38, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT 320GC", kd:"C8", oca_b:0, oca_a:85123, sub_b:266916.31, sub_a:80772, mar_b:67452.09, mar_a:11844, nis_b:66247.18, nis_a:0.0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:"65737 TL 1000 saatlik bakım"},
+  {tip:"EKSKAVATÖR", model:"CAT 330 GC", kd:"C9", oca_b:0, oca_a:0, sub_b:38060.4, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:78247.15, may_a:0, haz_b:4728.56, haz_a:38151, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT 330GC", kd:"C10", oca_b:21657.5, oca_a:0, sub_b:71026.3, sub_a:0, mar_b:271308.77, mar_a:0, nis_b:75666.55, nis_a:0.0, may_b:2587.5, may_a:0, haz_b:12737.05, haz_a:34283, not:"175.000 TL kova piston revizyonu"},
+  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C27", oca_b:0, oca_a:118176, sub_b:11897.72, sub_a:0, mar_b:21763.44, mar_a:92000, nis_b:32420.33, nis_a:103327.0, may_b:0, may_a:0, haz_b:165748.52, haz_a:106653, not:"Kova revizyonu"},
+  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C32", oca_b:0, oca_a:0, sub_b:57263.3, sub_a:0, mar_b:253714.27, mar_a:0, nis_b:12468.13, nis_a:0.0, may_b:3916.9, may_a:0, haz_b:318264.35, haz_a:48553, not:"DPF revizyonu yapıldı"},
+  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C33", oca_b:73244.67, oca_a:52907, sub_b:4370, sub_a:0, mar_b:33564.57, mar_a:25133, nis_b:95813.17, nis_a:0.0, may_b:25332.49, may_a:192455, haz_b:178420.92, haz_a:10824, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C34", oca_b:75418.27, oca_a:0, sub_b:2149841.37, sub_a:0, mar_b:9311.32, mar_a:95450, nis_b:79020.32, nis_a:0.0, may_b:0, may_a:0, haz_b:11595.85, haz_a:0, not:"Kova revizyonu"},
+  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C52", oca_b:37739.58, oca_a:0, sub_b:68937.44, sub_a:0, mar_b:21057.82, mar_a:0, nis_b:33273.49, nis_a:0.0, may_b:0, may_a:0, haz_b:82698.84, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C53", oca_b:35822.92, oca_a:0, sub_b:68937.44, sub_a:0, mar_b:12957.51, mar_a:0, nis_b:40686.73, nis_a:0.0, may_b:0, may_a:0, haz_b:7858.35, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C49", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:0, may_a:0, haz_b:38437.6, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT330GC", kd:"C50", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:35543.2, mar_a:0, nis_b:528.05, nis_a:179700.0, may_b:37298.96, may_a:0, haz_b:82091.24, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT 336", kd:"C6", oca_b:0, oca_a:0, sub_b:170097.04, sub_a:0, mar_b:13402.5, mar_a:0, nis_b:152136.96, nis_a:49687.0, may_b:0, may_a:0, haz_b:67806.87, haz_a:0, not:"Hidrolik tank temizliği ve periyodik bakım"},
+  {tip:"EKSKAVATÖR", model:"CAT 336", kd:"C11", oca_b:39010.6, oca_a:0, sub_b:46969.45, sub_a:0, mar_b:6243.75, mar_a:0, nis_b:59602.8, nis_a:0.0, may_b:128535.5, may_a:0, haz_b:0, haz_a:42103.81, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT336", kd:"C29", oca_b:358361.49, oca_a:0, sub_b:10233.06, sub_a:43600, mar_b:21507.72, mar_a:78918, nis_b:76257.65, nis_a:0.0, may_b:397.9, may_a:0, haz_b:52714.13, haz_a:41103, not:"Kırıcı tamiri"},
+  {tip:"EKSKAVATÖR", model:"CAT336", kd:"C30", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:3967.5, mar_a:0, nis_b:28890.3, nis_a:0.0, may_b:16440.26, may_a:0, haz_b:4544.69, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT336", kd:"C20", oca_b:41188.43, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:11229.17, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT336", kd:"C21", oca_b:35630.08, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:10000.0, nis_a:0.0, may_b:19257.82, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT336", kd:"C35", oca_b:43789.92, oca_a:0, sub_b:4239.59, sub_a:0, mar_b:7292.38, mar_a:0, nis_b:32905.68, nis_a:0.0, may_b:0, may_a:0, haz_b:1916.67, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C14", oca_b:52704.63, oca_a:126942, sub_b:15164.3, sub_a:0, mar_b:102791.44, mar_a:34582, nis_b:157799.27, nis_a:0.0, may_b:73944.53, may_a:0, haz_b:38594.93, haz_a:12990, not:"60.000 TL hi pompası ve enjektörler revizyonu"},
+  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C16", oca_b:54117.65, oca_a:0, sub_b:42964, sub_a:0, mar_b:12650, mar_a:0, nis_b:72524.77, nis_a:28462.0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:"Hidrolik tank temizliği"},
+  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C24", oca_b:76681.08, oca_a:0, sub_b:1829946.91, sub_a:0, mar_b:0, mar_a:42268.94, nis_b:114883.54, nis_a:0.0, may_b:886.25, may_a:137154, haz_b:160928.96, haz_a:0, not:"Tırnaklar değişti"},
+  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C12", oca_b:32658.75, oca_a:0, sub_b:0, sub_a:0, mar_b:21507.72, mar_a:78918, nis_b:59862.0, nis_a:28462.0, may_b:16100.0, may_a:0, haz_b:0, haz_a:94857.75, not:"Kırıcı tamiri"},
+  {tip:"EKSKAVATÖR", model:"CAT336GC", kd:"C15", oca_b:32908.8, oca_a:0, sub_b:0, sub_a:0, mar_b:2462.15, mar_a:0, nis_b:8076.08, nis_a:71254.0, may_b:124339.6, may_a:93214, haz_b:0, haz_a:24402.45, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C17", oca_b:1431.75, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:39596.8, nis_a:0.0, may_b:2254.28, may_a:44973, haz_b:59781.64, haz_a:128127, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C18", oca_b:49130.11, oca_a:20165, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:7168.53, nis_a:20700.0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C25", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:37706.37, mar_a:3000, nis_b:0.0, nis_a:0.0, may_b:2254.22, may_a:60315, haz_b:0, haz_a:43070.31, not:"Per bakım yapıldı"},
+  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C28", oca_b:33666.82, oca_a:8909, sub_b:74744.37, sub_a:0, mar_b:15419.2, mar_a:0, nis_b:51750.18, nis_a:0.0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C36", oca_b:2513.9, oca_a:0, sub_b:64322.1, sub_a:0, mar_b:5127.39, mar_a:0, nis_b:7479.6, nis_a:0.0, may_b:2185.0, may_a:0, haz_b:28175, haz_a:0, not:"Periyodik bakım ve DEF arızası"},
+  {tip:"EKSKAVATÖR", model:"CAT340", kd:"C37", oca_b:1656, oca_a:0, sub_b:122336.69, sub_a:0, mar_b:13362.24, mar_a:54045, nis_b:741.75, nis_a:0.0, may_b:5060.54, may_a:67984, haz_b:45600.95, haz_a:0, not:"DPF arızası"},
+  {tip:"EKSKAVATÖR", model:"CAT350", kd:"C41", oca_b:8034.77, oca_a:80661, sub_b:0, sub_a:0, mar_b:0, mar_a:197589.54, nis_b:170848.46, nis_a:77000.0, may_b:7620.05, may_a:0, haz_b:59232.16, haz_a:0, not:"Kırıcı tamiri"},
+  {tip:"EKSKAVATÖR", model:"CAT350", kd:"C42", oca_b:30082.85, oca_a:0, sub_b:0, sub_a:33470.43, mar_b:10181.91, mar_a:29216, nis_b:150495.43, nis_a:12271.0, may_b:0, may_a:0, haz_b:51326.54, haz_a:20190, not:"Adaptör takıldı"},
+  {tip:"EKSKAVATÖR", model:"CAT350", kd:"C43", oca_b:195450.77, oca_a:656230, sub_b:4130.42, sub_a:57761, mar_b:8335.76, mar_a:52300, nis_b:91998.36, nis_a:48782.0, may_b:472.26, may_a:29612, haz_b:101280.4, haz_a:107277, not:""},
+  {tip:"EKSKAVATÖR", model:"CAT350", kd:"C38", oca_b:102956.9, oca_a:219062, sub_b:5400.42, sub_a:55230, mar_b:52012.79, mar_a:0, nis_b:171068.25, nis_a:0.0, may_b:0, may_a:0, haz_b:115675.74, haz_a:54187, not:"Hidrolik tank ve filtre temizlendi"},
+  {tip:"EKSKAVATÖR", model:"CAT352", kd:"C40", oca_b:0, oca_a:0, sub_b:185286.29, sub_a:585493, mar_b:2070, mar_a:0, nis_b:173861.78, nis_a:0.0, may_b:6181.25, may_a:0, haz_b:256796.81, haz_a:49687, not:""},
+  {tip:"EKSKAVATÖR", model:"HİTACHİ ZX490", kd:"ZX4", oca_b:85129.86, oca_a:19492, sub_b:31672.5, sub_a:28427, mar_b:69764.27, mar_a:64000, nis_b:21000.9, nis_a:102539.0, may_b:24298.59, may_a:107983, haz_b:79045, haz_a:0, not:"66.000 TL per bakım, tırnaklar değişti"},
+  {tip:"EKSKAVATÖR", model:"HİTACHİ ZX490", kd:"ZX5", oca_b:0, oca_a:0, sub_b:0.5, sub_a:19492, mar_b:75025.08, mar_a:0, nis_b:66166.24, nis_a:248000.0, may_b:93611.62, may_a:10465, haz_b:67447.5, haz_a:0, not:"65.525 TL per bakım"},
+  {tip:"EKSKAVATÖR", model:"HİDROMEK 220", kd:"H1", oca_b:522678.03, oca_a:0, sub_b:361002.51, sub_a:0, mar_b:76550.94, mar_a:0, nis_b:15612.14, nis_a:0.0, may_b:34950.95, may_a:0, haz_b:35679.5, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"HİDROMEK 410", kd:"H9", oca_b:1000, oca_a:0, sub_b:41453.8, sub_a:0, mar_b:9200, mar_a:0, nis_b:14934.55, nis_a:28462.0, may_b:15571.5, may_a:597917, haz_b:0, haz_a:0, not:""},
+  {tip:"EKSKAVATÖR", model:"HİDROMEK 500 LC-3", kd:"H11", oca_b:0, oca_a:0, sub_b:25068.65, sub_a:0, mar_b:15299.5, mar_a:0, nis_b:421676.25, nis_a:0.0, may_b:0, may_a:0, haz_b:431773.83, haz_a:0, not:""},
+  {tip:"GREYDER", model:"CAT140GC", kd:"C39", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:65883.68, nis_a:0.0, may_b:6000.0, may_a:0, haz_b:216200, haz_a:0, not:""},
+  {tip:"LODER", model:"CAT950GC", kd:"C13", oca_b:0, oca_a:0, sub_b:16675, sub_a:0, mar_b:427792.51, mar_a:0, nis_b:38293.28, nis_a:0.0, may_b:0, may_a:25012.5, haz_b:184783.44, haz_a:0, not:"410.000 TL enjektör ve pompa değişti"},
+  {tip:"LODER", model:"CAT950GC", kd:"C26", oca_b:479.17, oca_a:0, sub_b:169625.24, sub_a:72818, mar_b:240867.76, mar_a:0, nis_b:75759.0, nis_a:0.0, may_b:0, may_a:0, haz_b:3476.45, haz_a:0, not:"239.000 TL DPF temizliği"},
+  {tip:"LODER", model:"CAT966GC", kd:"C48", oca_b:165590.7, oca_a:0, sub_b:1961.9, sub_a:0, mar_b:124651.99, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:172819.99, may_a:0, haz_b:118621.15, haz_a:0, not:"Per bakım"},
+  {tip:"LODER", model:"CAT950", kd:"C45", oca_b:1197.92, oca_a:0, sub_b:57.5, sub_a:0, mar_b:15078.57, mar_a:0, nis_b:144173.47, nis_a:0.0, may_b:89666.55, may_a:0, haz_b:5000, haz_a:0, not:""},
+  {tip:"LODER", model:"CAT950", kd:"C47", oca_b:169122.45, oca_a:0, sub_b:0, sub_a:0, mar_b:9500, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:97119.8, may_a:192800, haz_b:89875, haz_a:0, not:""},
+  {tip:"LODER", model:"CAT966", kd:"C54", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"LODER", model:"CAT432", kd:"C51", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:0.0, nis_a:0.0, may_b:3651.25, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"MAKAS", model:"CAT352", kd:"C19", oca_b:0, oca_a:7245, sub_b:0, sub_a:0, mar_b:0, mar_a:0, nis_b:4000.0, nis_a:0.0, may_b:0, may_a:0, haz_b:233695.83, haz_a:0, not:""},
+  {tip:"MAKAS", model:"DOOSAN5100", kd:"D1", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"KONVEYOR", model:"KLEMAN KONVEYOR", kd:"B1", oca_b:5031.24, oca_a:0, sub_b:64557.48, sub_a:0, mar_b:12142.93, mar_a:0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"ELEK", model:"METSO ST4.89 ELEK", kd:"E1", oca_b:9085.5, oca_a:51750, sub_b:328.04, sub_a:0, mar_b:24150.59, mar_a:0, may_b:2061.33, may_a:0, haz_b:17326.67, haz_a:0, not:""},
+  {tip:"ELEK", model:"EVO KLEMAN ELEK MSC953", kd:"E2", oca_b:56762.25, oca_a:0, sub_b:0, sub_a:0, mar_b:1046.5, mar_a:0, may_b:64061.67, may_a:74407, haz_b:1177.6, haz_a:0, not:""},
+  {tip:"ELEK", model:"MC CLOSKY ELEK", kd:"E3", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:11787.5, mar_a:0, may_b:0, may_a:53245, haz_b:0, haz_a:0, not:""},
+  {tip:"ELEK", model:"KLEMAN ELEK MSC953", kd:"E4", oca_b:59133.77, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:55717.5, may_b:0.15, may_a:90069, haz_b:3078.07, haz_a:0, not:"Elek değişti"},
+  {tip:"ELEK", model:"MSC953İ EVO KLEMAN ELEK", kd:"E5", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"KONKASÖR", model:"METSO KONKASÖR LT1213", kd:"K1", oca_b:20742.3, oca_a:0, sub_b:5284.05, sub_a:0, mar_b:636693.02, mar_a:0, may_b:965.25, may_a:0, haz_b:121054.65, haz_a:113662, not:"603.750 TL genel şase ve titreşim motor revizyonu"},
+  {tip:"KONKASÖR", model:"METSO KONKASÖR LT1213", kd:"K2", oca_b:173858.02, oca_a:74750, sub_b:15317.14, sub_a:0, mar_b:0, mar_a:113850, may_b:869.8, may_a:0, haz_b:36008.15, haz_a:23990, not:"Konveyor bant takıldı"},
+  {tip:"KONKASÖR", model:"METSO KONKASÖR LT1213S", kd:"K3", oca_b:94601.29, oca_a:0, sub_b:15436.66, sub_a:0, mar_b:14602.71, mar_a:15410, may_b:2996.06, may_a:0, haz_b:35532.18, haz_a:0, not:"Elek ve nakliye bedeli"},
+  {tip:"KONKASÖR", model:"METSO KONKASÖR ÇENELİ", kd:"K4", oca_b:38008, oca_a:0, sub_b:274500.9, sub_a:0, mar_b:2070, mar_a:0, may_b:20532.0, may_a:0, haz_b:20987.5, haz_a:0, not:""},
+  {tip:"KONKASÖR", model:"KLEMAN KONKASÖR MR130İ PRO", kd:"K5", oca_b:8767.2, oca_a:91870, sub_b:27577, sub_a:0, mar_b:0, mar_a:0, may_b:18864.06, may_a:597150, haz_b:222741.85, haz_a:685946, not:""},
+  {tip:"KONKASÖR", model:"MSS802İ EVO KLEMAN SKAYPER", kd:"K6", oca_b:1897.5, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, may_b:4312.5, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"KONKASÖR", model:"KLEMEN KONKRASÖR MR130İ EVO2", kd:"K7", oca_b:0, oca_a:0, sub_b:40825, sub_a:0, mar_b:140050.88, mar_a:0, may_b:260541.1, may_a:0, haz_b:43677.63, haz_a:0, not:""},
+  {tip:"KONKASÖR", model:"KLEEMAN MC110İ EVO2 ÇENELİ", kd:"K8", oca_b:106907.92, oca_a:0, sub_b:46548.45, sub_a:0, mar_b:16525, mar_a:0, may_b:16293.05, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"KONKASÖR", model:"KLEMEN KONKRASÖR MR130İ EVO2", kd:"K9", oca_b:51250, oca_a:0, sub_b:0, sub_a:348148.18, mar_b:0, mar_a:0, may_b:197.83, may_a:0, haz_b:181857.36, haz_a:0, not:""},
+  {tip:"SİLİNDİR", model:"HAMM 3411", kd:"HM1", oca_b:4145, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"SİLİNDİR", model:"HAMMHC110İ", kd:"HM2", oca_b:0, oca_a:0, sub_b:0, sub_a:0, mar_b:0, mar_a:0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:""},
+  {tip:"SİLİNDİR", model:"HAMMHC110İ", kd:"HM3", oca_b:20612.84, oca_a:0, sub_b:12027.6, sub_a:0, mar_b:0, mar_a:0, may_b:0, may_a:0, haz_b:0, haz_a:0, not:""},
 ];
 
 // Mart verileri için ek depolama (manuel+CSV girişleri)
@@ -780,7 +783,8 @@ function getTGValue(m, period) {
   if(period==='mar')  return (m.mar_b||0)+(m.mar_a||0);
   if(period==='nis')  return (m.nis_b||0)+(m.nis_a||0);
   if(period==='may')  return (m.may_b||0)+(m.may_a||0);
-  if(period==='ozet'||period==='2026') return (m.oca_b||0)+(m.oca_a||0)+(m.sub_b||0)+(m.sub_a||0)+(m.mar_b||0)+(m.mar_a||0)+(m.nis_b||0)+(m.nis_a||0)+(m.may_b||0)+(m.may_a||0);
+  if(period==='haz')  return (m.haz_b||0)+(m.haz_a||0);
+  if(period==='ozet'||period==='2026') return (m.oca_b||0)+(m.oca_a||0)+(m.sub_b||0)+(m.sub_a||0)+(m.mar_b||0)+(m.mar_a||0)+(m.nis_b||0)+(m.nis_a||0)+(m.may_b||0)+(m.may_a||0)+(m.haz_b||0)+(m.haz_a||0);
   return 0;
 }
 function getTGBakim(m, period) {
@@ -789,7 +793,8 @@ function getTGBakim(m, period) {
   if(period==='mar')  return m.mar_b||0;
   if(period==='nis')  return m.nis_b||0;
   if(period==='may')  return m.may_b||0;
-  if(period==='ozet'||period==='2026') return (m.oca_b||0)+(m.sub_b||0)+(m.mar_b||0)+(m.nis_b||0)+(m.may_b||0);
+  if(period==='haz')  return m.haz_b||0;
+  if(period==='ozet'||period==='2026') return (m.oca_b||0)+(m.sub_b||0)+(m.mar_b||0)+(m.nis_b||0)+(m.may_b||0)+(m.haz_b||0);
   return 0;
 }
 function getTGAtac(m, period) {
@@ -798,7 +803,8 @@ function getTGAtac(m, period) {
   if(period==='mar')  return m.mar_a||0;
   if(period==='nis')  return m.nis_a||0;
   if(period==='may')  return m.may_a||0;
-  if(period==='ozet'||period==='2026') return (m.oca_a||0)+(m.sub_a||0)+(m.mar_a||0)+(m.nis_a||0)+(m.may_a||0);
+  if(period==='haz')  return m.haz_a||0;
+  if(period==='ozet'||period==='2026') return (m.oca_a||0)+(m.sub_a||0)+(m.mar_a||0)+(m.nis_a||0)+(m.may_a||0)+(m.haz_a||0);
   return 0;
 }
 
@@ -1072,7 +1078,7 @@ function renderTeknikGider(period){
   var ortMakine=aktif>0?Math.round(toplam/aktif):0;
 
   document.getElementById('tg-kpi-top').textContent='₺'+(toplam/1000000).toFixed(2)+'M';
-  document.getElementById('tg-kpi-top-sub').textContent=period==='ozet'?'Oca+Şub+Mar+Nis+May':period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':period==='mar'?'Mart 2026':period==='nis'?'Nisan 2026':'Mayıs 2026';
+  document.getElementById('tg-kpi-top-sub').textContent=period==='ozet'?'Oca+Şub+Mar+Nis+May+Haz':period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':period==='mar'?'Mart 2026':period==='nis'?'Nisan 2026':period==='may'?'Mayıs 2026':'Haziran 2026';
   document.getElementById('tg-kpi-aktif').textContent=aktif;
   document.getElementById('tg-kpi-aktif-sub').textContent=aktif+' aktif · '+pasif+' sıfır gider';
   document.getElementById('tg-kpi-pahal').textContent=enPahal?(enPahal.kd||enPahal.model.substring(0,8)):'—';
@@ -1082,7 +1088,7 @@ function renderTeknikGider(period){
   document.getElementById('tg-kpi-ort').textContent=formatTLK(ortMakine);
 
   var kasko=data.filter(function(m){return m.not&&m.not.toLowerCase().includes('kasko');});
-  var insightText='<strong>'+(period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':period==='mar'?'Mart 2026':period==='nis'?'Nisan 2026':'2026 Özet (Oca–Nis)')+'</strong> · Toplam: <strong>'+formatTL(toplam)+'</strong> · '+aktif+' makine gider oluşturdu · Ekskavatörler toplamın <strong>%'+ekskPay+'</strong>\'ini oluşturuyor · Makine başına ort: <strong>'+formatTL(ortMakine)+'</strong>';
+  var insightText='<strong>'+(period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':period==='mar'?'Mart 2026':period==='nis'?'Nisan 2026':period==='may'?'Mayıs 2026':period==='haz'?'Haziran 2026':'2026 Özet (Oca–Haz)')+'</strong> · Toplam: <strong>'+formatTL(toplam)+'</strong> · '+aktif+' makine gider oluşturdu · Ekskavatörler toplamın <strong>%'+ekskPay+'</strong>\'ini oluşturuyor · Makine başına ort: <strong>'+formatTL(ortMakine)+'</strong>';
   if(kasko.length>0){insightText+=' · ⚠️ <strong>'+kasko.length+' kasko hasarı:</strong> '+kasko.map(function(m){return m.kd+' '+m.model.substring(0,12)+' ('+formatTL(getTGValue(m,period))+')';}).join(' · ');}
   if(period==='mar'){insightText+=' · <span style="color:#86efac">✎ Mart verileri Veri Girişi sekmesinden güncellenebilir</span>';}
   document.getElementById('tg-insight').innerHTML=insightText;
@@ -1301,7 +1307,7 @@ function filterTablo(){tabloFilter=document.getElementById('tablo-filter').value
 function setTeknikPeriod(period,btn){
   document.querySelectorAll('#tg-genel .pbtn').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
-  var etiket={oca:'Ocak 2026',sub:'Şubat 2026',mar:'Mart 2026',nis:'Nisan 2026',may:'Mayıs 2026',ozet:'2026 Özet (Oca–May)'};
+  var etiket={oca:'Ocak 2026',sub:'Şubat 2026',mar:'Mart 2026',nis:'Nisan 2026',may:'Mayıs 2026',haz:'Haziran 2026',ozet:'2026 Özet (Oca–Haz)'};
   document.getElementById('teknik-period-info').textContent=etiket[period]||period;
   renderTeknikGider(period);
 }
