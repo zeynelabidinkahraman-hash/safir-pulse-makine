@@ -149,6 +149,8 @@
   .slhr-mdl{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--purple);width:60px;flex-shrink:0}
   .slhr-track{flex:1;height:20px;background:var(--surface2);border-radius:3px;overflow:hidden}
   .slhr-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:10px;font-weight:700;font-family:'IBM Plex Mono',monospace;white-space:nowrap;transition:width .6s ease}
+  .slhr-seg{height:100%;display:flex;align-items:center;padding-left:6px;font-size:10px;font-weight:700;font-family:'IBM Plex Mono',monospace;white-space:nowrap;overflow:hidden;transition:width .6s ease}
+  .slhr-atac{background:repeating-linear-gradient(135deg,#f59e0b,#f59e0b 6px,#d98806 6px,#d98806 12px);color:#000}
   .slhr-val{font-size:11px;font-family:'IBM Plex Mono',monospace;width:80px;text-align:right;flex-shrink:0}
   .slhr-hours{font-size:10px;color:var(--muted);width:54px;flex-shrink:0;text-align:right}
 
@@ -377,7 +379,9 @@
           <div class="cost-module-title">Saatlik Maliyet Analizi — ₺/Saat</div>
           <div style="font-size:11px;color:var(--muted);margin-top:2px">Toplam Teknik Gider ÷ Çalışma Saati · Makine bazlı</div>
         </div>
-        <div style="margin-left:auto;display:flex;gap:8px">
+        <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+          <button id="maliyet-mode-btn" onclick="toggleMaliyetMode()" title="Ataçman/sarf giderini dahil et veya hariç tut"
+            style="cursor:pointer;border:1px solid #f59e0b55;background:#f59e0b18;color:#f59e0b;font-size:12px;font-weight:600;padding:7px 12px;border-radius:6px;white-space:nowrap;font-family:inherit">⛏ Ataçman: DAHİL</button>
           <select id="maliyet-period" class="form-input" onchange="renderMaliyetAnaliz()" style="width:150px">
             <option value="oca">Ocak 2026</option>
             <option value="sub">Şubat 2026</option>
@@ -404,7 +408,11 @@
 
         <div class="chart-wrap" style="margin-bottom:16px">
           <div class="chart-title">Saatlik Maliyet Sıralaması (₺/saat)</div>
-          <div class="chart-desc">Sadece teknik gider verisi olan makineler · Kırmızı &gt;500₺/sa · Turuncu 200–500₺ · Yeşil &lt;200₺/sa</div>
+          <div class="chart-desc" id="slhr-desc">Her bar iki parçalı: <span style="color:#e8eaf0;font-weight:600">makine (ataçman hariç)</span> tier rengiyle · <span style="color:#f59e0b;font-weight:600">ataçman / sarf</span> taralı amber ile. Tam bar = ataçman <strong>dahil</strong> ₺/sa. Sağdaki ⛏% ataçmanın toplam ₺/sa içindeki payı. Üstteki butonla <strong>ataçmansız</strong> görünüme geçebilirsin.</div>
+          <div style="display:flex;gap:16px;margin:6px 0 10px;font-size:10px;color:var(--muted)">
+            <span style="display:flex;align-items:center;gap:5px"><span style="width:14px;height:10px;border-radius:2px;background:linear-gradient(90deg,#22c55e,#f59e0b,#ef4444);display:inline-block"></span>Makine — ataçman HARİÇ (tier: &lt;200 yeşil · 200–500 turuncu · &gt;500 kırmızı)</span>
+            <span id="slhr-legend-atac" style="display:flex;align-items:center;gap:5px"><span style="width:14px;height:10px;border-radius:2px;background:repeating-linear-gradient(135deg,#f59e0b,#f59e0b 3px,#d98806 3px,#d98806 6px);display:inline-block"></span>Ataçman / sarf</span>
+          </div>
           <div id="slhr-bar-container"></div>
         </div>
 
@@ -1320,6 +1328,20 @@ function setTabloPeriod(period,btn){
 
 // ─── SAATLİK MALİYET ANALİZİ ─────────────────────────────────────────────
 var mkCharts={};
+var maliyetMode='dahil'; // 'dahil' | 'haric'
+
+function toggleMaliyetMode(){
+  maliyetMode = maliyetMode==='dahil' ? 'haric' : 'dahil';
+  var btn=document.getElementById('maliyet-mode-btn');
+  if(maliyetMode==='haric'){
+    btn.textContent='⛏ Ataçman: HARİÇ';
+    btn.style.color='#a78bfa'; btn.style.background='#a78bfa18'; btn.style.borderColor='#a78bfa55';
+  } else {
+    btn.textContent='⛏ Ataçman: DAHİL';
+    btn.style.color='#f59e0b'; btn.style.background='#f59e0b18'; btn.style.borderColor='#f59e0b55';
+  }
+  renderMaliyetAnaliz();
+}
 
 function renderMaliyetAnaliz(){
   var period=document.getElementById('maliyet-period').value;
@@ -1335,8 +1357,11 @@ function renderMaliyetAnaliz(){
       noSaatResults.push({kd:m.kd,mdl:m.model,tip:m.tip,gider:gider});
       return;
     }
+    var bakim=getTGBakim(m,period);
+    var atsm=getTGAtac(m,period);
     var slhr=gider/saat;
-    results.push({kd:m.kd,mdl:m.model,tip:m.tip,gider:gider,saat:saat,slhr:slhr});
+    results.push({kd:m.kd,mdl:m.model,tip:m.tip,gider:gider,bakim:bakim,atsm:atsm,saat:saat,
+                  slhr:slhr,slhrBakim:bakim/saat,slhrAtsm:atsm/saat});
   });
 
   if(results.length===0){
@@ -1365,35 +1390,77 @@ function renderMaliyetAnaliz(){
     return;
   }
 
-  results.sort(function(a,b){return b.slhr-a.slhr;});
-  var maxSlhr=results[0].slhr;
+  var mode=maliyetMode; // 'dahil' | 'haric'
+  // Her satırın birincil ₺/sa değeri moda göre: dahil=toplam, haric=sadece makine (bakım)
+  results.forEach(function(x){ x.val = mode==='haric' ? x.slhrBakim : x.slhr; });
+  var view=results.filter(function(x){ return x.val>0; }); // haric modda gideri tümüyle ataçman olanlar düşer
+  view.sort(function(a,b){return b.val-a.val;});
 
-  var avg=results.reduce(function(s,x){return s+x.slhr;},0)/results.length;
+  if(view.length===0){
+    document.getElementById('slhr-bar-container').innerHTML='<div style="text-align:center;padding:20px;color:var(--muted);font-size:12px;font-style:italic">Bu görünümde (ataçman hariç) saatlik maliyeti olan makine yok — tüm gider ataçman/sarf kaynaklı.</div>';
+    ['mk-ort','mk-max','mk-max-sub','mk-min','mk-min-sub'].forEach(function(id){document.getElementById(id).textContent='—';});
+    document.getElementById('mk-count').textContent='0';
+    return;
+  }
+
+  var maxVal=view[0].val;
+  var avg=view.reduce(function(s,x){return s+x.val;},0)/view.length;
   document.getElementById('mk-ort').textContent='₺'+Math.round(avg)+'/sa';
-  document.getElementById('mk-max').textContent='₺'+Math.round(results[0].slhr)+'/sa';
-  document.getElementById('mk-max-sub').textContent=results[0].kd+' '+results[0].mdl.substring(0,12);
-  var minR=results[results.length-1];
-  document.getElementById('mk-min').textContent='₺'+Math.round(minR.slhr)+'/sa';
+  document.getElementById('mk-max').textContent='₺'+Math.round(view[0].val)+'/sa';
+  document.getElementById('mk-max-sub').textContent=view[0].kd+' '+view[0].mdl.substring(0,12);
+  var minR=view[view.length-1];
+  document.getElementById('mk-min').textContent='₺'+Math.round(minR.val)+'/sa';
   document.getElementById('mk-min-sub').textContent=minR.kd+' '+minR.mdl.substring(0,12);
-  document.getElementById('mk-count').textContent=results.length;
+  document.getElementById('mk-count').textContent=view.length;
 
-  var insight='<strong>'+results.length+'</strong> makine için saatlik maliyet hesaplandı. ';
-  var pahali=results.filter(function(x){return x.slhr>500;});
-  var normal=results.filter(function(x){return x.slhr<=200;});
-  if(pahali.length>0) insight+='<span style="color:#ef4444">⚠ '+pahali.length+' makine saatlik maliyeti 500₺ üzerinde</span>: '+pahali.map(function(x){return x.kd+' (₺'+Math.round(x.slhr)+'/sa)';}).join(', ')+'. ';
+  var modLbl = mode==='haric' ? ' <span style="color:#a78bfa">— ataçman HARİÇ (sadece makine)</span>' : ' <span style="color:#f59e0b">— ataçman DAHİL</span>';
+  var insight='<strong>'+view.length+'</strong> makine için saatlik maliyet hesaplandı'+modLbl+'. ';
+  var pahali=view.filter(function(x){return x.val>500;});
+  var normal=view.filter(function(x){return x.val<=200;});
+  if(pahali.length>0) insight+='<span style="color:#ef4444">⚠ '+pahali.length+' makine 500₺/sa üzerinde</span>: '+pahali.slice(0,14).map(function(x){return x.kd+' (₺'+Math.round(x.val)+'/sa)';}).join(', ')+'. ';
   if(normal.length>0) insight+='<span style="color:#22c55e">✓ '+normal.length+' makine 200₺/sa altında</span> (verimli). ';
+  if(mode==='dahil'){
+    var atacAgir=view.filter(function(x){return x.slhr>0&&x.slhrAtsm/x.slhr>=0.5&&x.slhrAtsm>50;}).sort(function(a,b){return b.slhrAtsm-a.slhrAtsm;});
+    if(atacAgir.length>0) insight+='<span style="color:#f59e0b">⛏ '+atacAgir.length+' makinede maliyetin yarıdan fazlası ataçman/sarf</span>: '+atacAgir.slice(0,6).map(function(x){return x.kd+' (%'+Math.round(x.slhrAtsm/x.slhr*100)+')';}).join(', ')+' — burada makine değil <strong>aşınma parçası</strong> pahalı. ';
+  } else {
+    insight+='<span style="color:#a78bfa">🔧 Bu görünüm ataçman/sarf giderini dışlar → sadece makinenin kendi (motor, hidrolik, periyodik bakım) saatlik maliyetidir. Makinenin gerçek sağlığını/verimini bu gösterir.</span> ';
+  }
   insight+='Düşük ₺/sa için hem gideri azaltmak hem makinenin daha çok çalışması gerekir.';
   document.getElementById('maliyet-insight').innerHTML=insight;
 
-  var barHtml=results.map(function(x){
-    var pct=(x.slhr/maxSlhr)*100;
-    var col=x.slhr>500?'#ef4444':x.slhr>200?'#f59e0b':'#22c55e';
+  // Mode'a göre açıklama + ataçman lejantı
+  var descEl=document.getElementById('slhr-desc'), legAtac=document.getElementById('slhr-legend-atac');
+  if(descEl){
+    descEl.innerHTML = mode==='haric'
+      ? 'Tek parça bar: <span style="color:#e8eaf0;font-weight:600">sadece makine (motor, hidrolik, bakım)</span> ₺/sa — <strong>ataçman/sarf hariç</strong>. Butonla ataçman dahil görünüme dönebilirsin.'
+      : 'Her bar iki parçalı: <span style="color:#e8eaf0;font-weight:600">makine (ataçman hariç)</span> tier rengiyle · <span style="color:#f59e0b;font-weight:600">ataçman / sarf</span> taralı amber ile. Tam bar = ataçman <strong>dahil</strong> ₺/sa. Sağdaki ⛏% ataçmanın toplam ₺/sa içindeki payı. Üstteki butonla <strong>ataçmansız</strong> görünüme geçebilirsin.';
+  }
+  if(legAtac) legAtac.style.display = mode==='haric' ? 'none' : 'flex';
+
+  var barHtml=view.map(function(x){
+    var col=x.val>500?'#ef4444':x.val>200?'#f59e0b':'#22c55e';
+    if(mode==='haric'){
+      var pct=(x.val/maxVal)*100;
+      return'<div class="slhr-bar-row">'+
+        '<div class="slhr-kd">'+x.kd+'</div>'+
+        '<div class="slhr-mdl">'+x.mdl.substring(0,10)+'</div>'+
+        '<div class="slhr-track" style="display:flex"><div class="slhr-seg" style="width:'+pct+'%;background:'+col+';color:#000" title="Makine (ataçman hariç): ₺'+Math.round(x.val)+'/sa">'+(pct>14?'₺'+Math.round(x.val):'')+'</div></div>'+
+        '<div class="slhr-hours" style="color:var(--muted)">'+Math.round(x.saat)+'sa</div>'+
+        '<div class="slhr-val" style="color:'+col+'">₺'+Math.round(x.val)+'/sa</div>'+
+      '</div>';
+    }
+    // dahil: stacked (bakım tier + ataçman amber)
+    var pctB=(x.slhrBakim/maxVal)*100;
+    var pctA=(x.slhrAtsm/maxVal)*100;
+    var atacPct=x.slhr>0?Math.round(x.slhrAtsm/x.slhr*100):0;
+    var bakimSeg='<div class="slhr-seg" style="width:'+pctB+'%;background:'+col+';color:#000" title="Makine (ataçman hariç): ₺'+Math.round(x.slhrBakim)+'/sa">'+(pctB>14?'₺'+Math.round(x.slhrBakim):'')+'</div>';
+    var atacSeg=x.slhrAtsm>0?'<div class="slhr-seg slhr-atac" style="width:'+pctA+'%" title="Ataçman / sarf: ₺'+Math.round(x.slhrAtsm)+'/sa (toplam ₺/sa\'nın %'+atacPct+'\'i)">'+(pctA>11?'+₺'+Math.round(x.slhrAtsm):'')+'</div>':'';
     return'<div class="slhr-bar-row">'+
       '<div class="slhr-kd">'+x.kd+'</div>'+
       '<div class="slhr-mdl">'+x.mdl.substring(0,10)+'</div>'+
-      '<div class="slhr-track"><div class="slhr-fill" style="width:'+pct+'%;background:'+col+';color:#000">₺'+Math.round(x.slhr)+'/sa</div></div>'+
+      '<div class="slhr-track" style="display:flex">'+bakimSeg+atacSeg+'</div>'+
       '<div class="slhr-hours" style="color:var(--muted)">'+Math.round(x.saat)+'sa</div>'+
-      '<div class="slhr-val" style="color:'+col+'">₺'+Math.round(x.gider/1000)+'K</div>'+
+      '<div class="slhr-val" style="color:'+col+'">₺'+Math.round(x.slhr)+'/sa'+(atacPct>0?'<span style="color:#f59e0b;font-size:9px;font-weight:600"> ⛏%'+atacPct+'</span>':'')+'</div>'+
     '</div>';
   }).join('');
 
