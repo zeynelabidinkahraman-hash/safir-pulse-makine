@@ -351,7 +351,7 @@
       </div>
       <div class="chart-wrap">
         <div class="chart-title">Ocak / Şubat / Mart / Nisan / Mayıs / Haziran — Aylık Trend</div>
-        <div class="chart-desc">Tip bazlı 3 aylık gider karşılaştırması</div>
+        <div class="chart-desc">Tip bazlı aylık gider karşılaştırması (Oca–Haz 2026)</div>
         <div class="chart-container" style="height:280px"><canvas id="tg-chart-trend"></canvas></div>
       </div>
     </div>
@@ -432,7 +432,7 @@
         <div class="two-col" style="margin-top:16px">
           <div class="chart-wrap">
             <div class="chart-title">Aylık Gider Trendi — Makine Tipi</div>
-            <div class="chart-desc">Ocak / Şubat / Mart / Nisan 2026 · Yığılı bar — hangi tip ne kadar harcadı?</div>
+            <div class="chart-desc">Ocak–Haziran 2026 · Yığılı bar — hangi tip ne kadar harcadı?</div>
             <div class="chart-container" style="height:280px"><canvas id="mk-chart-trend"></canvas></div>
           </div>
           <div class="chart-wrap">
@@ -565,6 +565,9 @@
               <th style="text-align:right">Ocak (₺)</th>
               <th style="text-align:right">Şubat (₺)</th>
               <th style="text-align:right">Mart (₺)</th>
+              <th style="text-align:right">Nisan (₺)</th>
+              <th style="text-align:right">Mayıs (₺)</th>
+              <th style="text-align:right">Haziran (₺)</th>
               <th style="text-align:right">Toplam (₺)</th>
               <th style="text-align:right">₺/Saat</th>
               <th>Not</th>
@@ -1044,6 +1047,8 @@ function updateKPIs(period){
 
 const PERIOD_LABELS={'2026':'2026 OCA–HAZ ÖZETİ','oca':'OCAK 2026','sub':'ŞUBAT 2026','mar':'MART 2026','nis':'NİSAN 2026','may':'MAYIS 2026','haz':'HAZİRAN 2026'};
 const PERIOD_INFO={'2026':'01 Oca – 30 Haz 2026','oca':'01 – 31 Ocak 2026','sub':'01 – 28 Şubat 2026','mar':'01 – 29 Mart 2026','nis':'01 – 30 Nisan 2026','may':'01 – 31 Mayıs 2026','haz':'01 – 30 Haziran 2026'};
+// Aktif veri ayları (tek kaynak — yeni ay eklenince buraya ekle, tüm grafik/tablolar otomatik güncellenir)
+const AY_KISA=[['oca','Ocak'],['sub','Şubat'],['mar','Mart'],['nis','Nisan'],['may','Mayıs'],['haz','Haziran']];
 
 function setPeriod(period,infoText){
   currentPeriod=period;
@@ -1108,7 +1113,8 @@ function renderTeknikGider(period){
 
   var tipTum=Object.keys(TIP_RENK).filter(function(t){return data.some(function(m){return m.tip===t&&getTGValue(m,period)>0;});});
   if(tgCharts.trend){tgCharts.trend.destroy();}
-  tgCharts.trend=new Chart(document.getElementById('tg-chart-trend'),{type:'bar',data:{labels:tipTum,datasets:[{label:'Ocak',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'oca');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'55';})},{label:'Şubat',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'sub');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'99';})},{label:'Mart',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'mar');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'ee';})},{label:'Nisan',stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,'nis');},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+'ff';})}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#6b7280',font:{size:10},boxWidth:10,padding:8}}},scales:{x:{stacked:true,ticks:{color:'#6b7280',font:{size:9}},grid:{color:'rgba(42,48,64,.5)'}},y:{stacked:true,ticks:{color:'#6b7280',font:{size:9},callback:function(v){return'₺'+v+'k';}},grid:{color:'rgba(42,48,64,.5)'}}}}});
+  var tgTrendAlpha=['55','6b','82','99','c0','ff'];
+  tgCharts.trend=new Chart(document.getElementById('tg-chart-trend'),{type:'bar',data:{labels:tipTum,datasets:AY_KISA.map(function(a,i){return{label:a[1],stack:'s',data:tipTum.map(function(t){return Math.round(data.filter(function(m){return m.tip===t;}).reduce(function(s,m){return s+getTGValue(m,a[0]);},0)/1000);}),backgroundColor:tipTum.map(function(t){return(TIP_RENK[t]||'#6b7280')+tgTrendAlpha[i];})};})},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'top',labels:{color:'#6b7280',font:{size:10},boxWidth:10,padding:8}}},scales:{x:{stacked:true,ticks:{color:'#6b7280',font:{size:9}},grid:{color:'rgba(42,48,64,.5)'}},y:{stacked:true,ticks:{color:'#6b7280',font:{size:9},callback:function(v){return'₺'+v+'k';}},grid:{color:'rgba(42,48,64,.5)'}}}}});
 
   var top20=sorted.filter(function(m){return getTGValue(m,period)>0;}).slice(0,20);
   if(tgCharts.makine){tgCharts.makine.destroy();}
@@ -1302,6 +1308,9 @@ function renderTabloBody(period) {
     tbody+='<td style="text-align:right;'+monoStyle+';color:'+(getTGValue(m,'oca')>0?'#fcd34d':'#4b5563')+'">'+''+formatTL(getTGValue(m,'oca'))+'</td>';
     tbody+='<td style="text-align:right;'+monoStyle+';color:'+(getTGValue(m,'sub')>0?'#f97316':'#4b5563')+'">'+''+formatTL(getTGValue(m,'sub'))+'</td>';
     tbody+='<td style="text-align:right;'+monoStyle+';color:'+(getTGValue(m,'mar')>0?'#86efac':'#4b5563')+'">'+formatTL(getTGValue(m,'mar'))+'</td>';
+    tbody+='<td style="text-align:right;'+monoStyle+';color:'+(getTGValue(m,'nis')>0?'#67e8f9':'#4b5563')+'">'+formatTL(getTGValue(m,'nis'))+'</td>';
+    tbody+='<td style="text-align:right;'+monoStyle+';color:'+(getTGValue(m,'may')>0?'#a78bfa':'#4b5563')+'">'+formatTL(getTGValue(m,'may'))+'</td>';
+    tbody+='<td style="text-align:right;'+monoStyle+';color:'+(getTGValue(m,'haz')>0?'#fca5a5':'#4b5563')+'">'+formatTL(getTGValue(m,'haz'))+'</td>';
     tbody+='<td style="text-align:right;'+monoStyle+';font-weight:700;color:'+(toplam>0?'var(--text)':'#4b5563')+'">'+formatTL(toplam)+'</td>';
     tbody+='<td style="text-align:right;'+monoStyle+';color:'+slhrColor+'">'+( slhr?'₺'+slhr+'/sa':'—')+'</td>';
     tbody+='<td style="font-size:10px;color:var(--muted)">'+m.not+kaskoFlag+'</td>';
@@ -1491,14 +1500,12 @@ function renderMaliyetAnaliz(){
   mkCharts.scatter=new Chart(document.getElementById('mk-chart-scatter'),{type:'scatter',data:{datasets:[{label:'Makineler',data:results.map(function(x){return{x:Math.round(x.saat),y:Math.round(x.slhr),label:x.kd};}),backgroundColor:results.map(function(x){return x.slhr>500?'#ef4444CC':x.slhr>200?'#f59e0bCC':'#22c55eCC';}),borderColor:results.map(function(x){return x.slhr>500?'#ef4444':x.slhr>200?'#f59e0b':'#22c55e';}),pointRadius:7,pointHoverRadius:10,borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#1e2330',borderColor:'rgba(59,130,246,.3)',borderWidth:1,titleColor:'#e8eaf0',bodyColor:'#9ca3af',callbacks:{title:function(items){var i=items[0].dataIndex;return results[i].kd+' — '+results[i].mdl.substring(0,16);},label:function(item){var i=item.dataIndex;return['⏱ Çalışma: '+item.parsed.x+'sa','💸 ₺/sa: ₺'+item.parsed.y,'📋 Toplam: '+formatTL(results[i].gider)];}}}},scales:{x:{ticks:{color:'#6b7280',font:{size:10},callback:function(v){return v+'sa';}},grid:{color:'rgba(42,48,64,.5)'},title:{display:true,text:'Çalışma Saati',color:'#6b7280',font:{size:10}}},y:{ticks:{color:'#6b7280',font:{size:10},callback:function(v){return'₺'+v;}},grid:{color:'rgba(42,48,64,.5)'},title:{display:true,text:'₺/Saat',color:'#6b7280',font:{size:10}}}}}});
 
   var tiplerAll=Object.keys(TIP_RENK);
-  var trendLabels=['Ocak','Şubat','Mart'];
+  var trendLabels=AY_KISA.map(function(a){return a[1];});
   var trendDatasets=tiplerAll.map(function(tip){
-    var vals=[0,0,0];
-    TG_MAKINELER.forEach(function(m){
-      if(m.tip!==tip) return;
-      vals[0]+=getTGValue(m,'oca'); vals[1]+=getTGValue(m,'sub'); vals[2]+=getTGValue(m,'mar');
+    var vals=AY_KISA.map(function(a){
+      var s=0; TG_MAKINELER.forEach(function(m){ if(m.tip===tip) s+=getTGValue(m,a[0]); }); return s;
     });
-    if(vals[0]===0&&vals[1]===0&&vals[2]===0) return null;
+    if(vals.every(function(v){return v===0;})) return null;
     return{label:tip,data:vals,backgroundColor:(TIP_RENK[tip]||'#6b7280')+'bb',borderColor:TIP_RENK[tip]||'#6b7280',borderWidth:1};
   }).filter(Boolean);
   if(mkCharts.trend){mkCharts.trend.destroy();}
