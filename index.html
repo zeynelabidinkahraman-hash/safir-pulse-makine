@@ -384,6 +384,8 @@
         <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
           <button id="maliyet-mode-btn" onclick="toggleMaliyetMode()" title="Ataçman/sarf giderini dahil et veya hariç tut"
             style="cursor:pointer;border:1px solid #f59e0b55;background:#f59e0b18;color:#f59e0b;font-size:12px;font-weight:600;padding:7px 12px;border-radius:6px;white-space:nowrap;font-family:inherit">⛏ Ataçman: DAHİL</button>
+          <button id="pb-mode-btn" onclick="togglePbMode()" title="Periyodik bakım giderini dahil et veya hariç tut — hariç: sadece arıza/tamir maliyeti"
+            style="cursor:pointer;border:1px solid #2dd4bf55;background:#2dd4bf18;color:#2dd4bf;font-size:12px;font-weight:600;padding:7px 12px;border-radius:6px;white-space:nowrap;font-family:inherit">🔧 Per Bakım: DAHİL</button>
           <select id="maliyet-period" class="form-input" onchange="renderMaliyetAnaliz()" style="width:150px">
             <option value="oca">Ocak 2026</option>
             <option value="sub">Şubat 2026</option>
@@ -1451,6 +1453,20 @@ function setTabloPeriod(period,btn){
 // ─── SAATLİK MALİYET ANALİZİ ─────────────────────────────────────────────
 var mkCharts={};
 var maliyetMode='dahil'; // 'dahil' | 'haric'
+var pbMode='dahil'; // 'dahil' | 'haric' — periyodik bakım
+
+function togglePbMode(){
+  pbMode = pbMode==='dahil' ? 'haric' : 'dahil';
+  var btn=document.getElementById('pb-mode-btn');
+  if(pbMode==='haric'){
+    btn.textContent='🔧 Per Bakım: HARİÇ';
+    btn.style.color='#ef4444'; btn.style.background='#ef444418'; btn.style.borderColor='#ef444455';
+  } else {
+    btn.textContent='🔧 Per Bakım: DAHİL';
+    btn.style.color='#2dd4bf'; btn.style.background='#2dd4bf18'; btn.style.borderColor='#2dd4bf55';
+  }
+  renderMaliyetAnaliz();
+}
 
 function toggleMaliyetMode(){
   maliyetMode = maliyetMode==='dahil' ? 'haric' : 'dahil';
@@ -1514,8 +1530,8 @@ function renderMaliyetAnaliz(){
   }
 
   var mode=maliyetMode; // 'dahil' | 'haric'
-  // Her satırın birincil ₺/sa değeri moda göre: dahil=toplam, haric=sadece makine (bakım)
-  results.forEach(function(x){ x.val = mode==='haric' ? x.slhrBakim : x.slhr; });
+  // Her satırın birincil ₺/sa değeri moda göre: dahil=toplam, haric=sadece makine (bakım); pbMode haric ise periyodik bakım düşülür
+  results.forEach(function(x){ x.val = (mode==='haric' ? x.slhrBakim : x.slhr) - (pbMode==='haric' ? x.slhrPb : 0); });
   var view=results.filter(function(x){ return x.val>0; }); // haric modda gideri tümüyle ataçman olanlar düşer
   view.sort(function(a,b){return b.val-a.val;});
 
@@ -1536,7 +1552,8 @@ function renderMaliyetAnaliz(){
   document.getElementById('mk-min-sub').textContent=minR.kd+' '+minR.mdl.substring(0,12);
   document.getElementById('mk-count').textContent=view.length;
 
-  var modLbl = mode==='haric' ? ' <span style="color:#a78bfa">— ataçman HARİÇ (sadece makine)</span>' : ' <span style="color:#f59e0b">— ataçman DAHİL</span>';
+  var modLbl = (mode==='haric' ? ' <span style="color:#a78bfa">— ataçman HARİÇ (sadece makine)</span>' : ' <span style="color:#f59e0b">— ataçman DAHİL</span>')
+             + (pbMode==='haric' ? ' <span style="color:#ef4444">— 🔧 periyodik bakım HARİÇ (sadece arıza/tamir)</span>' : '');
   var insight='<strong>'+view.length+'</strong> makine için saatlik maliyet hesaplandı'+modLbl+'. ';
   var pahali=view.filter(function(x){return x.val>500;});
   var normal=view.filter(function(x){return x.val<=200;});
@@ -1550,7 +1567,11 @@ function renderMaliyetAnaliz(){
   }
   var pbSum=view.reduce(function(s,x){return s+x.pb;},0);
   var bakimSum=view.reduce(function(s,x){return s+x.bakim;},0);
-  if(bakimSum>0&&pbSum>0) insight+='<span style="color:#22c55e">🔧 Periyodik bakım bu makinelerin bakım giderinin <strong>%'+Math.round(pbSum/bakimSum*100)+'</strong>\'i ('+formatTL(pbSum)+')</span> — satırdaki 🔧% = o makinede planlı bakımın payı; gerisi arıza/tamir. ';
+  if(pbMode==='haric'){
+    insight+='<span style="color:#ef4444">🔧 Periyodik bakım HARİÇ tutuldu ('+formatTL(pbSum)+') — barlar sadece <strong>arıza/tamir</strong>'+(mode==='dahil'?' + ataçman':'')+' maliyetini gösterir; satırdaki 🔧−₺ = düşülen planlı bakım.</span> ';
+  } else if(bakimSum>0&&pbSum>0){
+    insight+='<span style="color:#2dd4bf">🔧 Periyodik bakım bu makinelerin bakım giderinin <strong>%'+Math.round(pbSum/bakimSum*100)+'</strong>\'i ('+formatTL(pbSum)+')</span> — satırdaki 🔧% = o makinede planlı bakımın payı; gerisi arıza/tamir. ';
+  }
   insight+='Düşük ₺/sa için hem gideri azaltmak hem makinenin daha çok çalışması gerekir.';
   document.getElementById('maliyet-insight').innerHTML=insight;
 
@@ -1562,15 +1583,18 @@ function renderMaliyetAnaliz(){
       : 'Her bar üç parçalı: <span style="color:#2dd4bf;font-weight:600">🔧 periyodik bakım</span> turkuaz · <span style="color:#e8eaf0;font-weight:600">arıza &amp; diğer</span> tier rengiyle · <span style="color:#f59e0b;font-weight:600">ataçman / sarf</span> taralı amber ile. Tam bar = ataçman <strong>dahil</strong> ₺/sa. Sağdaki ⛏% ataçmanın, 🔧% planlı bakımın payı. Üstteki butonla <strong>ataçmansız</strong> görünüme geçebilirsin.';
   }
   if(legAtac) legAtac.style.display = mode==='haric' ? 'none' : 'flex';
+  if(descEl&&pbMode==='haric') descEl.innerHTML='<strong style="color:#ef4444">🔧 Periyodik bakım HARİÇ — barlar sadece arıza/tamir'+(mode==='dahil'?' + ataçman':'')+' maliyeti.</strong> '+descEl.innerHTML;
 
   var barHtml=view.map(function(x){
     var col=x.val>500?'#ef4444':x.val>200?'#f59e0b':'#22c55e';
     var pbPct=x.bakim>0?Math.round(x.pb/x.bakim*100):0;
-    var pbBadge=pbPct>0?'<span style="color:#2dd4bf;font-size:9px;font-weight:600" title="Periyodik bakım: ₺'+Math.round(x.slhrPb)+'/sa — makine bakım giderinin %'+pbPct+'\'i planlı bakım"> 🔧%'+pbPct+'</span>':'';
+    var pbBadge = pbMode==='haric'
+      ? (x.slhrPb>0?'<span style="color:#2dd4bf;font-size:9px;font-weight:600" title="Hariç tutulan periyodik bakım: ₺'+Math.round(x.slhrPb)+'/sa"> 🔧−₺'+Math.round(x.slhrPb)+'</span>':'')
+      : (pbPct>0?'<span style="color:#2dd4bf;font-size:9px;font-weight:600" title="Periyodik bakım: ₺'+Math.round(x.slhrPb)+'/sa — makine bakım giderinin %'+pbPct+'\'i planlı bakım"> 🔧%'+pbPct+'</span>':'');
     var slhrAriza=x.slhrBakim-x.slhrPb;
     var pctPb=(x.slhrPb/maxVal)*100;
     var pctR=(slhrAriza/maxVal)*100;
-    var pbSeg=x.slhrPb>0?'<div class="slhr-seg" style="width:'+pctPb+'%;background:#2dd4bf;color:#042f2a" title="🔧 Periyodik bakım: ₺'+Math.round(x.slhrPb)+'/sa — makine bakım giderinin %'+pbPct+'\'i">'+(pctPb>13?'🔧₺'+Math.round(x.slhrPb):'')+'</div>':'';
+    var pbSeg=(pbMode==='dahil'&&x.slhrPb>0)?'<div class="slhr-seg" style="width:'+pctPb+'%;background:#2dd4bf;color:#042f2a" title="🔧 Periyodik bakım: ₺'+Math.round(x.slhrPb)+'/sa — makine bakım giderinin %'+pbPct+'\'i">'+(pctPb>13?'🔧₺'+Math.round(x.slhrPb):'')+'</div>':'';
     var arizaSeg=slhrAriza>0?'<div class="slhr-seg" style="width:'+pctR+'%;background:'+col+';color:#000" title="Arıza &amp; diğer: ₺'+Math.round(slhrAriza)+'/sa">'+(pctR>14?'₺'+Math.round(slhrAriza):'')+'</div>':'';
     if(mode==='haric'){
       return'<div class="slhr-bar-row">'+
@@ -1591,7 +1615,7 @@ function renderMaliyetAnaliz(){
       '<div class="slhr-mdl">'+x.mdl.substring(0,10)+'</div>'+
       '<div class="slhr-track" style="display:flex">'+bakimSeg+atacSeg+'</div>'+
       '<div class="slhr-hours" style="color:var(--muted)">'+Math.round(x.saat)+'sa</div>'+
-      '<div class="slhr-val" style="color:'+col+'">₺'+Math.round(x.slhr)+'/sa'+(atacPct>0?'<span style="color:#f59e0b;font-size:9px;font-weight:600"> ⛏%'+atacPct+'</span>':'')+pbBadge+'</div>'+
+      '<div class="slhr-val" style="color:'+col+'">₺'+Math.round(x.val)+'/sa'+(atacPct>0?'<span style="color:#f59e0b;font-size:9px;font-weight:600"> ⛏%'+atacPct+'</span>':'')+pbBadge+'</div>'+
     '</div>';
   }).join('');
 
