@@ -360,7 +360,7 @@
 
     <div class="chart-wrap">
       <div class="chart-title">Makine Bazlı Teknik Gider — En Pahalı 20</div>
-      <div class="chart-desc">Yüksekten düşüğe sıralı · Seçili döneme göre · Renk = makine tipi · Hover = makine kodu + konum</div>
+      <div class="chart-desc">Yüksekten düşüğe sıralı · Seçili döneme göre · <span style="color:#22c55e;font-weight:600">Yeşil = periyodik bakım</span> · <span style="color:#a78bfa;font-weight:600">Mor = arıza &amp; diğer</span> · <span style="color:#f59e0b;font-weight:600">Amber = ataçman/sarf</span> · Hover = makine kodu + konum</div>
       <div class="chart-container" style="height:320px"><canvas id="tg-chart-makine"></canvas></div>
     </div>
 
@@ -795,6 +795,87 @@ const TIP_RENK = {
   'GREYDER':'#4b5563','MAKAS':'#374151'
 };
 
+
+// ─── PERİYODİK BAKIM (PERBAKIM iş emirleri; mevcut _b giderinin alt kümesi — YENİ maliyet DEĞİL) ──
+const PERBAKIM = {
+  "C1":{nis:8289.65, may:138000.00, haz:11277.50},
+  "C2":{oca:230000.00},
+  "C3":{tem:14365.80},
+  "C6":{sub:128633.04, haz:67806.87},
+  "C7":{nis:36684.06},
+  "C8":{mar:65737.63, nis:66247.18, tem:39507.42},
+  "C9":{sub:38060.40, may:73762.15, tem:42328.05},
+  "C10":{sub:48888.80, nis:73762.15, haz:10000.00, tem:42356.80},
+  "C11":{oca:2645.00, sub:44086.40, may:128535.50, tem:45703.30},
+  "C13":{tem:99933.85},
+  "C14":{oca:3852.50},
+  "C15":{may:109067.15, tem:42380.95},
+  "C16":{sub:41464.00, tem:111632.41},
+  "C17":{nis:37883.30, haz:50570.00, tem:132327.05},
+  "C18":{tem:133966.87},
+  "C19":{tem:100836.60},
+  "C20":{tem:66748.06},
+  "C22":{oca:803933.70, mar:16234.08, haz:11096.20},
+  "C24":{oca:34149.83, nis:89614.32, haz:66808.91, tem:43296.95},
+  "C25":{mar:37706.37, tem:132439.75},
+  "C26":{oca:479.17, nis:75759.00, tem:110661.06},
+  "C27":{haz:140006.23, tem:43326.99},
+  "C28":{oca:8909.15, sub:54722.86, nis:43978.12},
+  "C29":{nis:72778.90, haz:43570.05, tem:109826.15},
+  "C30":{nis:28890.30, tem:154384.05},
+  "C31":{nis:23281.75},
+  "C32":{sub:57263.30, haz:36333.10},
+  "C33":{nis:68424.45, haz:102577.70, tem:36641.30},
+  "C36":{oca:557.75, sub:41194.15, tem:132772.10},
+  "C37":{haz:45600.95},
+  "C38":{oca:8797.50, nis:156068.25, haz:85586.50, tem:52391.70},
+  "C39":{tem:79217.75},
+  "C40":{sub:152227.80, nis:61740.05, haz:252368.68, tem:170783.92},
+  "C41":{oca:6118.00, nis:143493.46, tem:53320.38},
+  "C42":{nis:140999.20, haz:46646.04, tem:52637.73},
+  "C43":{nis:52834.24, haz:84362.98, tem:53498.81},
+  "C45":{nis:134959.11, may:89666.55},
+  "C46":{nis:37962.71, tem:77345.12},
+  "C47":{oca:169122.45, may:97119.80, tem:265960.50},
+  "C48":{oca:91071.27, mar:124651.99, may:172681.99, haz:96357.35, tem:224515.65},
+  "C49":{haz:36425.10},
+  "C50":{mar:34903.80, haz:69768.20, tem:36680.40},
+  "C52":{sub:66004.94},
+  "C53":{sub:66004.94, nis:36661.73},
+  "C54":{sub:65555.57, may:190280.15, tem:155274.15},
+  "H1":{oca:85225.00},
+  "H8":{oca:7100.63, nis:31171.55, haz:15356.70},
+  "H9":{sub:24810.05, may:9564.55},
+  "H11":{sub:22003.90},
+  "HM1":{nis:12422.60},
+  "HM2":{may:58158.89},
+  "K1":{oca:1725.00, haz:14431.25},
+  "K2":{oca:19798.09},
+  "K3":{oca:1328.25, mar:13050.21},
+  "K4":{sub:25847.15},
+  "K5":{haz:122899.99},
+  "K7":{mar:13498.70},
+  "K8":{sub:46548.45},
+  "K9":{haz:89626.95},
+  "R1":{mar:13598.05},
+  "ZX4":{oca:14950.00, mar:66133.33, haz:79045.00, tem:159849.74},
+  "ZX5":{oca:64663.96, mar:65525.08, nis:65831.90, may:80711.62, haz:67447.50, tem:159469.40},
+};
+function getTGPerbakimRaw(kd, period){
+  var p=PERBAKIM[kd]; if(!p) return 0;
+  if(period==='ozet'||period==='2026'){var s=0;for(var k in p)s+=p[k];return s;}
+  return p[period]||0;
+}
+// Gosterimde bakim (_b) tavanina kirpilir: ay kaymasi/eksik _b kaydi stack'i bozmasin
+function getTGPerbakim(m, period){
+  if(period==='ozet'||period==='2026'){
+    var s=0,ays=['oca','sub','mar','nis','may','haz','tem'];
+    for(var i=0;i<ays.length;i++) s+=Math.min(getTGPerbakimRaw(m.kd,ays[i]), getTGBakim(m,ays[i]));
+    return s;
+  }
+  return Math.min(getTGPerbakimRaw(m.kd,period), getTGBakim(m,period));
+}
+
 function getTGValue(m, period) {
   if(period==='oca')  return (m.oca_b||0)+(m.oca_a||0);
   if(period==='sub')  return (m.sub_b||0)+(m.sub_a||0);
@@ -1126,8 +1207,11 @@ function renderTeknikGider(period){
   document.getElementById('tg-kpi-pasif').textContent=pasif;
   document.getElementById('tg-kpi-ort').textContent=formatTLK(ortMakine);
 
+  var pbToplam=data.reduce(function(s,m){return s+getTGPerbakim(m,period);},0);
+  var bakimToplam=data.reduce(function(s,m){return s+getTGBakim(m,period);},0);
+  var pbPay=bakimToplam>0?Math.round(pbToplam/bakimToplam*100):0;
   var kasko=data.filter(function(m){return m.not&&m.not.toLowerCase().includes('kasko');});
-  var insightText='<strong>'+(period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':period==='mar'?'Mart 2026':period==='nis'?'Nisan 2026':period==='may'?'Mayıs 2026':period==='haz'?'Haziran 2026':period==='tem'?'Temmuz 2026':'2026 Özet (Oca–Tem)')+'</strong> · Toplam: <strong>'+formatTL(toplam)+'</strong> · '+aktif+' makine gider oluşturdu · Ekskavatörler toplamın <strong>%'+ekskPay+'</strong>\'ini oluşturuyor · Makine başına ort: <strong>'+formatTL(ortMakine)+'</strong>';
+  var insightText='<strong>'+(period==='oca'?'Ocak 2026':period==='sub'?'Şubat 2026':period==='mar'?'Mart 2026':period==='nis'?'Nisan 2026':period==='may'?'Mayıs 2026':period==='haz'?'Haziran 2026':period==='tem'?'Temmuz 2026':'2026 Özet (Oca–Tem)')+'</strong> · Toplam: <strong>'+formatTL(toplam)+'</strong> · '+aktif+' makine gider oluşturdu · Ekskavatörler toplamın <strong>%'+ekskPay+'</strong>\'ini oluşturuyor · Makine başına ort: <strong>'+formatTL(ortMakine)+'</strong> · <span style="color:#22c55e">🔧 Periyodik bakım: <strong>'+formatTL(pbToplam)+'</strong> (bakım giderinin %'+pbPay+'\'i)</span> · Arıza &amp; diğer: '+formatTL(bakimToplam-pbToplam);
   if(kasko.length>0){insightText+=' · ⚠️ <strong>'+kasko.length+' kasko hasarı:</strong> '+kasko.map(function(m){return m.kd+' '+m.model.substring(0,12)+' ('+formatTL(getTGValue(m,period))+')';}).join(' · ');}
   if(period==='mar'){insightText+=' · <span style="color:#86efac">✎ Mart verileri Veri Girişi sekmesinden güncellenebilir</span>';}
   document.getElementById('tg-insight').innerHTML=insightText;
@@ -1147,7 +1231,8 @@ function renderTeknikGider(period){
   tgCharts.makine=new Chart(document.getElementById('tg-chart-makine'),{type:'bar',data:{
     labels:top20.map(function(m){return m.kd||m.model.substring(0,8);}),
     datasets:[
-      {label:'Arıza & Bakım',data:top20.map(function(m){return Math.round(getTGBakim(m,period)/1000);}),backgroundColor:'#a78bfabb',borderColor:'#a78bfa',borderWidth:1,borderRadius:0,stack:'s'},
+      {label:'Periyodik Bakım',data:top20.map(function(m){return Math.round(getTGPerbakim(m,period)/1000);}),backgroundColor:'#22c55ebb',borderColor:'#22c55e',borderWidth:1,borderRadius:0,stack:'s'},
+      {label:'Arıza & Diğer',data:top20.map(function(m){return Math.round((getTGBakim(m,period)-getTGPerbakim(m,period))/1000);}),backgroundColor:'#a78bfabb',borderColor:'#a78bfa',borderWidth:1,borderRadius:0,stack:'s'},
       {label:'Ataçman / Sarf',data:top20.map(function(m){return Math.round(getTGAtac(m,period)/1000);}),backgroundColor:'#f59e0bbb',borderColor:'#f59e0b',borderWidth:1,borderRadius:3,stack:'s'}
     ]
   },options:{responsive:true,maintainAspectRatio:false,plugins:{
@@ -1395,9 +1480,10 @@ function renderMaliyetAnaliz(){
     }
     var bakim=getTGBakim(m,period);
     var atsm=getTGAtac(m,period);
+    var pb=getTGPerbakim(m,period);
     var slhr=gider/saat;
-    results.push({kd:m.kd,mdl:m.model,tip:m.tip,gider:gider,bakim:bakim,atsm:atsm,saat:saat,
-                  slhr:slhr,slhrBakim:bakim/saat,slhrAtsm:atsm/saat});
+    results.push({kd:m.kd,mdl:m.model,tip:m.tip,gider:gider,bakim:bakim,atsm:atsm,pb:pb,saat:saat,
+                  slhr:slhr,slhrBakim:bakim/saat,slhrAtsm:atsm/saat,slhrPb:pb/saat});
   });
 
   if(results.length===0){
@@ -1461,6 +1547,9 @@ function renderMaliyetAnaliz(){
   } else {
     insight+='<span style="color:#a78bfa">🔧 Bu görünüm ataçman/sarf giderini dışlar → sadece makinenin kendi (motor, hidrolik, periyodik bakım) saatlik maliyetidir. Makinenin gerçek sağlığını/verimini bu gösterir.</span> ';
   }
+  var pbSum=view.reduce(function(s,x){return s+x.pb;},0);
+  var bakimSum=view.reduce(function(s,x){return s+x.bakim;},0);
+  if(bakimSum>0&&pbSum>0) insight+='<span style="color:#22c55e">🔧 Periyodik bakım bu makinelerin bakım giderinin <strong>%'+Math.round(pbSum/bakimSum*100)+'</strong>\'i ('+formatTL(pbSum)+')</span> — satırdaki 🔧% = o makinede planlı bakımın payı; gerisi arıza/tamir. ';
   insight+='Düşük ₺/sa için hem gideri azaltmak hem makinenin daha çok çalışması gerekir.';
   document.getElementById('maliyet-insight').innerHTML=insight;
 
@@ -1475,28 +1564,30 @@ function renderMaliyetAnaliz(){
 
   var barHtml=view.map(function(x){
     var col=x.val>500?'#ef4444':x.val>200?'#f59e0b':'#22c55e';
+    var pbPct=x.bakim>0?Math.round(x.pb/x.bakim*100):0;
+    var pbBadge=pbPct>0?'<span style="color:#22c55e;font-size:9px;font-weight:600" title="Periyodik bakım: ₺'+Math.round(x.slhrPb)+'/sa — makine bakım giderinin %'+pbPct+'\'i planlı bakım"> 🔧%'+pbPct+'</span>':'';
     if(mode==='haric'){
       var pct=(x.val/maxVal)*100;
       return'<div class="slhr-bar-row">'+
         '<div class="slhr-kd">'+x.kd+'</div>'+
         '<div class="slhr-mdl">'+x.mdl.substring(0,10)+'</div>'+
-        '<div class="slhr-track" style="display:flex"><div class="slhr-seg" style="width:'+pct+'%;background:'+col+';color:#000" title="Makine (ataçman hariç): ₺'+Math.round(x.val)+'/sa">'+(pct>14?'₺'+Math.round(x.val):'')+'</div></div>'+
+        '<div class="slhr-track" style="display:flex"><div class="slhr-seg" style="width:'+pct+'%;background:'+col+';color:#000" title="Makine (ataçman hariç): ₺'+Math.round(x.val)+'/sa · 🔧 periyodik bakım ₺'+Math.round(x.slhrPb)+'/sa (%'+pbPct+')">'+(pct>14?'₺'+Math.round(x.val):'')+'</div></div>'+
         '<div class="slhr-hours" style="color:var(--muted)">'+Math.round(x.saat)+'sa</div>'+
-        '<div class="slhr-val" style="color:'+col+'">₺'+Math.round(x.val)+'/sa</div>'+
+        '<div class="slhr-val" style="color:'+col+'">₺'+Math.round(x.val)+'/sa'+pbBadge+'</div>'+
       '</div>';
     }
     // dahil: stacked (bakım tier + ataçman amber)
     var pctB=(x.slhrBakim/maxVal)*100;
     var pctA=(x.slhrAtsm/maxVal)*100;
     var atacPct=x.slhr>0?Math.round(x.slhrAtsm/x.slhr*100):0;
-    var bakimSeg='<div class="slhr-seg" style="width:'+pctB+'%;background:'+col+';color:#000" title="Makine (ataçman hariç): ₺'+Math.round(x.slhrBakim)+'/sa">'+(pctB>14?'₺'+Math.round(x.slhrBakim):'')+'</div>';
+    var bakimSeg='<div class="slhr-seg" style="width:'+pctB+'%;background:'+col+';color:#000" title="Makine (ataçman hariç): ₺'+Math.round(x.slhrBakim)+'/sa · 🔧 periyodik bakım ₺'+Math.round(x.slhrPb)+'/sa (%'+pbPct+')">'+(pctB>14?'₺'+Math.round(x.slhrBakim):'')+'</div>';
     var atacSeg=x.slhrAtsm>0?'<div class="slhr-seg slhr-atac" style="width:'+pctA+'%" title="Ataçman / sarf: ₺'+Math.round(x.slhrAtsm)+'/sa (toplam ₺/sa\'nın %'+atacPct+'\'i)">'+(pctA>11?'+₺'+Math.round(x.slhrAtsm):'')+'</div>':'';
     return'<div class="slhr-bar-row">'+
       '<div class="slhr-kd">'+x.kd+'</div>'+
       '<div class="slhr-mdl">'+x.mdl.substring(0,10)+'</div>'+
       '<div class="slhr-track" style="display:flex">'+bakimSeg+atacSeg+'</div>'+
       '<div class="slhr-hours" style="color:var(--muted)">'+Math.round(x.saat)+'sa</div>'+
-      '<div class="slhr-val" style="color:'+col+'">₺'+Math.round(x.slhr)+'/sa'+(atacPct>0?'<span style="color:#f59e0b;font-size:9px;font-weight:600"> ⛏%'+atacPct+'</span>':'')+'</div>'+
+      '<div class="slhr-val" style="color:'+col+'">₺'+Math.round(x.slhr)+'/sa'+(atacPct>0?'<span style="color:#f59e0b;font-size:9px;font-weight:600"> ⛏%'+atacPct+'</span>':'')+pbBadge+'</div>'+
     '</div>';
   }).join('');
 
