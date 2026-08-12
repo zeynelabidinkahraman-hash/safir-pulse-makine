@@ -413,7 +413,8 @@
           <div class="chart-title">Saatlik Maliyet Sıralaması (₺/saat)</div>
           <div class="chart-desc" id="slhr-desc">Her bar iki parçalı: <span style="color:#e8eaf0;font-weight:600">makine (ataçman hariç)</span> tier rengiyle · <span style="color:#f59e0b;font-weight:600">ataçman / sarf</span> taralı amber ile. Tam bar = ataçman <strong>dahil</strong> ₺/sa. Sağdaki ⛏% ataçmanın toplam ₺/sa içindeki payı. Üstteki butonla <strong>ataçmansız</strong> görünüme geçebilirsin.</div>
           <div style="display:flex;gap:16px;margin:6px 0 10px;font-size:10px;color:var(--muted)">
-            <span style="display:flex;align-items:center;gap:5px"><span style="width:14px;height:10px;border-radius:2px;background:linear-gradient(90deg,#22c55e,#f59e0b,#ef4444);display:inline-block"></span>Makine — ataçman HARİÇ (tier: &lt;200 yeşil · 200–500 turuncu · &gt;500 kırmızı)</span>
+            <span style="display:flex;align-items:center;gap:5px"><span style="width:14px;height:10px;border-radius:2px;background:#2dd4bf;display:inline-block"></span>🔧 Periyodik bakım</span>
+            <span style="display:flex;align-items:center;gap:5px"><span style="width:14px;height:10px;border-radius:2px;background:linear-gradient(90deg,#22c55e,#f59e0b,#ef4444);display:inline-block"></span>Arıza &amp; diğer — tier: &lt;200 yeşil · 200–500 turuncu · &gt;500 kırmızı</span>
             <span id="slhr-legend-atac" style="display:flex;align-items:center;gap:5px"><span style="width:14px;height:10px;border-radius:2px;background:repeating-linear-gradient(135deg,#f59e0b,#f59e0b 3px,#d98806 3px,#d98806 6px);display:inline-block"></span>Ataçman / sarf</span>
           </div>
           <div id="slhr-bar-container"></div>
@@ -1557,30 +1558,33 @@ function renderMaliyetAnaliz(){
   var descEl=document.getElementById('slhr-desc'), legAtac=document.getElementById('slhr-legend-atac');
   if(descEl){
     descEl.innerHTML = mode==='haric'
-      ? 'Tek parça bar: <span style="color:#e8eaf0;font-weight:600">sadece makine (motor, hidrolik, bakım)</span> ₺/sa — <strong>ataçman/sarf hariç</strong>. Butonla ataçman dahil görünüme dönebilirsin.'
-      : 'Her bar iki parçalı: <span style="color:#e8eaf0;font-weight:600">makine (ataçman hariç)</span> tier rengiyle · <span style="color:#f59e0b;font-weight:600">ataçman / sarf</span> taralı amber ile. Tam bar = ataçman <strong>dahil</strong> ₺/sa. Sağdaki ⛏% ataçmanın toplam ₺/sa içindeki payı. Üstteki butonla <strong>ataçmansız</strong> görünüme geçebilirsin.';
+      ? 'Bar iki parçalı — <strong>ataçman/sarf hariç</strong>: <span style="color:#2dd4bf;font-weight:600">🔧 periyodik bakım</span> turkuaz · <span style="color:#e8eaf0;font-weight:600">arıza &amp; diğer</span> tier rengiyle. Butonla ataçman dahil görünüme dönebilirsin.'
+      : 'Her bar üç parçalı: <span style="color:#2dd4bf;font-weight:600">🔧 periyodik bakım</span> turkuaz · <span style="color:#e8eaf0;font-weight:600">arıza &amp; diğer</span> tier rengiyle · <span style="color:#f59e0b;font-weight:600">ataçman / sarf</span> taralı amber ile. Tam bar = ataçman <strong>dahil</strong> ₺/sa. Sağdaki ⛏% ataçmanın, 🔧% planlı bakımın payı. Üstteki butonla <strong>ataçmansız</strong> görünüme geçebilirsin.';
   }
   if(legAtac) legAtac.style.display = mode==='haric' ? 'none' : 'flex';
 
   var barHtml=view.map(function(x){
     var col=x.val>500?'#ef4444':x.val>200?'#f59e0b':'#22c55e';
     var pbPct=x.bakim>0?Math.round(x.pb/x.bakim*100):0;
-    var pbBadge=pbPct>0?'<span style="color:#22c55e;font-size:9px;font-weight:600" title="Periyodik bakım: ₺'+Math.round(x.slhrPb)+'/sa — makine bakım giderinin %'+pbPct+'\'i planlı bakım"> 🔧%'+pbPct+'</span>':'';
+    var pbBadge=pbPct>0?'<span style="color:#2dd4bf;font-size:9px;font-weight:600" title="Periyodik bakım: ₺'+Math.round(x.slhrPb)+'/sa — makine bakım giderinin %'+pbPct+'\'i planlı bakım"> 🔧%'+pbPct+'</span>':'';
+    var slhrAriza=x.slhrBakim-x.slhrPb;
+    var pctPb=(x.slhrPb/maxVal)*100;
+    var pctR=(slhrAriza/maxVal)*100;
+    var pbSeg=x.slhrPb>0?'<div class="slhr-seg" style="width:'+pctPb+'%;background:#2dd4bf;color:#042f2a" title="🔧 Periyodik bakım: ₺'+Math.round(x.slhrPb)+'/sa — makine bakım giderinin %'+pbPct+'\'i">'+(pctPb>13?'🔧₺'+Math.round(x.slhrPb):'')+'</div>':'';
+    var arizaSeg=slhrAriza>0?'<div class="slhr-seg" style="width:'+pctR+'%;background:'+col+';color:#000" title="Arıza &amp; diğer: ₺'+Math.round(slhrAriza)+'/sa">'+(pctR>14?'₺'+Math.round(slhrAriza):'')+'</div>':'';
     if(mode==='haric'){
-      var pct=(x.val/maxVal)*100;
       return'<div class="slhr-bar-row">'+
         '<div class="slhr-kd">'+x.kd+'</div>'+
         '<div class="slhr-mdl">'+x.mdl.substring(0,10)+'</div>'+
-        '<div class="slhr-track" style="display:flex"><div class="slhr-seg" style="width:'+pct+'%;background:'+col+';color:#000" title="Makine (ataçman hariç): ₺'+Math.round(x.val)+'/sa · 🔧 periyodik bakım ₺'+Math.round(x.slhrPb)+'/sa (%'+pbPct+')">'+(pct>14?'₺'+Math.round(x.val):'')+'</div></div>'+
+        '<div class="slhr-track" style="display:flex">'+pbSeg+arizaSeg+'</div>'+
         '<div class="slhr-hours" style="color:var(--muted)">'+Math.round(x.saat)+'sa</div>'+
         '<div class="slhr-val" style="color:'+col+'">₺'+Math.round(x.val)+'/sa'+pbBadge+'</div>'+
       '</div>';
     }
-    // dahil: stacked (bakım tier + ataçman amber)
-    var pctB=(x.slhrBakim/maxVal)*100;
+    // dahil: stacked (🔧 periyodik turkuaz + arıza tier + ataçman amber)
     var pctA=(x.slhrAtsm/maxVal)*100;
     var atacPct=x.slhr>0?Math.round(x.slhrAtsm/x.slhr*100):0;
-    var bakimSeg='<div class="slhr-seg" style="width:'+pctB+'%;background:'+col+';color:#000" title="Makine (ataçman hariç): ₺'+Math.round(x.slhrBakim)+'/sa · 🔧 periyodik bakım ₺'+Math.round(x.slhrPb)+'/sa (%'+pbPct+')">'+(pctB>14?'₺'+Math.round(x.slhrBakim):'')+'</div>';
+    var bakimSeg=pbSeg+arizaSeg;
     var atacSeg=x.slhrAtsm>0?'<div class="slhr-seg slhr-atac" style="width:'+pctA+'%" title="Ataçman / sarf: ₺'+Math.round(x.slhrAtsm)+'/sa (toplam ₺/sa\'nın %'+atacPct+'\'i)">'+(pctA>11?'+₺'+Math.round(x.slhrAtsm):'')+'</div>':'';
     return'<div class="slhr-bar-row">'+
       '<div class="slhr-kd">'+x.kd+'</div>'+
