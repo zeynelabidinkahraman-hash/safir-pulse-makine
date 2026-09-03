@@ -204,7 +204,7 @@
   <div class="kpi"><div class="kpi-label">Rölanti Ort.</div><div class="kpi-val green" id="kpi-rol">%32</div><div class="kpi-delta" id="kpi-rol-d"></div></div>
   <div class="kpi"><div class="kpi-label">Toplam Yakıt</div><div class="kpi-val" id="kpi-fuel">225.593 L</div><div class="kpi-delta" id="kpi-fuel-d"></div></div>
   <div class="kpi"><div class="kpi-label">Ort. L/Saat</div><div class="kpi-val" id="kpi-lhr">18.9 L/h</div><div class="kpi-delta" id="kpi-lhr-d"></div></div>
-  <div class="kpi"><div class="kpi-label">Kritik Makine</div><div class="kpi-val red" id="kpi-alarm">17</div><div class="kpi-sub">rölanti ≥%35 (Ağu)</div></div>
+  <div class="kpi"><div class="kpi-label">Kritik Makine</div><div class="kpi-val red" id="kpi-alarm">16</div><div class="kpi-sub">rölanti ≥%35 (Ağu)</div></div>
   <div class="kpi"><div class="kpi-label">En Verimli</div><div class="kpi-val green" id="kpi-best">C26</div><div class="kpi-sub" id="kpi-best-sub">%17 · 14.8 L/h</div></div>
 </div>
 
@@ -602,7 +602,7 @@ const RAW = [
 ['C53','330GC','İskenderun','iskenderun',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,4878,0,'Pasif · TML30140',null,null,null,null,null,null,null,null,224,null,null,null,null,null,43.9,32.7,11.2,26,891,20.3,219.1,139.4,79.8,36,3943,18,224.9,144.5,80.5,36,3921,17.4,297,169.9,127.1,43,5063,17],
 ['C43','350-06','İskenderun','iskenderun',301.2,220.5,80.7,27,6282,20.9,251.8,186.3,65.5,26,5236,20.8,214.2,163.5,50.7,24,4493.8,21,5949,0,'Verimli 350',40.3,24.3,null,null,null,null,null,null,181.9,140.1,41.8,22.96,3819.9,21.0047,114.6,80.7,33.9,30,2569,22.4,215.8,172.8,43.1,20,4798,22.2,247.4,199.2,48.2,19,5898,23.8,204.9,145.4,59.6,29,4450,21.7],
 ['C30','336-08','Çekmeköy/İst.','istanbul',323.8,159,164.8,51,5898,18.2,234.6,115,119.6,51,4263,18.2,149,76.1,72.9,49,2843.8,19.1,6913,3,'PM2 bakım 618 GÜN gecikmiş!',36.8,16.9,null,null,null,null,null,null,107,85.2,21.8,20.37,3109.7,29.0587,221.2,132.3,88.9,40,4482,20.3,146.7,94.8,51.9,35,3400,23.2,278,188.8,89.3,32,6819,24.5,424.1,322.2,101.9,24,11646,27.5],
-['C33','330GC','Çekmeköy/İst.','istanbul',207.6,148.8,58.8,28,3377,16.3,216,155.5,60.5,28,3509,16.2,258.3,174.4,83.9,32,4228.3,16.4,6560,3,'Motor soğutma yüksek ısı 50+ olay',66.2,31.8,null,null,null,null,null,null,242.6,159.4,83.2,34.3,4007.8,16.5231,195.6,134.5,61.2,31,3285,16.8,193.1,124.7,68.5,35,2855,14.8,223.2,168.6,54.6,24,3639,16.3,101,79,22,22,1695,16.8],
+['C33','330GC','Çekmeköy/İst.','istanbul',207.6,148.8,58.8,28,3377,16.3,216,155.5,60.5,28,3509,16.2,258.3,174.4,83.9,32,4228.3,16.4,6560,3,'Ağustos: 328 sa saha kaydı — PL telemetri 1 Ağu\'dan beri kesik · yakıt 9.415 L teyit bekliyor (ZX4 ile aynı rakam)',66.2,31.8,null,null,null,null,null,null,242.6,159.4,83.2,34.3,4007.8,16.5231,195.6,134.5,61.2,31,3285,16.8,193.1,124.7,68.5,35,2855,14.8,223.2,168.6,54.6,24,3639,16.3,328,null,null,null,null,null],
 ['C28','340-08','İskenderun','iskenderun',255.4,159.8,95.6,37,5870,23,230.7,145.8,84.9,37,5296,22.9,198.3,137.1,61.1,31,4988.7,25.2,7266,0,'',50.8,33.3,null,null,null,null,null,null,224.4,149.3,75.1,33.47,5557.5,24.77,101.3,76.6,24.4,24,2732,26.9,179.3,136.1,43.2,24,4872,27.2,312.6,231.4,81.2,26,7900,25.3,212.2,162,42.5,20,4490,21.2],
 ['C36','340-08','Sultanbeyli/İst.','istanbul',218.8,136.5,82.3,38,5009,22.9,206.1,128.5,77.6,38,4725,22.9,188.6,117.8,70.8,38,4250.5,22.5,6128,2,'Yakıt pompası kuru çalışma',39.4,38.1,null,null,null,null,null,null,147.8,98.3,49.5,33.5,3495.4,23.6487,null,null,null,null,null,null,203.1,139.9,63.3,31,4769,23.5,185.9,120.3,58.9,32,4218,22.7,254.6,164.3,90.3,35,6037,23.7],
 ['C37','340-08','Ataşehir/İst.','istanbul',196.8,123,73.8,37,4524,23,182.5,114.5,68,37,4197,23,126.5,83.5,43,34,3261.6,25.8,5096,2,'Yakıt KRİTİK %10',34.1,23.8,null,null,null,null,null,null,189,150.5,38.5,20.37,5445.8,28.8117,143.7,106.1,29.6,21,3708,24.8,221.6,161.3,60.3,27,6370,28.7,206.6,151.1,48.4,23,5678,27.5,160.4,98.2,62.2,39,3667,22.9],
@@ -618,14 +618,14 @@ const RAW = [
 ['C8','320GC','İyidere/Rize','rize',122.4,47.7,74.7,61,878,7.2,116.8,45.5,71.3,61,838,7.2,108.6,45.8,62.8,58,824.3,7.6,7599,3,'KRİTİK %58 rölanti',8.8,35.1,null,null,null,null,null,null,79.9,49.7,30.1,37.74,754.7,9.4479,60.7,36.4,24.3,40,576,9.5,96.5,53.9,42.7,44,886,9.2,75.2,42.4,32.8,44,676,9,133.6,69.6,64,48,1122,8.4],
 ['C55','313GC','Sancaktepe/İst.','istanbul',219.5,101.4,118.1,54,1088,5,241.4,113.4,128,53,1196,5,365.5,152.2,213.2,58,1766.4,4.8,2018,2,'%58 rölanti — artan trend',103,53.5,null,null,null,null,null,null,397.7,205.4,192.3,48.35,2104.2,5.291,180.1,122,58.1,32,1223,6.8,132.4,82.3,45.8,35,808,6.1,108.5,73.8,31.6,29,760,7,87.4,57.2,26,30,548,6.3],
 ['C56','313GC','Ümraniye/İst.','istanbul',77.9,30,47.9,62,375,4.8,73.8,28.4,45.4,61,355,4.8,33.6,16.3,17.3,51,197.3,5.9,1757,2,'%62 rölanti',0.7,29.9,null,null,null,null,null,null,174,50.2,123.8,71.17,648.3,3.7156,151.8,55.2,96.6,64,646,4.3,378.2,143.7,234.5,62,1644,4.3,332.5,113,219.5,66,1339,4,422.9,162.1,260.8,62,1914,4.5],
-['C46','M318','Şile/İst.','istanbul',159.9,77.2,82.7,52,952,6,152.2,73.5,78.7,52,907,6,134.1,71.1,63,47,839.4,6.3,3212,1,'%52 rölanti',37.9,39.7,null,null,null,null,null,null,174.2,107.7,66.5,38.18,1281.4,7.3577,119.7,76.5,43.2,36,843,7,147.7,95.3,52.4,35,1031,7,68.9,27.4,41.5,60,374,5.4,57.6,32,25.6,44,423,7.3],
+['C46','M318','Şile/İst.','istanbul',159.9,77.2,82.7,52,952,6,152.2,73.5,78.7,52,907,6,134.1,71.1,63,47,839.4,6.3,3212,1,'Ağustos: 191 sa · 1.702 L saha kaydı — PL telemetri 1 Ağu\'dan beri kesik',37.9,39.7,null,null,null,null,null,null,174.2,107.7,66.5,38.18,1281.4,7.3577,119.7,76.5,43.2,36,843,7,147.7,95.3,52.4,35,1031,7,68.9,27.4,41.5,60,374,5.4,191,null,null,null,1702,8.9],
 ['C11','336-07','Maltepe/İst.','istanbul',162.6,115.4,47.2,29,3834,23.6,155.2,110.2,45,29,3659,23.6,220.4,158,62.4,28,5133.5,23.3,9069,0,'',52.6,22.8,null,null,null,null,null,null,220.7,162.2,58.5,26.5,5358.7,24.2781,170.3,111.7,58.6,34,3800,22.3,258.2,169.8,88.4,34,5999,23.2,351.6,241.1,110.5,31,7831,22.3,242.2,164.7,77.6,32,5694,23.5],
 ['C6','336-07','Kahramanmaraş','maras',175.3,132.5,42.8,24,4694,26.8,163,123.3,39.7,24,4363,26.8,158.1,119.8,38.3,24,4209.8,26.6,11177,0,'9.893 sa — revizyon eşiği yaklaşıyor',50.5,21.3,null,null,null,null,null,null,237.1,181.8,55.3,23.34,6533.1,27.5518,255.4,192.4,63,25,6907,27,268.3,202.2,66.1,25,7410,27.6,275.5,201.2,74.3,27,7159,26,222.9,156,66.9,30,5610,25.2],
 ['C13','950GC','Maltepe/İst.','istanbul',195.3,140,55.3,28,3257,16.7,180.6,129.6,51,28,3014,16.7,182.8,122.9,60,33,2655.9,14.5,9584,0,'8.263 sa',60.6,27.6,null,null,null,null,null,null,277.9,189.1,88.9,31.97,4030,14.5006,74.3,46.1,28.2,38,1020,13.7,202,140.7,61.3,30,2789,13.8,397.3,288.3,109,27,5470,13.8,320.6,213.4,107.2,33,3779,11.8],
-['H9','HMK410','Kahramanmaraş','maras',150,null,null,null,null,null,124,null,null,null,null,null,210,null,null,null,null,null,0,0,'Temmuz: 172sa · 3736L · 21.7L/sa (manuel)',null,null,null,null,null,null,null,null,258,null,null,null,5406,20.9535,238,null,null,null,7549,31.7227,336,null,null,null,8386,24.9583,172,null,null,null,3736,21.7,null,null,null,null,null,null],
-['H11','HMK500LC','Kahramanmaraş','maras',150,null,null,null,null,null,152,null,null,null,null,null,null,null,null,null,null,null,0,0,'Temmuz: 109sa · 3115L · 28.6L/sa (manuel) — Nisan-Haz arızalıydı',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,109,null,null,null,3115,28.6,null,null,null,null,null,null],
-['ZX4','ZX490LCH','Şile/İst.','istanbul',431.9,270,161.9,37,13289,30.8,315.2,208,107.2,34,9242,29.4,344.8,198.2,146.6,43,10717,31.1,6815.65,3,'Ağustos: 286.8sa (kesin) · %24 rölanti (grafikten ~) · yakıt ConSite bekleniyor',null,null,null,null,null,null,null,null,231.8,155.3,76.5,33,7524,32.459,340.2,252.4,87.8,26,11415,33.6,243.8,159.9,83.9,34,7502,30.8,199,141.5,57.5,29,6475,32.5,286.8,216.8,70,24,null,null],
-['ZX5','ZX490LCH','Entegre/İst.','istanbul',187.9,115.5,72.4,38,5307,28.2,314.2,190.2,124,39,10200,32.4,160.2,107.4,52.8,33,4540,28.4,7126.8,2,'Ağustos: 394.1sa (kesin) · %22 rölanti (grafikten ~) · yakıt ConSite bekleniyor',null,null,null,null,null,null,null,null,426.9,309.8,117,27.4,13914,32.5931,306.7,221.3,85.4,28,10063,32.8,450.8,311.9,139,31,14673,32.6,424.1,315.2,109,26,14771,34.8,394.1,306.8,87.3,22,null,null],
+['H9','HMK410','Kahramanmaraş','maras',150,null,null,null,null,null,124,null,null,null,null,null,210,null,null,null,null,null,0,0,'Ağustos: 276sa · 5131L · 18.6L/sa (manuel)',null,null,null,null,null,null,null,null,258,null,null,null,5406,20.9535,238,null,null,null,7549,31.7227,336,null,null,null,8386,24.9583,172,null,null,null,3736,21.7,276,null,null,null,5131,18.6],
+['H11','HMK500LC','Kahramanmaraş','maras',150,null,null,null,null,null,152,null,null,null,null,null,null,null,null,null,null,null,0,0,'Ağustos: 136sa · 2744L · 20.2L/sa (manuel · Alton)',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,109,null,null,null,3115,28.6,136,null,null,null,2744,20.2],
+['ZX4','ZX490LCH','Şile/İst.','istanbul',431.9,270,161.9,37,13289,30.8,315.2,208,107.2,34,9242,29.4,344.8,198.2,146.6,43,10717,31.1,6815.65,3,'Ağustos: 286.8sa (e-Service; saha 288) · %24 rölanti (grafikten ~) · 9.415 L (saha) · ConSite bekleniyor',null,null,null,null,null,null,null,null,231.8,155.3,76.5,33,7524,32.459,340.2,252.4,87.8,26,11415,33.6,243.8,159.9,83.9,34,7502,30.8,199,141.5,57.5,29,6475,32.5,286.8,216.8,70,24,9415,32.8],
+['ZX5','ZX490LCH','Entegre/İst.','istanbul',187.9,115.5,72.4,38,5307,28.2,314.2,190.2,124,39,10200,32.4,160.2,107.4,52.8,33,4540,28.4,7126.8,2,'Ağustos: 394.1sa (e-Service; saha 372) · %22 rölanti (grafikten ~) · 14.401 L (saha) · ConSite bekleniyor',null,null,null,null,null,null,null,null,426.9,309.8,117,27.4,13914,32.5931,306.7,221.3,85.4,28,10063,32.8,450.8,311.9,139,31,14673,32.6,424.1,315.2,109,26,14771,34.8,394.1,306.8,87.3,22,14401,36.5],
 ['C10','330GC','Üsküdar/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,1059.4,714,345.4,33,17058.5,16.1,9846,2,'Mart aktif · Hidrolik ısı + voltaj alarmı',52.5,31.6,null,null,null,null,null,null,262.5,197,65.5,24.95,4722.8,17.9828,177.4,120.3,57.2,32,2642,14.9,134.7,69.2,65.5,49,1761,13.1,128.1,69.1,59,46,1711,13.4,198,108.7,89.3,45,2774,14],
 ['C15','336GC','Maltepe/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,102.7,76.6,22.2,22,2431.2,23.7,6796,1,'Tem: 8-31 arası telemetri kesik — saat sayaç deltası (119.2sa) + yakıt kümülatif sayaçtan (2465L); rölanti detayı yok',46.8,24.4,null,null,null,null,null,null,160.5,120.7,39.8,24.82,4089.7,25.475,140.3,78.7,52,37,2711,19.3,215.4,140.2,75.2,35,4935,22.9,119.2,null,null,null,2465,20.7,188.7,114.9,73.8,39,3886,20.6],
 ['C17','340-08','Üsküdar/İst.','istanbul',null,null,null,null,null,null,null,null,null,null,null,null,144.2,108.7,35.5,25,3357.7,23.3,6376,0,'Mart 2026 VisionLink',56.1,27.1,null,null,null,null,null,null,231.2,163.5,67.6,29.26,4110,17.7762,158.5,110.5,38.9,25,2667,16.8,159.1,127.2,31.9,20,3215,20.2,110.6,84.1,26.5,24,2048,18.5,111.4,67.5,44,39,2058,18.5],
@@ -702,7 +702,7 @@ const INSIGHTS={
   'nis':{cls:'blue',title:'📊 Nisan 2026 (1–30)',text:'C40 CAT352 filonun en çok çalışanı (488.9 sa). C45 en verimli: %24 rölanti. C54 ve C9 rölanti kritik (%52 ve %51). C56 %71 rölanti — en yüksek rölanti. C55 %48 rölanti. C21 yalnızca 41.9 sa çalıştı — düşük aktivite. C24 11.198 sa SMU — revizyon eşiği aşıldı. H11 Hidromek 500 Nisan\'da arızalı — pasif.'},
   'haz':{cls:'blue',title:'📊 Haziran 2026 (1–30)',text:'CAT filosu 10.980 sa / 217.424 L. C29 336-08 filonun en çok çalışanı (473.7 sa); C40 (428 sa) ve C21 (417 sa) takip ediyor. En verimli rölanti: C39 140GC %10, C16 ve C51 %18. En yüksek rölanti: C56 313GC %62, C31 315GC %59, C10 330GC %49. Delici Rok R1 174 sa/3.752 L, R2 35 sa/480 L. H9 336 sa/8.386 L. Hitachi ConSite Haziran raporu (8 Tem) işlendi — KESİN veri: ZX5 450.8 sa · %31 rölanti · 14.673 L (32.6 L/sa); ZX4 243.8 sa · %34 rölanti · 7.502 L (30.8 L/sa). ZX4 artık Alton/Şile sahasında. ZX5 Haziran\'da 3 ConSite alarmı: 1 acil (Discharge warning, 6 Haz) + motor yağı ömrü doldu (OILM-3A, 18 Haz) — yağ bakımı ivedi. Ayrıca ZX4↔ZX5 seri no eşleşmesi düzeltildi (ZX4=070838, ZX5=070836) — Oca–May verileri doğru makineye taşındı. H1/H11/SY1 çalışmadı. H8 verisi beklemede. K/E/B (konkasör/elek/konveyör) takibi Temmuz\'da başlıyor. Not: C51 (432-07) Haziran VisionLink verisi mevcut (50.2 sa/217 L) ama RAW\'a eklenmedi.'},
   'tem':{cls:'blue',title:'📊 Temmuz 2026 (1–31)',text:'CAT filosu 9.950 sa / 196.578 L (47 makine, VisionLink "Önceki Ay" kesin dönem). C40 352-08 filonun en çok çalışanı (452.2 sa); C48 (430.1 sa) ve ZX5 Hitachi (424.1 sa) takip ediyor. En verimli rölanti: C26 950GC %15, C39 140GC ve C49 %18. En yüksek rölanti: C56 313GC %66, C46 M318 %60, C31 315GC %53; C20 %47 ve C10 %46 dikkat. C53 330GC yeniden aktif (224.9 sa — Mart\'tan beri pasifti). C45 yalnızca 30.1 sa çalıştı — düşük aktivite. C15\'te 8–31 Tem arası telemetri kesintisi vardı — çalışma saat sayacı deltasıyla doğrulandı (119.2 sa) ve yakıt kümülatif sayaçtan hesaplandı (2.465 L · 20.7 L/sa); yalnız rölanti dağılımı bilinmiyor. Sayaç: C24 11.787 sa (revizyon eşiği aşıldı), C40 11.134 sa, C6 10.959 sa revizyon eşiğinde. Hitachi ConSite Temmuz kesin raporu işlendi (8 Ağu): ZX5 424.1 sa · %26 rölanti (109.0 sa) · 14.771 L (34.8 L/sa); ZX4 199.0 sa · %29 rölanti (57.5 sa) · 6.475 L (32.5 L/sa); iki makinede de 0 ConSite alarmı, soğutma/hidrolik sıcaklıkları normal (Mid). ZX5 kule dönüş oranı %76 (D endeksi) — ConSite mekanik/elektrik sorun veya istem dışı swing ihtimaline dikkat çekiyor, kontrol önerilir. Manuel makineler girildi: H1 Hidromek 220 228 sa/2.850 L (sayaç 23.102), H9 HMK410 172 sa/3.736 L, H8 102B 172 sa/926 L, H11 HMK500 109 sa/3.115 L (Nis–Haz arızalıydı, yeniden aktif), R1 Sandvik 178 sa/4.668 L, R2 Smart-Rock 78 sa/1.280 L. Konkasör/elek/konveyör sayaç listesi geldi (14 aktif, 2.256 sa; Alton tesisi 8 makine yakıtlı 28.068 L — detay Konkasör panosunda; K10 MR100 NEOe yeni, K9 bitiş sayacı eksik, E1/B2 çalışmadı). SY1 verisi gelmedi. Saha hareketleri (GPS, Temmuz sonu): C13/C14/C35/C38 Kahramanmaraş-İskenderun hattından İstanbul\'a döndü; C20 ve C26 İskenderun\'a kaydı; C27 Giresun\'dan Ataşehir\'e, C46 Bursa\'dan Şile\'ye taşındı. Teknik gider Temmuz verisi ~10 Ağustos\'ta eklenecek.'},
-  'agu':{cls:'blue',title:'📊 Ağustos 2026 (1–31)',text:'CAT filosu 10.678 sa / 214.295 L (46 makine, VisionLink "Önceki Ay" kesin dönem; C45 950-14 sayacı 5 Tem\'den beri sabit — telemetri/veri yok). C29 336-08 filonun en çok çalışanı (474.4 sa); C48 966GC (455.6 sa), C40 352-08 (425.5 sa) ve C30 336-08 (424.1 sa) takip ediyor; ZX5 Hitachi 394.1 sa. En verimli rölanti: C26 950GC %17, C31 315GC %18, C14 ve C28 %20. En yüksek rölanti: C56 313GC %62, C52 330GC %51, C8 320GC %48; C10 %45, C46 %44, C53 %43 dikkat. Filo ağırlıklı rölanti %31. Düşük aktivite: C46 M318 57.6 sa, C39 140GC 70.4 sa, C55 313GC 87.4 sa. Yakıt: C40 34.9 L/sa en yüksek birim tüketim. Sayaç: C24 12.014 sa, C40 11.565 sa, C6 11.177 sa, C9 10.003 sa revizyon eşiği üstünde; C10 9.846, C13 9.584, C16 9.151, C11 9.069 sa eşikte. Hitachi e-Service kesin çalışma: ZX5 394.1 sa · %22 rölanti (87.3 sa, günlük Non-Operation grafiğinden aylık saate kalibre), ZX4 286.8 sa · %24 rölanti (70.0 sa); yakıt ve ConSite alarm raporu bekleniyor. Saha hareketleri (GPS, Ağustos sonu): C48 ve C25 Şile\'ye, C35 Tuzla MİSEK\'e, C14 Çekmeköy\'e, C27 Maltepe\'ye, C32 Sultanbeyli\'ye, C42 Sancaktepe\'ye, C7 ve C31 Kadıköy\'e taşındı. Manuel makineler (H1/H8/H9/H11/R1/R2/SY1, konkasör-elek-konveyör) ve teknik gider Ağustos verisi henüz girilmedi — Excel şablonu Downloads/AĞUSTOS_2026_VERILER klasöründe bekliyor.'},
+  'agu':{cls:'blue',title:'📊 Ağustos 2026 (1–31)',text:'CAT filosu 10.678 sa / 214.295 L (46 makine, VisionLink "Önceki Ay" kesin dönem; C45 950-14 sayacı 5 Tem\'den beri sabit — telemetri/veri yok). C29 336-08 filonun en çok çalışanı (474.4 sa); C48 966GC (455.6 sa), C40 352-08 (425.5 sa) ve C30 336-08 (424.1 sa) takip ediyor; ZX5 Hitachi 394.1 sa. En verimli rölanti: C26 950GC %17, C31 315GC %18, C14 ve C28 %20. En yüksek rölanti: C56 313GC %62, C52 330GC %51, C8 320GC %48; C10 %45, C46 %44, C53 %43 dikkat. Filo ağırlıklı rölanti %31. Düşük aktivite: C46 M318 57.6 sa, C39 140GC 70.4 sa, C55 313GC 87.4 sa. Yakıt: C40 34.9 L/sa en yüksek birim tüketim. Sayaç: C24 12.014 sa, C40 11.565 sa, C6 11.177 sa, C9 10.003 sa revizyon eşiği üstünde; C10 9.846, C13 9.584, C16 9.151, C11 9.069 sa eşikte. Hitachi e-Service kesin çalışma: ZX5 394.1 sa · %22 rölanti (87.3 sa, günlük Non-Operation grafiğinden aylık saate kalibre), ZX4 286.8 sa · %24 rölanti (70.0 sa); yakıt ve ConSite alarm raporu bekleniyor. Saha hareketleri (GPS, Ağustos sonu): C48 ve C25 Şile\'ye, C35 Tuzla MİSEK\'e, C14 Çekmeköy\'e, C27 Maltepe\'ye, C32 Sultanbeyli\'ye, C42 Sancaktepe\'ye, C7 ve C31 Kadıköy\'e taşındı. Saha kayıtları (3 Eyl): C33 330GC 328 sa ve C46 M318 191 sa/1.702 L — PL telemetrileri 1 Ağu\'dan beri kesik, VisionLink değerleri (101/58 sa) ile değiştirildi; C33 yakıtı (9.415 L, ZX4 ile aynı rakam) teyit bekliyor. Hitachi saha yakıtı: ZX5 14.401 L (36.5 L/sa), ZX4 9.415 L (32.8 L/sa). Manuel makineler: H1 Hidromek 220 217 sa/2.561 L (sayaç 23.319), H9 HMK410 276 sa/5.131 L, H11 HMK500 136 sa/2.744 L (Alton), R1 Sandvik 304 sa/2.059 L, R2 Smart-Rock 36 sa/1.157 L. Konkasör-elek-konveyör 8 makine 1.276 sa / 19.345 L (İskenderun: K1 200, K2 195, K3 186, E3 193, E5 183, B1 204 · Alton: K5 46, E2 69 — detay Konkasör panosunda). Eksik: H8, SY1, K4 (VL sayacına göre ~122 sa), K6–K10, E1, E4, B2; HAMM silindir (59 sa/149 L) ve Alton Kleemann EVO2 (23 sa/1.729 L) panoda kodsuz. Teknik gider Ağustos ~10 Eyl.'},
   'may':{cls:'blue',title:'📊 Mayıs 2026 (1–31)',text:'C48 966GC filonun en çok çalışanı (359.3 sa). C16 en verimli: %18 rölanti. C56 313GC %64 rölanti — en yüksek; C7 %46 rölanti dikkat. C27 330GC Kahramanmaraş\'tan Giresun sahasına taşındı (91.4 sa, %33). Hitachi Mayıs verisi ConSite kesin raporuyla güncellendi: ZX4 340.2 sa · %26 rölanti · 11.415 L; ZX5 306.7 sa · %28 rölanti · 10.063 L. C36 (FKN10256) pasif, son rapor 22 Nis.'},
 };
 
@@ -927,41 +927,50 @@ const MANUEL_SAAT = {
   'C41': {oca:160, sub:175, mar:200, ozet:535},
   'C42': {oca:100, sub:70, mar:175, ozet:345},
   'C53': {oca:241, sub:269, mar:205, ozet:715},
-  'H1': {oca:null, sub:100, mar:127.9, tem:228, ozet:455.9},
+  'H1': {oca:null, sub:100, mar:127.9, tem:228, agu:217, ozet:672.9},
   'H8': {tem:172, ozet:172},
-  'H9': {oca:150, sub:124, mar:210, nis:258, may:238, haz:336, tem:172, ozet:1488},
-  'H11': {oca:150, sub:152, mar:null, nis:null, tem:109, ozet:411},
+  'H9': {oca:150, sub:124, mar:210, nis:258, may:238, haz:336, tem:172, agu:276, ozet:1764},
+  'H11': {oca:150, sub:152, mar:null, nis:null, tem:109, agu:136, ozet:547},
   'SY1': {oca:50, sub:50, mar:69, ozet:169},
   'C13': {oca:190, sub:180, mar:201, ozet:571},
   'C48': {oca:432, sub:414, mar:403, ozet:1249},
   'C51': {oca:null, sub:null, mar:180, ozet:180},
-  'K1': {oca:114, sub:66, mar:76, tem:296, ozet:552},
-  'K2': {oca:45, sub:123, mar:133, tem:172, ozet:473},
-  'K3': {oca:100, sub:184, mar:187, tem:229, ozet:700},
+  'K1': {oca:114, sub:66, mar:76, tem:296, agu:200, ozet:752},
+  'K2': {oca:45, sub:123, mar:133, tem:172, agu:195, ozet:668},
+  'K3': {oca:100, sub:184, mar:187, tem:229, agu:186, ozet:886},
   'K4': {oca:228, sub:11, mar:null, tem:183, ozet:422},
-  'K5': {oca:134, sub:129, mar:17, tem:187, ozet:467},
+  'K5': {oca:134, sub:129, mar:17, tem:187, agu:46, ozet:513},
   'K6': {tem:25, ozet:25},
   'K7': {oca:41, sub:59, mar:102, tem:95, ozet:297},
   'K8': {oca:93, sub:128, mar:161, tem:162, ozet:544},
   'K9': {oca:56, sub:165, mar:156, ozet:377},
   'E1': {oca:48, sub:28, mar:57, ozet:133},
-  'E2': {oca:226, sub:12, mar:56, tem:159, ozet:453},
-  'E3': {oca:null, sub:null, mar:94, tem:80, ozet:174},
+  'E2': {oca:226, sub:12, mar:56, tem:159, agu:69, ozet:522},
+  'E3': {oca:null, sub:null, mar:94, tem:80, agu:193, ozet:367},
   'E4': {oca:129, sub:68, mar:18, tem:193, ozet:408},
-  'E5': {oca:44, sub:null, mar:45, tem:218, ozet:307},
-  'B1': {oca:132, sub:175, mar:98, tem:230, ozet:635},
-  'R1': {oca:99, sub:125, mar:125, may:68, haz:174, tem:178, ozet:769},
-  'R2': {oca:103, sub:103, mar:95, may:40, haz:35, tem:78, ozet:454},
+  'E5': {oca:44, sub:null, mar:45, tem:218, agu:183, ozet:490},
+  'B1': {oca:132, sub:175, mar:98, tem:230, agu:204, ozet:839},
+  'R1': {oca:99, sub:125, mar:125, may:68, haz:174, tem:178, agu:304, ozet:1073},
+  'R2': {oca:103, sub:103, mar:95, may:40, haz:35, tem:78, agu:36, ozet:490},
   'HM1': {oca:null, sub:null, mar:24, ozet:24}
 };
 
 // ─── TELEMETRİSİZ MAKİNE YAKIT (delici rok vb. — kart + maliyet için) ─────
 // Dönem bazlı yakıt (L). Saat MANUEL_SAAT'tan gelir.
 const MANUEL_YAKIT = {
-  'R1': {may:946, haz:3752, tem:4668, ozet:9366},
-  'R2': {may:937, haz:480, tem:1280, ozet:2697},
-  'H1': {tem:2850, ozet:2850},
-  'H8': {tem:926, ozet:926}
+  'R1': {may:946, haz:3752, tem:4668, agu:2059, ozet:11425},
+  'R2': {may:937, haz:480, tem:1280, agu:1157, ozet:3854},
+  'H1': {tem:2850, agu:2561, ozet:5411},
+  'H8': {tem:926, ozet:926},
+  // Konkasör/elek/konveyör saha yakıtı (Tem: konkasör panosu 2. liste · Ağu: 03.09 saha listesi)
+  'K1': {tem:5441, agu:5730, ozet:11171},
+  'K2': {tem:3300, agu:3170, ozet:6470},
+  'K3': {tem:4299, agu:3589, ozet:7888},
+  'K5': {tem:8442, agu:1312, ozet:9754},
+  'E2': {tem:1760, agu:459, ozet:2219},
+  'E3': {tem:709, agu:1683, ozet:2392},
+  'E5': {tem:2752, agu:1974, ozet:4726},
+  'B1': {tem:1365, agu:1428, ozet:2793}
 };
 // Makine kartlarında gösterilecek telemetrisiz makineler
 const MANUEL_KART = [
